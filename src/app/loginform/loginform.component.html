@@ -1,0 +1,25 @@
+<form class="form-signin" action=""  >
+  <img class="mb-4" src="../../../assets/dandan.png" alt="" width="144" height="144">
+  <img class="mb-4" src="" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal" >登录盖亚计划</h1>
+  <p style="color:rebeccapurple"></p>
+  <label class="sr-only" >Username</label>
+  <label>
+    <input #userid type="text" name="id" class="form-control" placeholder="Username"
+           required="" autofocus="">
+  </label>
+  <label class="sr-only">Password</label>
+  <label>
+    <input #userpassword type="password" name="password"  class="form-control" placeholder="Password"
+            required="">
+  </label>
+  <button nz-button class="btn btn-lg btn-primary btn-block" (click)="userLogin(userid.value,userpassword.value)" >Sign in</button>
+  <br>
+  <br>
+  <br>
+  <br>
+<!--  <h3>{{user.userid}}</h3>
+  <h3>{{user.userpassword}}</h3>-->
+  <button class="btn btn-lg btn-primary btn-block" (click)="showUser()" >Sign in</button>
+  <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+</form>
