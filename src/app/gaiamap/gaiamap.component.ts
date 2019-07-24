@@ -18,10 +18,11 @@ export class GaiamapComponent implements OnInit {
     this.gameService.showGame(gameid)
       .subscribe((data) => {
         this.gamedetails = data;
+        console.log(this.gamedetails);
         const c: any = document.getElementById('myCanvas');
         const ctx = c.getContext('2d');
         ctx.clearRect(0, 0, c.width, c.height);
-        ctx.scale(0.7, 0.7);
+        ctx.scale(0.68, 0.68);
         for (let i = 1 ; i < 4 ; i++) {
           this.drawPolygon(ctx, {
             x: 52,
@@ -182,7 +183,12 @@ export class GaiamapComponent implements OnInit {
             coordinate: 'T' + i
           });
         }
-        ctx.scale(1.43, 1.43);
+        ctx.scale(1 / 0.68, 1 / 0.68);
+/*        const cc: any = document.getElementById('mCanvas');
+        const cctx = cc.getContext('2d');
+        const img = new Image();
+        img.src = 'assets/races/Ambas.jpg'
+        cctx.drawImage(img, 0, 0);*/
       });
   }
   ngOnInit() {
@@ -223,7 +229,7 @@ export class GaiamapComponent implements OnInit {
       ctx.fillStyle = fillStyle;
       ctx.fill();
     }
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = 'lightblue';
       ctx.font = '20px Arial';
       ctx.fillText(conf.coordinate, conf.x - 9, conf.y + 35);
   }

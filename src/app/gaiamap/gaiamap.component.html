@@ -1,2 +1,85 @@
 <p>gaiamap {{gameid}}works!</p>
-<canvas id="myCanvas" width="2000" height="2000"></canvas>
+<h2>{{gamedetails.gamestate}}</h2>
+<canvas id="myCanvas" width="2000" height="840"></canvas>
+<div>
+<div class="scoring">
+  <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R1</font></div>
+  <br><br>
+  <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[0]}}</font></div>
+</div>
+<div class="scoring">
+  <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R2</font></div>
+  <br><br>
+  <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[1]}}</font></div>
+</div>
+<div class="scoring">
+  <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R3</font></div>
+  <br><br>
+  <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[2]}}</font></div>
+</div>
+<div class="scoring">
+  <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R4</font></div>
+  <br><br>
+  <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[3]}}</font></div>
+</div>
+<div class="scoring">
+  <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R5</font></div>
+  <br><br>
+  <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[4]}}</font></div>
+</div>
+<div class="scoring">
+  <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R6</font></div>
+  <br><br>
+  <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[5]}}</font></div>
+</div>
+</div>
+<div style="clear: both">
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[0][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[0][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[0][2]}}</font></div>
+  </div>
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[1][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[1][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[1][2]}}</font></div>
+  </div>
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[2][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[2][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[2][2]}}</font></div>
+  </div>
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[3][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[3][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[3][2]}}</font></div>
+  </div>
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[4][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[4][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[4][2]}}</font></div>
+  </div>
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[5][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[5][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[5][2]}}</font></div>
+  </div>
+  <div class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[6][0]}}</font></div>
+    <br>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[6][1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[6][2]}}</font></div>
+  </div>
+</div>
+<div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
+  <h4>
+    {{record}}
+  </h4>
+</div>
+
