@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {GameService} from '../game.service';
+import {Game} from '../Game';
 
 @Component({
   selector: 'app-mainpage',
@@ -6,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mainpage.component.css']
 })
 export class MainpageComponent implements OnInit {
-
   isCollapsed = false ;
   userid: string;
-  constructor() { }
+  currentgames: Game[];
+  constructor(private gameService: GameService) { }
 
-  ngOnInit() {
-    this.userid = JSON.parse(localStorage.getItem('current_user')).userid;
+    ngOnInit() {
+      console.log(this.userid );
+      console.log(JSON.parse(localStorage.getItem('current_user')).userid );
+      this.userid = JSON.parse(localStorage.getItem('current_user')).userid;
   }
 
 

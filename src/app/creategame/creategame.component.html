@@ -1,0 +1,30 @@
+<p>creategame works!</p>
+<form [formGroup]="gameinfo">
+  <p><font color="#dc143c" size="5">{{createmessage}}</font></p>
+  <nz-form-label>
+    gameId:
+    <input #gameId nz-input type="text" formControlName="gameId">
+  </nz-form-label>
+<br>
+  <nz-form-label>
+    player1 Name:
+    <input #player1 nz-input type="text" formControlName="player1">
+  </nz-form-label>
+  <br>
+  <nz-form-label>
+    player2 Name:
+    <input #player2 nz-input type="text" formControlName="player2">
+  </nz-form-label>
+  <br>
+  <nz-form-label>
+    player3 Name:
+    <input #player3 nz-input type="text" formControlName="player3">
+  </nz-form-label>
+  <br>
+  <nz-form-label>
+    player4 Name:
+    <input #player4 nz-input type="text" formControlName="player4">
+  </nz-form-label>
+  <br>
+  <button type="submit" (click)="createGame(gameId.value,player1.value,player2.value,player3.value,player4.value)"> 创建新游戏</button>
+</form>

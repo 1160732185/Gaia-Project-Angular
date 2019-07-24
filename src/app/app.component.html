@@ -1,2 +1,34 @@
-<router-outlet></router-outlet>
-
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" nzWidth="200px">
+    <div class="logo"></div>
+    <font color="#f5deb3"> 您好，{{userid}}</font>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzTitle="功能" nzIcon="home">
+        <ul>
+          <li nz-menu-item><a routerLink="/login">登录</a></li>
+          <li nz-menu-item><a routerLink="/race">种族信息</a></li>
+          <li nz-menu-item>暂未使用</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="对局" nzIcon="slack">
+        <ul>
+          <li nz-menu-item><a routerLink="/creategame">创建新游戏</a></li>
+          <li nz-menu-item><a routerLink="/mainpage">查看我的所有游戏信息</a>></li>
+          <div *ngFor="let game of myGames">
+            <li nz-menu-item ><a routerLink="/game/{{game}}"> 对局：{{game}}</a></li>
+          </div>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="file"></i>
+        <span>File</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer>Gaia Project Web ©2019 Implement By Ganzx</nz-footer>
+  </nz-layout>
+</nz-layout>

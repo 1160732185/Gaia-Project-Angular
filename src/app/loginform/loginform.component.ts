@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
-import { User} from '../user';
+import { User} from '../User';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 @Component({
@@ -27,7 +27,7 @@ export class LoginformComponent implements OnInit {
    console.log(localStorage.getItem('current_user'));
    if (localStorage.getItem('current_user') != null && localStorage.getItem('current_user').length !== 4) {
      console.log(localStorage.getItem('current_user').length);
-     this.router.navigate(['mainpage'], {}) ;
+     window.location.reload();
    }
  }
     );

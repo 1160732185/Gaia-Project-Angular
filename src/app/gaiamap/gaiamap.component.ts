@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {GameService} from '../game.service';
+import {ActivatedRoute} from '@angular/router';
+import {GameDetails} from '../GameDetails';
 
 @Component({
   selector: 'app-gaiamap',
@@ -7,148 +10,185 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GaiamapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameService: GameService, private route: ActivatedRoute) { }
+  gameid: string;
+  gamedetails: GameDetails;
+  showGame(gameid: string) {
+    console.log('show special game');
+    this.gameService.showGame(gameid)
+      .subscribe((data) => {
+        this.gamedetails = data;
+        const c: any = document.getElementById('myCanvas');
+        const ctx = c.getContext('2d');
+        ctx.clearRect(0, 0, c.width, c.height);
+        ctx.scale(0.7, 0.7);
+        for (let i = 1 ; i < 4 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 52,
+            y: 361 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[1][i],
+            coordinate: 'A' + i
+          });
+        }
+        for (let i = 1 ; i < 5 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 130,
+            y: 316 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[2][i],
+            coordinate: 'B' + i
+          });
+        }
+        for (let i = 1 ; i < 9 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 208,
+            y: 271 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[3][i],
+            coordinate: 'C' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 286,
+            y: 46 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[4][i],
+            coordinate: 'D' + i
+          });
+        }
+        for (let i = 1 ; i < 13 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 364,
+            y: 1 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[5][i],
+            coordinate: 'E' + i
+          });
+        }
+        for (let i = 1 ; i < 13 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 442,
+            y: -44 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[6][i],
+            coordinate: 'F' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 520,
+            y: 1 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[7][i],
+            coordinate: 'G' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 598,
+            y: 46 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[8][i],
+            coordinate: 'H' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 676,
+            y: 91 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[9][i],
+            coordinate: 'I' + i
+          });
+        }
+        for (let i = 1 ; i < 13 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 754,
+            y: 46 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[10][i],
+            coordinate: 'J' + i
+          });
+        }
+        for (let i = 1 ; i < 13 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 832,
+            y: 1 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[11][i],
+            coordinate: 'K' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 910,
+            y: 46 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[12][i],
+            coordinate: 'L' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 988,
+            y: 91 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[13][i],
+            coordinate: 'M' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1066,
+            y: 136 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[14][i],
+            coordinate: 'N' + i
+          });
+        }
+        for (let i = 1 ; i < 13 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1144,
+            y: 91 + 90 * i,
+            fillStyle:  this.gamedetails.mapsituation[15][i],
+            coordinate: 'O' + i
+          });
+        }
+        for (let i = 1 ; i < 13 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1222,
+            y: 46 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[16][i],
+            coordinate: 'P' + i
+          });
+        }
+        for (let i = 1 ; i < 12 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1300,
+            y: 91 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[17][i],
+            coordinate: 'Q' + i
+          });
+        }
+        for (let i = 1 ; i < 9 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1378,
+            y: 136 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[18][i],
+            coordinate: 'R' + i
+          });
+        }
+        for (let i = 1 ; i < 5 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1456,
+            y: 451 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[19][i],
+            coordinate: 'S' + i
+          });
+        }
+        for (let i = 1 ; i < 4 ; i++) {
+          this.drawPolygon(ctx, {
+            x: 1534,
+            y: 136 + 360 + 90 * i,
+            fillStyle: this.gamedetails.mapsituation[20][i],
+            coordinate: 'T' + i
+          });
+        }
+        ctx.scale(1.43, 1.43);
+      });
+  }
   ngOnInit() {
-    const c: any = document.getElementById('myCanvas');
-    const ctx = c.getContext('2d');
-    ctx.scale(0.7, 0.7);
-    this.drawPolygon(ctx, {
-      x: 442,
-      y: 46,
-      fillStyle: '#9da',
-      coordinate: 'F1'
-    });
-    this.drawPolygon(ctx, {
-      x: 442,
-      y: 136,
-      fillStyle: '#9da',
-      coordinate: 'F2'
-    });
-    this.drawPolygon(ctx, {
-      x: 520,
-      y: 91,
-      fillStyle: '#9da',
-      coordinate: 'G1'
-    });
-    this.drawPolygon(ctx, {
-      x: 364,
-      y: 91,
-      fillStyle: '#9da',
-      coordinate: 'E1'
-    });
-    this.drawPolygon(ctx, {
-      x: 52,
-      y: 451,
-      fillStyle: '#9da',
-      coordinate: 'A1'
-    });
-    this.drawPolygon(ctx, {
-      x: 52,
-      y: 541,
-      fillStyle: '#9da',
-      coordinate: 'A2'
-    });
-    this.drawPolygon(ctx, {
-      x: 52,
-      y: 631,
-      fillStyle: '#9da',
-      coordinate: 'A3'
-    });
-    this.drawPolygon(ctx, {
-      x: 130,
-      y: 406,
-      fillStyle: '#9da',
-      coordinate: 'B1'
-    });
-    this.drawPolygon(ctx, {
-      x: 130,
-      y: 496,
-      fillStyle: '#9da',
-      coordinate: 'B2'
-    });
-    this.drawPolygon(ctx, {
-      x: 130,
-      y: 586,
-      fillStyle: '#9da',
-      coordinate: 'B3'
-    });
-    this.drawPolygon(ctx, {
-      x: 130,
-      y: 676,
-      fillStyle: '#9da',
-      coordinate: 'B4'
-    });
-    this.drawPolygon(ctx, {
-      x: 208,
-      y: 361,
-      fillStyle: '#9da',
-      coordinate: 'C1'
-    });
-    this.drawPolygon(ctx, {
-      x: 208,
-      y: 451,
-      fillStyle: '#9da',
-      coordinate: 'C2'
-    });
-    this.drawPolygon(ctx, {
-      x: 208,
-      y: 541,
-      fillStyle: '#9da',
-      coordinate: 'C3'
-    });
-    this.drawPolygon(ctx, {
-      x: 208,
-      y: 631,
-      fillStyle: '#9da',
-      coordinate: 'C4'
-    });
-    this.drawPolygon(ctx, {
-      x: 208,
-      y: 721,
-      fillStyle: '#9da',
-      coordinate: 'C5'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 136,
-      fillStyle: '#9da',
-      coordinate: 'D1'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 226,
-      fillStyle: '#9da',
-      coordinate: 'D2'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 316,
-      fillStyle: '#9da',
-      coordinate: 'D3'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 406,
-      fillStyle: '#9da',
-      coordinate: 'D4'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 496,
-      fillStyle: '#9da',
-      coordinate: 'D5'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 586,
-      fillStyle: '#9da',
-      coordinate: 'D6'
-    });
-    this.drawPolygon(ctx, {
-      x: 286,
-      y: 676,
-      fillStyle: '#9da',
-      coordinate: 'D7'
+    this.route.paramMap.subscribe(params => {
+      this.gameid = params.get('gameid');
+      this.showGame(this.gameid);
     });
   }
 
@@ -159,7 +199,7 @@ export class GaiamapComponent implements OnInit {
       const num = conf && conf.num || 3;   // 图形边的个数
       const r = conf && conf.r || 50;   // 图形的半径
       const width = conf && conf.width || 5;
-      const strokeStyle = conf && conf.strokeStyle || 'black';
+      const strokeStyle = conf && conf.strokeStyle || 'silver';
       const fillStyle = conf && conf.fillStyle;
     // 开始路径
       ctx.beginPath();

@@ -8,11 +8,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoginformComponent } from './loginform/loginform.component';
 import {FormsModule} from '@angular/forms';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { MainContentComponent } from './mainpage/main-content/main-content.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { TextngzorroComponent } from './textngzorro/textngzorro.component';
+import { LeftControlComponent } from './left-control/left-control.component';
+import { RaceinfoComponent } from './raceinfo/raceinfo.component';
+import { CreategameComponent } from './creategame/creategame.component';
+import { ReactiveFormsModule } from '@angular/forms';
 registerLocaleData(zh);
 
 
@@ -22,8 +25,10 @@ registerLocaleData(zh);
     GaiamapComponent,
     LoginformComponent,
     MainpageComponent,
-    MainContentComponent,
-    TextngzorroComponent
+    TextngzorroComponent,
+    LeftControlComponent,
+    RaceinfoComponent,
+    CreategameComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ registerLocaleData(zh);
     AppRoutingModule,
     HttpClientModule,
     NgZorroAntdModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers   : [
     { provide: NZ_I18N, useValue: zh_CN }
