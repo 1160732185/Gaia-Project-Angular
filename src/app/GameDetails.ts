@@ -4,4 +4,5 @@ export class GameDetails {
   gamerecord: string[];
   roundscore: string[];
   helptile: string[][];
+  avarace: boolean[];
 }

@@ -1,5 +1,23 @@
 <p>gaiamap {{gameid}}works!</p>
 <h2>{{gamedetails.gamestate}}</h2>
+<div>
+  <nz-radio-group>
+    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]">人类</label>
+    <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]">亚特兰斯星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]">圣禽族</label>
+    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]">蜂人</label>
+    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]">晶矿星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]">炽炎族</label>
+    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]">翼空族</label>
+    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]">格伦星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]">大使星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]">利爪族</label>
+    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]">章鱼人</label>
+    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]">疯狂机器</label>
+    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]">伊塔星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]">超星人</label>
+  </nz-radio-group>
+</div>
 <canvas id="myCanvas" width="2000" height="840"></canvas>
 <div>
 <div class="scoring">
@@ -34,49 +52,43 @@
 </div>
 </div>
 <div style="clear: both">
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[0][0]}}</font></div>
+  <div *ngFor="let helptile of gamedetails.helptile">
+  <div *ngIf="helptile[0]"  class="helptile">
+    <div style="text-align:center"><font size="3" color="black">{{helptile[0]}}</font></div>
     <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[0][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[0][2]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{helptile[1]}}</font></div>
+    <div style="text-align:center"><font size="3" color="black">{{helptile[2]}}</font></div>
   </div>
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[1][0]}}</font></div>
-    <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[1][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[1][2]}}</font></div>
-  </div>
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[2][0]}}</font></div>
-    <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[2][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[2][2]}}</font></div>
-  </div>
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[3][0]}}</font></div>
-    <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[3][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[3][2]}}</font></div>
-  </div>
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[4][0]}}</font></div>
-    <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[4][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[4][2]}}</font></div>
-  </div>
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[5][0]}}</font></div>
-    <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[5][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[5][2]}}</font></div>
-  </div>
-  <div class="helptile">
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[6][0]}}</font></div>
-    <br>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[6][1]}}</font></div>
-    <div style="text-align:center"><font size="3" color="black">{{gamedetails.helptile[6][2]}}</font></div>
   </div>
 </div>
+<nz-table #basicTable [nzData]="listOfData" nzSize="small">
+  <thead>
+  <tr>
+    <th>等级</th>
+    <th>地形改造</th>
+    <th>航行</th>
+    <th>量子智能</th>
+    <th>盖亚计划</th>
+    <th>经济</th>
+    <th>科学</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.dengji }}</td>
+    <td>{{ data.terra }}</td>
+    <td>{{ data.navi }}</td>
+    <td>{{ data.quan }}</td>
+    <td>{{ data.gaia }}</td>
+    <td>{{ data.eco }}</td>
+    <td>{{ data.sci }}</td>
+  </tr>
+  </tbody>
+</nz-table>
+
+
+
+
 <div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
   <h4>
     {{record}}

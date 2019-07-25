@@ -9,11 +9,14 @@ import {Game} from '../Game';
 })
 export class MainpageComponent implements OnInit {
   isCollapsed = false ;
-  userid: string;
-  currentgames: Game[];
+  userid: string[];
+  useridd: any[5];
   constructor(private gameService: GameService) { }
 
     ngOnInit() {
+      const a = 1;
+      this.useridd[1] = 'a';
+      console.log('useridd' + this.useridd);
       console.log(this.userid );
       console.log(JSON.parse(localStorage.getItem('current_user')).userid );
       this.userid = JSON.parse(localStorage.getItem('current_user')).userid;

@@ -20,3 +20,6 @@ div.helptile {
   background-color: deepskyblue;
   float: left;
 }
+.nz-radio-button[disabled] {
+  background-color: green ;
+}

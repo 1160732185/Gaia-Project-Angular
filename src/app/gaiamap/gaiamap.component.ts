@@ -12,7 +12,100 @@ export class GaiamapComponent implements OnInit {
 
   constructor(private gameService: GameService, private route: ActivatedRoute) { }
   gameid: string;
+  okokok: string;
   gamedetails: GameDetails;
+  listOfData = [
+    {
+      dengji: '等级5',
+      terra: 'TerraTown:',
+      navi: 'BlackStar,4Ship',
+      quan: '4Q',
+      gaia: '4VP,1G->1VP',
+      eco: '3O,6C,6PW',
+      sci: '9K',
+    },
+    {
+      dengji: '高级科技',
+      terra: 'ATT',
+      navi: 'ATT',
+      quan: 'ATT',
+      gaia: 'ATT',
+      eco: 'ATT',
+      sci: 'ATT',
+    },
+    {
+      dengji: '等级4',
+      terra: '20',
+      navi: '3Ship',
+      quan: '2Q',
+      gaia: '3GTU,GA->3PWB',
+      eco: '+2O,+4C,+4PW',
+      sci: '+4K',
+    },
+    {
+      dengji: '等级3',
+      terra: '1O->Terra',
+      navi: '1Q',
+      quan: '2Q',
+      gaia: '2GTU,GA->4PWB',
+      eco: '+1O,+3C,+3PW',
+      sci: '+3K',
+    },
+    {
+      dengji: '',
+      terra: '3PW',
+      navi: '3PW',
+      quan: '3PW',
+      gaia: '3PW',
+      eco: '3PW',
+      sci: '3PW',
+    },
+    {
+      dengji: '等级2',
+      terra: '2O->Terra',
+      navi: '2Ship',
+      quan: '1Q',
+      gaia: '3PWB',
+      eco: '+1O,+2C,+2PW',
+      sci: '+2K',
+    },
+    {
+      dengji: '等级1',
+      terra: '2O',
+      navi: '1Q',
+      quan: '1Q',
+      gaia: '1GTU,GA->6PWB',
+      eco: '+2C,+1PW',
+      sci: '+1K',
+    },
+    {
+      dengji: '等级0',
+      terra: '3O->Terra',
+      navi: '1Ship',
+      quan: '',
+      gaia: '',
+      eco: '',
+      sci: '',
+    },
+    {
+      dengji: '专属科技板',
+      terra: '',
+      navi: '',
+      quan: '',
+      gaia: '',
+      eco: '',
+      sci: '',
+    },
+    {
+      dengji: '通用科技板',
+      terra: '',
+      navi: '',
+      quan: '',
+      gaia: '',
+      eco: '',
+      sci: '',
+    },
+  ];
   showGame(gameid: string) {
     console.log('show special game');
     this.gameService.showGame(gameid)
