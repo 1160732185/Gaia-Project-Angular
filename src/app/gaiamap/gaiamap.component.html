@@ -2,20 +2,20 @@
 <h2>{{gamedetails.gamestate}}</h2>
 <div>
   <nz-radio-group>
-    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="choosehuman()" >人类</label>
-    <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]">亚特兰斯星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]">圣禽族</label>
-    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]">蜂人</label>
-    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]">晶矿星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]">炽炎族</label>
-    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]">翼空族</label>
-    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]">格伦星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]">大使星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]">利爪族</label>
-    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]">章鱼人</label>
-    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]">疯狂机器</label>
-    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]">伊塔星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]">超星人</label>
+    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类')" >人类</label>
+    <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人')">亚特兰斯星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族')">圣禽族</label>
+    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人')">蜂人</label>
+    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人')">晶矿星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族')">炽炎族</label>
+    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族')">翼空族</label>
+    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人')">格伦星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人')">大使星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族')">利爪族</label>
+    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人')">章鱼人</label>
+    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器')">疯狂机器</label>
+    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人')">伊塔星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人')">超星人</label>
   </nz-radio-group>
 </div>
 <canvas id="myCanvas" width="2000" height="840"></canvas>
@@ -86,11 +86,12 @@
   </tr>
   </tbody>
 </nz-table>
+<div *ngFor="let r of this.gamedetails.resource">
 <div class="faction-board">
   <div style="float: left; margin-right: 20px;">
-  <div style="padding: 1px 1px 1px 5px; background-color: #FFFFFF; color: #000;text-align: left" ><span>未知种族(Panpan)</span></div>
+  <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}})</span></div>
   <div class="faction-info">
-    <div><span>0 O ,0 C ,0 K ,0 Q ,20 VP ,0/0/0 PW ,0/0 GTU</span></div>
+    <div><span>{{r[2]}} O ,{{r[3]}} C ,{{r[4]}} K ,{{r[5]}} Q ,20 VP ,0/0/0 PW ,0/0 GTU</span></div>
     <table class="building-table">
       <tr>
         <td>M</td>
@@ -123,7 +124,7 @@
   </div>
   </div>
 </div>
-
+</div>
 
 <div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
   <h4>

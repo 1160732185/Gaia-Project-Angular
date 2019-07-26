@@ -7,4 +7,5 @@ export class GameDetails {
   avarace: boolean[];
   tt: string[];
   currentuserid: string;
+  resource: string[][];
 }

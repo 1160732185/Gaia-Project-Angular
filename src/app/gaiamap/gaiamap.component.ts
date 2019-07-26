@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GameService} from '../game.service';
 import {ActivatedRoute} from '@angular/router';
 import {GameDetails} from '../GameDetails';
+import {ActionService} from '../action.service';
 
 @Component({
   selector: 'app-gaiamap',
@@ -10,13 +11,13 @@ import {GameDetails} from '../GameDetails';
 })
 export class GaiamapComponent implements OnInit {
 
-  constructor(private gameService: GameService, private route: ActivatedRoute) { }
+  constructor(private actionservice: ActionService, private gameService: GameService, private route: ActivatedRoute) { }
   gameid: string;
   okokok: string;
   gamedetails: GameDetails;
   listOfData;
-  choosehuman() {
-if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {console.log('选族成功'); } else {
+  chooserace(gameid: string, race: string) {
+if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.chooserace(gameid, race).subscribe(); } else {
   console.log(localStorage.getItem('current_user'));
 }
   }
