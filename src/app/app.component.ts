@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   title = 'Gaia-Project';
   constructor(private gameService: GameService, public router: Router) { }
   ngOnInit() {
-    this.userid = JSON.parse(localStorage.getItem('current_user')).userid;
+    this.userid = localStorage.getItem('current_user');
     console.log('外层userid' + this.userid);
     this.showGames(this.userid);
   }

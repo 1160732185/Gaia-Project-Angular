@@ -23,3 +23,46 @@ div.helptile {
 .nz-radio-button[disabled] {
   background-color: green ;
 }
+div.redbox{
+  width:10px;
+  height:20px;
+  background-color: blueviolet;
+  float: right;
+}
+div.faction-board {
+  font: 14px Verdana;
+  background-color: #eee;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #444;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 1045px;
+  float: left;
+}
+
+div.faction-info {
+  float: left;
+  width: 350px;
+  white-space: nowrap;
+}
+table.income-table {
+  border-spacing: 0px;
+  margin-top: 10px;
+  font: 14px Verdana;
+}
+
+table.income-table tr td {
+  padding-right: 2ex;
+}
+
+table.building-table {
+  border-spacing: 0px;
+  margin-top: 10px;
+  font: 14px Verdana;
+}
+
+table.building-table tr td {
+  padding-right: 1ex;
+  padding-left: 1ex;
+}

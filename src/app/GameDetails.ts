@@ -5,4 +5,6 @@ export class GameDetails {
   roundscore: string[];
   helptile: string[][];
   avarace: boolean[];
+  tt: string[];
+  currentuserid: string;
 }

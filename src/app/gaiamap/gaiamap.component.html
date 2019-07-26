@@ -2,7 +2,7 @@
 <h2>{{gamedetails.gamestate}}</h2>
 <div>
   <nz-radio-group>
-    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]">人类</label>
+    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="choosehuman()" >人类</label>
     <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]">亚特兰斯星人</label>
     <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]">圣禽族</label>
     <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]">蜂人</label>
@@ -61,10 +61,11 @@
   </div>
   </div>
 </div>
+
 <nz-table #basicTable [nzData]="listOfData" nzSize="small">
   <thead>
   <tr>
-    <th>等级</th>
+    <th>等级<!--<div class="redbox"></div>--></th>
     <th>地形改造</th>
     <th>航行</th>
     <th>量子智能</th>
@@ -74,19 +75,54 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let data of basicTable.data">
+  <tr *ngFor="let data of basicTable.data;index as i">
     <td>{{ data.dengji }}</td>
     <td>{{ data.terra }}</td>
-    <td>{{ data.navi }}</td>
+    <td >{{ data.navi }}</td>
     <td>{{ data.quan }}</td>
-    <td>{{ data.gaia }}</td>
+    <td >{{ data.gaia }}</td>
     <td>{{ data.eco }}</td>
-    <td>{{ data.sci }}</td>
+    <td >{{ data.sci }}</td>
   </tr>
   </tbody>
 </nz-table>
-
-
+<div class="faction-board">
+  <div style="float: left; margin-right: 20px;">
+  <div style="padding: 1px 1px 1px 5px; background-color: #FFFFFF; color: #000;text-align: left" ><span>未知种族(Panpan)</span></div>
+  <div class="faction-info">
+    <div><span>0 O ,0 C ,0 K ,0 Q ,20 VP ,0/0/0 PW ,0/0 GTU</span></div>
+    <table class="building-table">
+      <tr>
+        <td>M</td>
+        <td>TC</td>
+        <td>RL</td>
+        <td>SH</td>
+        <td>AC1</td>
+        <td>AC2</td>
+      </tr>
+      <tr>
+        <td>0/8</td>
+        <td>0/4</td>
+        <td>0/3</td>
+        <td>0/1</td>
+        <td>0/1</td>
+        <td>0/1</td>
+      </tr>
+    </table>
+    <table class="income-table">
+      <tr>
+      <td>收入：</td>
+      <td>0 O</td>
+      <td>0 C</td>
+      <td>0 K</td>
+      <td>0 Q</td>
+      <td>0 PW</td>
+      <td>0 PWB</td>
+      </tr>
+    </table>
+  </div>
+  </div>
+</div>
 
 
 <div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
