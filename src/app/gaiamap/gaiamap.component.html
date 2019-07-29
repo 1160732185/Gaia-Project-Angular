@@ -1,6 +1,6 @@
 <p>gaiamap {{gameid}}works!</p>
 <h2>{{gamedetails.gamestate}}</h2>
-<div>
+<div *ngIf="gamedetails.gamerecord.length<9">
   <nz-radio-group>
     <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类')" >人类</label>
     <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人')">亚特兰斯星人</label>
@@ -17,6 +17,14 @@
     <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人')">伊塔星人</label>
     <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人')">超星人</label>
   </nz-radio-group>
+</div>
+<div *ngIf="gamedetails.gamerecord.length>=9">
+<nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+  <input [(ngModel)]="action" type="text" nz-input placeholder="input search text" />
+</nz-input-group>
+<ng-template #suffixButton>
+  <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,action)">Search</button>
+</ng-template>
 </div>
 <canvas id="myCanvas" width="2000" height="840"></canvas>
 <div>
@@ -91,7 +99,7 @@
   <div style="float: left; margin-right: 20px;">
   <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}})</span></div>
   <div class="faction-info">
-    <div><span>{{r[2]}} O ,{{r[3]}} C ,{{r[4]}} K ,{{r[5]}} Q ,20 VP ,0/0/0 PW ,0/0 GTU</span></div>
+    <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,20 VP ,0/0/0 PW ,0/0 GTU</span></div>
     <table class="building-table">
       <tr>
         <td>M</td>

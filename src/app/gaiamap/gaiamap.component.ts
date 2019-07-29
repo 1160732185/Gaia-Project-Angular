@@ -14,12 +14,20 @@ export class GaiamapComponent implements OnInit {
   constructor(private actionservice: ActionService, private gameService: GameService, private route: ActivatedRoute) { }
   gameid: string;
   okokok: string;
+  action: string;
   gamedetails: GameDetails;
   listOfData;
   chooserace(gameid: string, race: string) {
+// tslint:disable-next-line:max-line-length
 if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.chooserace(gameid, race).subscribe(); } else {
   console.log(localStorage.getItem('current_user'));
 }
+  }
+  doaction(gameid: string, action: string) {
+    // tslint:disable-next-line:max-line-length
+    if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
+      console.log(localStorage.getItem('current_user'));
+    }
   }
   showGame(gameid: string) {
     console.log('show special game');
@@ -223,6 +231,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 988,
             y: 91 + 90 * i,
+            structure: 'm',
+            structurecolor: '#FF0000',
             fillStyle:  this.gamedetails.mapsituation[13][i],
             coordinate: 'M' + i
           });
@@ -329,8 +339,34 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
       ctx.fillStyle = fillStyle;
       ctx.fill();
     }
+      // 画矿场
+      if (conf.structure === 'm') {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x + 10, y - 25);
+        ctx.lineTo(x + 10, y - 5);
+        ctx.lineTo(x + 20, y - 5);
+        ctx.lineTo(x + 20, y + 15);
+        ctx.lineTo(x - 20, y + 15);
+        ctx.lineTo(x - 20, y - 5);
+        ctx.lineTo(x + 5, y - 5);
+        ctx.lineTo(x + 5, y - 25);
+        ctx.lineTo(x + 10, y - 25);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        if (conf.structurecolor) {
+          ctx.fillStyle = conf.structurecolor;
+          ctx.fill();
+        }
+      }
       ctx.fillStyle = 'lightblue';
-      ctx.font = '20px Arial';
+      ctx.font = '15px Arial';
       ctx.fillText(conf.coordinate, conf.x - 9, conf.y + 35);
   }
 }
