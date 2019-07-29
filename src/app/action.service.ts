@@ -9,7 +9,7 @@ import {tap} from 'rxjs/operators';
 })
 export class ActionService {
   private readonly header: HttpHeaders;
-  private doactionUrl = 'http://localhost:8080/api/v1/action'
+  private doactionUrl = 'http://localhost:8080/api/v1/action';
   chooserace(gameid: string, action: string): Observable<HttpResponse<MessageBox>> {
     return this.http.post<MessageBox>(this.doactionUrl, null,
       {headers: this.header, observe: 'response', params: {gameid, action}});
