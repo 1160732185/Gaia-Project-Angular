@@ -1,5 +1,5 @@
 <p>gaiamap {{gameid}}works!</p>
-<h2>{{gamedetails.gamestate}}</h2>
+<h4>{{gamedetails.gamestate}}</h4>
 <div *ngIf="gamedetails.gamerecord.length<9">
   <nz-radio-group>
     <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类')" >人类</label>
@@ -23,7 +23,7 @@
   <input [(ngModel)]="action" type="text" nz-input placeholder="input search text" />
 </nz-input-group>
 <ng-template #suffixButton>
-  <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,action)">Search</button>
+  <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,action)">行动！</button>
 </ng-template>
 </div>
 <canvas id="myCanvas" width="2000" height="840"></canvas>
@@ -73,7 +73,7 @@
 <nz-table #basicTable [nzData]="listOfData" nzSize="small">
   <thead>
   <tr>
-    <th>等级<!--<div class="redbox"></div>--></th>
+    <th>等级<!--<ngif!!!!!div class="redbox"></div>--></th>
     <th>地形改造</th>
     <th>航行</th>
     <th>量子智能</th>

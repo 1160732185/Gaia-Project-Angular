@@ -24,10 +24,11 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
 }
   }
   doaction(gameid: string, action: string) {
-    // tslint:disable-next-line:max-line-length
-    if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
+    // tslint:disable-next-line:max-line-length(验证用户！！！！！！！！！！！！！！！！！！！) max-line-length
+   /* if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
       console.log(localStorage.getItem('current_user'));
-    }
+    }*/
+    this.actionservice.doaction(gameid, action).subscribe();
   }
   showGame(gameid: string) {
     console.log('show special game');
@@ -135,6 +136,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 52,
             y: 361 + 90 * i,
+            structure: this.gamedetails.structure[1][i],
+            structurecolor: this.gamedetails.structurecolor[1][i],
             fillStyle: this.gamedetails.mapsituation[1][i],
             coordinate: 'A' + i
           });
@@ -143,6 +146,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 130,
             y: 316 + 90 * i,
+            structure: this.gamedetails.structure[2][i],
+            structurecolor: this.gamedetails.structurecolor[2][i],
             fillStyle: this.gamedetails.mapsituation[2][i],
             coordinate: 'B' + i
           });
@@ -151,6 +156,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 208,
             y: 271 + 90 * i,
+            structure: this.gamedetails.structure[3][i],
+            structurecolor: this.gamedetails.structurecolor[3][i],
             fillStyle: this.gamedetails.mapsituation[3][i],
             coordinate: 'C' + i
           });
@@ -159,6 +166,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 286,
             y: 46 + 90 * i,
+            structure: this.gamedetails.structure[4][i],
+            structurecolor: this.gamedetails.structurecolor[4][i],
             fillStyle: this.gamedetails.mapsituation[4][i],
             coordinate: 'D' + i
           });
@@ -167,6 +176,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 364,
             y: 1 + 90 * i,
+            structure: this.gamedetails.structure[5][i],
+            structurecolor: this.gamedetails.structurecolor[5][i],
             fillStyle:  this.gamedetails.mapsituation[5][i],
             coordinate: 'E' + i
           });
@@ -175,6 +186,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 442,
             y: -44 + 90 * i,
+            structure: this.gamedetails.structure[6][i],
+            structurecolor: this.gamedetails.structurecolor[6][i],
             fillStyle:  this.gamedetails.mapsituation[6][i],
             coordinate: 'F' + i
           });
@@ -183,6 +196,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 520,
             y: 1 + 90 * i,
+            structure: this.gamedetails.structure[7][i],
+            structurecolor: this.gamedetails.structurecolor[7][i],
             fillStyle:  this.gamedetails.mapsituation[7][i],
             coordinate: 'G' + i
           });
@@ -191,6 +206,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 598,
             y: 46 + 90 * i,
+            structure: this.gamedetails.structure[8][i],
+            structurecolor: this.gamedetails.structurecolor[8][i],
             fillStyle: this.gamedetails.mapsituation[8][i],
             coordinate: 'H' + i
           });
@@ -199,6 +216,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 676,
             y: 91 + 90 * i,
+            structure: this.gamedetails.structure[9][i],
+            structurecolor: this.gamedetails.structurecolor[9][i],
             fillStyle:  this.gamedetails.mapsituation[9][i],
             coordinate: 'I' + i
           });
@@ -207,6 +226,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 754,
             y: 46 + 90 * i,
+            structure: this.gamedetails.structure[10][i],
+            structurecolor: this.gamedetails.structurecolor[10][i],
             fillStyle: this.gamedetails.mapsituation[10][i],
             coordinate: 'J' + i
           });
@@ -215,6 +236,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 832,
             y: 1 + 90 * i,
+            structure: this.gamedetails.structure[11][i],
+            structurecolor: this.gamedetails.structurecolor[11][i],
             fillStyle:  this.gamedetails.mapsituation[11][i],
             coordinate: 'K' + i
           });
@@ -223,6 +246,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 910,
             y: 46 + 90 * i,
+            structure: this.gamedetails.structure[12][i],
+            structurecolor: this.gamedetails.structurecolor[12][i],
             fillStyle:  this.gamedetails.mapsituation[12][i],
             coordinate: 'L' + i
           });
@@ -231,8 +256,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 988,
             y: 91 + 90 * i,
-            structure: 'm',
-            structurecolor: '#FF0000',
+            structure: this.gamedetails.structure[13][i],
+            structurecolor: this.gamedetails.structurecolor[13][i],
             fillStyle:  this.gamedetails.mapsituation[13][i],
             coordinate: 'M' + i
           });
@@ -241,6 +266,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1066,
             y: 136 + 90 * i,
+            structure: this.gamedetails.structure[14][i],
+            structurecolor: this.gamedetails.structurecolor[14][i],
             fillStyle:  this.gamedetails.mapsituation[14][i],
             coordinate: 'N' + i
           });
@@ -249,6 +276,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1144,
             y: 91 + 90 * i,
+            structure: this.gamedetails.structure[15][i],
+            structurecolor: this.gamedetails.structurecolor[15][i],
             fillStyle:  this.gamedetails.mapsituation[15][i],
             coordinate: 'O' + i
           });
@@ -257,6 +286,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1222,
             y: 46 + 90 * i,
+            structure: this.gamedetails.structure[16][i],
+            structurecolor: this.gamedetails.structurecolor[16][i],
             fillStyle: this.gamedetails.mapsituation[16][i],
             coordinate: 'P' + i
           });
@@ -265,6 +296,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1300,
             y: 91 + 90 * i,
+            structure: this.gamedetails.structure[17][i],
+            structurecolor: this.gamedetails.structurecolor[17][i],
             fillStyle: this.gamedetails.mapsituation[17][i],
             coordinate: 'Q' + i
           });
@@ -273,6 +306,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1378,
             y: 136 + 90 * i,
+            structure: this.gamedetails.structure[18][i],
+            structurecolor: this.gamedetails.structurecolor[18][i],
             fillStyle: this.gamedetails.mapsituation[18][i],
             coordinate: 'R' + i
           });
@@ -281,6 +316,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1456,
             y: 451 + 90 * i,
+            structure: this.gamedetails.structure[19][i],
+            structurecolor: this.gamedetails.structurecolor[19][i],
             fillStyle: this.gamedetails.mapsituation[19][i],
             coordinate: 'S' + i
           });
@@ -289,6 +326,8 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
           this.drawPolygon(ctx, {
             x: 1534,
             y: 136 + 360 + 90 * i,
+            structure: this.gamedetails.structure[20][i],
+            structurecolor: this.gamedetails.structurecolor[20][i],
             fillStyle: this.gamedetails.mapsituation[20][i],
             coordinate: 'T' + i
           });
@@ -355,7 +394,7 @@ if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {th
         ctx.closePath();
         // 路径闭合
         if (strokeStyle) {
-          ctx.strokeStyle = strokeStyle;
+          ctx.strokeStyle = 'black';
           ctx.lineWidth = width;
           ctx.lineJoin = 'round';
           ctx.stroke();

@@ -8,4 +8,6 @@ export class GameDetails {
   tt: string[];
   currentuserid: string;
   resource: string[][];
+  structure: string[][];
+  structurecolor: string[][];
 }
