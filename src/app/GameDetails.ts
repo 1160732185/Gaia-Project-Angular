@@ -10,4 +10,5 @@ export class GameDetails {
   resource: string[][];
   structure: string[][];
   structurecolor: string[][];
+  sciencegrade: string[][][];
 }

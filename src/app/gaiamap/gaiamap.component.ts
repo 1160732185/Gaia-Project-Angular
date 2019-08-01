@@ -18,17 +18,17 @@ export class GaiamapComponent implements OnInit {
   gamedetails: GameDetails;
   listOfData;
   chooserace(gameid: string, race: string) {
+    this.actionservice.chooserace(gameid, race).subscribe();
 // tslint:disable-next-line:max-line-length
-if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.chooserace(gameid, race).subscribe(); } else {
-  console.log(localStorage.getItem('current_user'));
-}
+/*if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.chooserace(gameid, race).subscribe(); } else {
+  console.log(localStorage.getItem('current_user'));*/
   }
   doaction(gameid: string, action: string) {
     // tslint:disable-next-line:max-line-length(验证用户！！！！！！！！！！！！！！！！！！！) max-line-length
    /* if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
       console.log(localStorage.getItem('current_user'));
     }*/
-    this.actionservice.doaction(gameid, action).subscribe();
+    this.actionservice.doaction(gameid, action).subscribe((data) => {this.showGame(this.gameid); });
   }
   showGame(gameid: string) {
     console.log('show special game');

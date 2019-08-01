@@ -73,7 +73,7 @@
 <nz-table #basicTable [nzData]="listOfData" nzSize="small">
   <thead>
   <tr>
-    <th>等级<!--<ngif!!!!!div class="redbox"></div>--></th>
+    <th>等级</th>
     <th>地形改造</th>
     <th>航行</th>
     <th>量子智能</th>
@@ -85,12 +85,36 @@
   <tbody>
   <tr *ngFor="let data of basicTable.data;index as i">
     <td>{{ data.dengji }}</td>
-    <td>{{ data.terra }}</td>
-    <td >{{ data.navi }}</td>
-    <td>{{ data.quan }}</td>
-    <td >{{ data.gaia }}</td>
-    <td>{{ data.eco }}</td>
-    <td >{{ data.sci }}</td>
+    <td>{{ data.terra }}
+      <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+      <div *ngIf="s[0][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+      </div>
+    </td>
+    <td >{{ data.navi }}
+      <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+        <div *ngIf="s[1][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+      </div>
+    </td>
+    <td>{{ data.quan }}
+      <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+        <div *ngIf="s[2][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+      </div>
+    </td>
+    <td >{{ data.gaia }}
+      <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+        <div *ngIf="s[3][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+      </div>
+    </td>
+    <td>{{ data.eco }}
+      <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+        <div *ngIf="s[4][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+      </div>
+    </td>
+    <td >{{ data.sci }}
+      <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+        <div *ngIf="s[5][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+      </div>
+    </td>
   </tr>
   </tbody>
 </nz-table>
@@ -99,7 +123,7 @@
   <div style="float: left; margin-right: 20px;">
   <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}})</span></div>
   <div class="faction-info">
-    <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,20 VP ,0/0/0 PW ,0/0 GTU</span></div>
+    <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,20 VP ,{{r[6]}}/{{r[7]}}/{{r[8]}} PW ,0/0 GTU</span></div>
     <table class="building-table">
       <tr>
         <td>M</td>

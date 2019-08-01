@@ -23,10 +23,9 @@ div.helptile {
 .nz-radio-button[disabled] {
   background-color: green ;
 }
-div.redbox{
+div.sciencebox{
   width:10px;
   height:20px;
-  background-color: blueviolet;
   float: right;
 }
 div.faction-board {
