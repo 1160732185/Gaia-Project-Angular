@@ -16,4 +16,5 @@ pwa1: string;
  qa2: string;
  qa3: string;
  gamerecord: string;
+ currentplayer: string;
 }

@@ -2,20 +2,20 @@
 <h4>{{gamedetails.gamestate}}</h4>
 <div *ngIf="gamedetails.gamerecord.length<9">
   <nz-radio-group>
-    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类')" >人类</label>
-    <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人')">亚特兰斯星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族')">圣禽族</label>
-    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人')">蜂人</label>
-    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人')">晶矿星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族')">炽炎族</label>
-    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族')">翼空族</label>
-    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人')">格伦星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人')">大使星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族')">利爪族</label>
-    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人')">章鱼人</label>
-    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器')">疯狂机器</label>
-    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人')">伊塔星人</label>
-    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人')">超星人</label>
+    <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类',0)" >人类</label>
+    <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人',1)">亚特兰斯星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族',2)">圣禽族</label>
+    <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人',3)">蜂人</label>
+    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人',4)">晶矿星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族',5)">炽炎族</label>
+    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族',6)">翼空族</label>
+    <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人',7)">格伦星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人',8)">大使星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族',9)">利爪族</label>
+    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人',10)">章鱼人</label>
+    <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器',11)">疯狂机器</label>
+    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人',12)">伊塔星人</label>
+    <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人',13)">超星人</label>
   </nz-radio-group>
 </div>
 <div *ngIf="gamedetails.gamerecord.length>=9">
@@ -61,7 +61,7 @@
 </div>
 <div style="clear: both">
   <div *ngFor="let helptile of gamedetails.helptile">
-  <div *ngIf="helptile[0]"  class="helptile">
+  <div *ngIf="helptile[0]"  class="helptile" [ngStyle]="{'background':helptile[3]}" >
     <div style="text-align:center"><font size="3" color="black">{{helptile[0]}}</font></div>
     <br>
     <div style="text-align:center"><font size="3" color="black">{{helptile[1]}}</font></div>
@@ -85,32 +85,600 @@
   <tbody>
   <tr *ngFor="let data of basicTable.data;index as i">
     <td>{{ data.dengji }}</td>
-    <td>{{ data.terra }}
+    <td><div *ngIf="i!=1&&i!=8&&i!=9">
+      {{ data.terra }}</div>
+      <div *ngIf="gamedetails.tt[6]=='ltt1: +4C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt2: +4PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt3: +1K,+1C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt4: +1O,+1PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt5: MG->3VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt6: 1TYPE1K'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt7: 7VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt8: SHAC4'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[6]=='ltt9: 1O,1Q'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+
+      <div *ngIf="gamedetails.tt[12]=='ltt1: +4C'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt2: +4PW'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt3: +1K,+1C'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt4: +1O,+1PW'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt5: MG->3VP'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt6: 1TYPE1K'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt7: 7VP'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt8: SHAC4'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[12]=='ltt9: 1O,1Q'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+      
+      
+      <div *ngIf="gamedetails.tt[0]=='att1: +3O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att2: +1Q,+5C'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att3: +3K'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att5: PASSAL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att6: PASSTYPE1VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att7: M->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att8: TC->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att9: AT->2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att10: 1PLA2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att11: 1M2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att12: 1TC4VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att13: 1AL5VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att14: 1G2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att15: 1PLA1O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
       <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
       <div *ngIf="s[0][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
       </div>
     </td>
-    <td >{{ data.navi }}
+    <td ><div *ngIf="i!=1&&i!=8&&i!=9">
+      {{ data.navi }}</div>
+      <div *ngIf="gamedetails.tt[7]=='ltt1: +4C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt2: +4PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt3: +1K,+1C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt4: +1O,+1PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt5: MG->3VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt6: 1TYPE1K'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt7: 7VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt8: SHAC4'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[7]=='ltt9: 1O,1Q'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+
+      <div *ngIf="gamedetails.tt[13]=='ltt1: +4C'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt2: +4PW'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt3: +1K,+1C'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt4: +1O,+1PW'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt5: MG->3VP'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt6: 1TYPE1K'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt7: 7VP'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt8: SHAC4'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[13]=='ltt9: 1O,1Q'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att1: +3O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att2: +1Q,+5C'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att3: +3K'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att5: PASSAL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att6: PASSTYPE1VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att7: M->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att8: TC->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att9: AT->2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att10: 1PLA2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att11: 1M2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att12: 1TC4VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att13: 1AL5VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att14: 1G2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att15: 1PLA1O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
       <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
         <div *ngIf="s[1][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
       </div>
     </td>
-    <td>{{ data.quan }}
+    <td><div *ngIf="i!=1&&i!=8&&i!=9">
+      {{ data.quan }}</div>
+      <div *ngIf="gamedetails.tt[8]=='ltt1: +4C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt2: +4PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt3: +1K,+1C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt4: +1O,+1PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt5: MG->3VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt6: 1TYPE1K'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt7: 7VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt8: SHAC4'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[8]=='ltt9: 1O,1Q'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+
+      <div *ngIf="gamedetails.tt[14]=='ltt1: +4C'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt2: +4PW'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt3: +1K,+1C'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt4: +1O,+1PW'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt5: MG->3VP'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt6: 1TYPE1K'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt7: 7VP'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt8: SHAC4'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[14]=='ltt9: 1O,1Q'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att1: +3O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att2: +1Q,+5C'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att3: +3K'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att5: PASSAL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att6: PASSTYPE1VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att7: M->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att8: TC->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att9: AT->2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att10: 1PLA2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att11: 1M2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att12: 1TC4VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att13: 1AL5VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att14: 1G2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att15: 1PLA1O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
       <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
         <div *ngIf="s[2][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
       </div>
     </td>
-    <td >{{ data.gaia }}
+    <td ><div *ngIf="i!=1&&i!=8&&i!=9">
+      {{ data.gaia }}</div>
+      <div *ngIf="gamedetails.tt[9]=='ltt1: +4C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt2: +4PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt3: +1K,+1C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt4: +1O,+1PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt5: MG->3VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt6: 1TYPE1K'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt7: 7VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt8: SHAC4'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[9]=='ltt9: 1O,1Q'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+
+     
+      <div *ngIf="gamedetails.tt[3]=='att1: +3O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att2: +1Q,+5C'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att3: +3K'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att5: PASSAL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att6: PASSTYPE1VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att7: M->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att8: TC->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att9: AT->2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att10: 1PLA2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att11: 1M2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att12: 1TC4VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att13: 1AL5VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att14: 1G2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att15: 1PLA1O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
       <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
         <div *ngIf="s[3][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
       </div>
     </td>
-    <td>{{ data.eco }}
+    <td>
+      <div *ngIf="i!=1&&i!=8&&i!=9">
+      {{ data.eco }}</div>
+      <div *ngIf="gamedetails.tt[10]=='ltt1: +4C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt2: +4PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt3: +1K,+1C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt4: +1O,+1PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt5: MG->3VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt6: 1TYPE1K'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt7: 7VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt8: SHAC4'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[10]=='ltt9: 1O,1Q'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+
+      <div *ngIf="gamedetails.tt[15]=='终局计分1:总建筑数量最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[15]=='终局计分2:城市内总建筑最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[15]=='终局计分3:建筑地形最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[15]=='终局计分4:盖亚星球最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[15]=='终局计分5:所处星域最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[15]=='终局计分6:连接卫星最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf6.png" alt="" width="140" height="110">
+      </div>
+
+
+      <div *ngIf="gamedetails.tt[4]=='att1: +3O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att2: +1Q,+5C'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att3: +3K'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att5: PASSAL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att6: PASSTYPE1VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att7: M->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att8: TC->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att9: AT->2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att10: 1PLA2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att11: 1M2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att12: 1TC4VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att13: 1AL5VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att14: 1G2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att15: 1PLA1O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
       <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
         <div *ngIf="s[4][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
       </div>
     </td>
-    <td >{{ data.sci }}
+    <td ><div *ngIf="i!=1&&i!=8&&i!=9">
+      {{ data.sci }}</div>
+      <div *ngIf="gamedetails.tt[11]=='ltt1: +4C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt2: +4PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt3: +1K,+1C'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt4: +1O,+1PW'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt5: MG->3VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt6: 1TYPE1K'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt7: 7VP'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt8: SHAC4'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[11]=='ltt9: 1O,1Q'&&i==8">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+
+      <div *ngIf="gamedetails.tt[16]=='终局计分1:总建筑数量最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[16]=='终局计分2:城市内总建筑最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[16]=='终局计分3:建筑地形最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[16]=='终局计分4:盖亚星球最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[16]=='终局计分5:所处星域最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[16]=='终局计分6:连接卫星最多'&&i==9">
+        <img class="mb-4" src="../../../assets/techtiles/zjjf6.png" alt="" width="140" height="110">
+      </div>
+
+      <div *ngIf="gamedetails.tt[5]=='att1: +3O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att2: +1Q,+5C'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att3: +3K'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att5: PASSAL3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att6: PASSTYPE1VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att7: M->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att8: TC->3VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att9: AT->2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att10: 1PLA2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att11: 1M2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att12: 1TC4VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att13: 1AL5VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att14: 1G2VP'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att15: 1PLA1O'&&i==1">
+        <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
       <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
         <div *ngIf="s[5][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
       </div>

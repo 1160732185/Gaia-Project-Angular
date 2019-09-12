@@ -3,12 +3,13 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {User} from './User';
+import {environment} from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private readonly header: HttpHeaders;
-  private loginUrl = 'http://localhost:8080/api/v1/login';
+  private loginUrl = `${environment.apiURL}/api/v1/login`;
   private currentUserSubject = new BehaviorSubject<User>(null);
   userLogin(userid: string, userpassword: string): Observable<HttpResponse<User>> {
     return this.http.post<User>( this.loginUrl,

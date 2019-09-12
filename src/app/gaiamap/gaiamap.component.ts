@@ -17,8 +17,12 @@ export class GaiamapComponent implements OnInit {
   action: string;
   gamedetails: GameDetails;
   listOfData;
-  chooserace(gameid: string, race: string) {
-    this.actionservice.chooserace(gameid, race).subscribe();
+  chooserace(gameid: string, race: string, avarace: number) {
+    if (this.gamedetails.avarace[avarace] === false) {// 如果种族还没被选择
+      this.actionservice.chooserace(gameid, race).subscribe((data) => {
+        this.showGame(this.gameid);
+      });
+    }
 // tslint:disable-next-line:max-line-length
 /*if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.chooserace(gameid, race).subscribe(); } else {
   console.log(localStorage.getItem('current_user'));*/
@@ -38,7 +42,7 @@ export class GaiamapComponent implements OnInit {
         this.listOfData = [
           {
             dengji: '等级5',
-            terra: 'TerraTown:',
+            terra: 'TerraTown:' + this.gamedetails.tt[17],
             navi: 'BlackStar,4Ship',
             quan: '4Q',
             gaia: '4VP,1G1VP',
@@ -345,6 +349,7 @@ export class GaiamapComponent implements OnInit {
       this.gameid = params.get('gameid');
       this.showGame(this.gameid);
     });
+    console.log('async');
   }
 
     drawPolygon(ctx, conf): void {

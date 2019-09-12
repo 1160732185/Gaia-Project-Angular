@@ -3,13 +3,13 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MessageBox} from './MessageBox';
 import {tap} from 'rxjs/operators';
-
+import {environment} from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ActionService {
   private readonly header: HttpHeaders;
-  private doactionUrl = 'http://localhost:8080/api/v1/action';
+  private doactionUrl = `${environment.apiURL}/api/v1/action`;
   chooserace(gameid: string, action: string): Observable<HttpResponse<MessageBox>> {
     return this.http.post<MessageBox>(this.doactionUrl, null,
       {headers: this.header, observe: 'response', params: {gameid, action}});

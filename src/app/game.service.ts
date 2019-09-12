@@ -6,14 +6,15 @@ import {User} from './User';
 import {MessageBox} from './MessageBox';
 import {Game} from './Game';
 import {GameDetails} from './GameDetails';
+import {environment} from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
   private readonly header: HttpHeaders;
-  private userExistUrl = 'http://localhost:8080/api/v1/user';
-  private createGameUrl = 'http://localhost:8080/api/v1/game';
-  private showGamesUrl = 'http://localhost:8080/api/v1/game/userid';
+  private userExistUrl = `${environment.apiURL}/api/v1/user`;
+  private createGameUrl = `${environment.apiURL}/api/v1/game`;
+  private showGamesUrl = `${environment.apiURL}/api/v1/game/userid`;
   userExist(userid: string): Observable<User> {
     const url = `${this.userExistUrl}/${userid}`;
     return this.http.get<User>(url).pipe(
