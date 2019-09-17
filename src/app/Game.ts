@@ -1,11 +1,13 @@
 export class Game {
   gameId: string;
  mapseed: string;
-blackstar: string;
-otherseed: string;
+ blackstar: string;
+ otherseed: string;
  terratown: string;
  round: string;
-pwa1: string;
+ turn: string;
+ position: string;
+ pwa1: string;
  pwa2: string;
  pwa3: string;
  pwa4: string;

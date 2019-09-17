@@ -32,7 +32,7 @@ export class GaiamapComponent implements OnInit {
    /* if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
       console.log(localStorage.getItem('current_user'));
     }*/
-    this.actionservice.doaction(gameid, action).subscribe((data) => {this.showGame(this.gameid); });
+    this.actionservice.doaction(gameid, action).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
   }
   showGame(gameid: string) {
     console.log('show special game');
@@ -132,6 +132,8 @@ export class GaiamapComponent implements OnInit {
           },
         ];
         console.log(this.gamedetails);
+        console.log(document.getElementById('roundscore0'));
+        document.getElementById('roundscore' + this.gamedetails.game.round).style.backgroundColor = 'Khaki';
         const c: any = document.getElementById('myCanvas');
         const ctx = c.getContext('2d');
         ctx.clearRect(0, 0, c.width, c.height);

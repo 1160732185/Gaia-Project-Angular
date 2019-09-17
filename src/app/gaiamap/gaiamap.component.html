@@ -28,32 +28,33 @@
 </div>
 <canvas id="myCanvas" width="2000" height="840"></canvas>
 <div>
-<div class="scoring">
+  <div id = "roundscore0"></div>
+<div class="scoring" id="roundscore1">
   <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R1</font></div>
   <br><br>
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[0]}}</font></div>
 </div>
-<div class="scoring">
+<div class="scoring" id="roundscore2">
   <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R2</font></div>
   <br><br>
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[1]}}</font></div>
 </div>
-<div class="scoring">
+<div class="scoring" id="roundscore3">
   <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R3</font></div>
   <br><br>
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[2]}}</font></div>
 </div>
-<div class="scoring">
+<div class="scoring" id="roundscore4">
   <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R4</font></div>
   <br><br>
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[3]}}</font></div>
 </div>
-<div class="scoring">
+<div class="scoring" id="roundscore5">
   <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R5</font></div>
   <br><br>
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[4]}}</font></div>
 </div>
-<div class="scoring">
+<div class="scoring" id="roundscore6">
   <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R6</font></div>
   <br><br>
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[5]}}</font></div>
@@ -69,7 +70,6 @@
   </div>
   </div>
 </div>
-
 <nz-table #basicTable [nzData]="listOfData" nzSize="small">
   <thead>
   <tr>
@@ -689,7 +689,7 @@
 <div *ngFor="let r of this.gamedetails.resource">
 <div class="faction-board">
   <div style="float: left; margin-right: 20px;">
-  <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}})</span></div>
+  <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span></div>
   <div class="faction-info">
     <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,20 VP ,{{r[6]}}/{{r[7]}}/{{r[8]}} PW ,0/0 GTU</span></div>
     <table class="building-table">
