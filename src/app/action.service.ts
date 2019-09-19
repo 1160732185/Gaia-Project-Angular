@@ -10,6 +10,7 @@ import {environment} from '../environments/environment';
 export class ActionService {
   private readonly header: HttpHeaders;
   private doactionUrl = `${environment.apiURL}/api/v1/action`;
+  private acceptpowerUrl = `${environment.apiURL}/api/v1/power`;
   chooserace(gameid: string, action: string): Observable<HttpResponse<MessageBox>> {
     return this.http.post<MessageBox>(this.doactionUrl, null,
       {headers: this.header, observe: 'response', params: {gameid, action}});
@@ -18,7 +19,11 @@ export class ActionService {
     return this.http.post<MessageBox>(this.doactionUrl, null,
       {headers: this.header, observe: 'response', params: {gameid, action}});
   }
-
+  // tslint:disable-next-line:max-line-length
+  leechpower(gameid: string, receiverace: string, location: string, structure: string, accept: string): Observable<HttpResponse<MessageBox>> {
+    return this.http.post<MessageBox>(this.acceptpowerUrl, null,
+      {headers: this.header, observe: 'response', params: {gameid, receiverace, location, structure, accept}});
+  }
 
 
   constructor(private http: HttpClient) {

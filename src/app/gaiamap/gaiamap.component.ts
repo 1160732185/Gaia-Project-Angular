@@ -16,6 +16,7 @@ export class GaiamapComponent implements OnInit {
   okokok: string;
   action: string;
   gamedetails: GameDetails;
+  user: string;
   listOfData;
   chooserace(gameid: string, race: string, avarace: number) {
     if (this.gamedetails.avarace[avarace] === false) {// 如果种族还没被选择
@@ -34,7 +35,12 @@ export class GaiamapComponent implements OnInit {
     }*/
     this.actionservice.doaction(gameid, action).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
   }
+  leechpower(gameid: string, receiverace: string, location: string, structure: string, accept: string) {
+    // tslint:disable-next-line:max-line-length
+    this.actionservice.leechpower(gameid, receiverace, location, structure, accept).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
+  }
   showGame(gameid: string) {
+    this.user = localStorage.getItem('current_user');
     console.log('show special game');
     this.gameService.showGame(gameid)
       .subscribe((data) => {

@@ -3,6 +3,7 @@ import {Game} from './Game';
 export class GameDetails {
   mapsituation: string;
   game: Game;
+  powerleech: string[][];
   gamestate: string;
   gamerecord: string[];
   roundscore: string[];

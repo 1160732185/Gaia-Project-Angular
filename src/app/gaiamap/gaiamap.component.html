@@ -18,6 +18,14 @@
     <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人',13)">超星人</label>
   </nz-radio-group>
 </div>
+
+<div style="width: 500px" *ngFor="let powerleech of gamedetails.powerleech">
+  {{powerleech.receiverace}}决定是否从{{powerleech.giverace}}吸收{{powerleech.power}}点魔力({{powerleech.location}}升级为{{powerleech.structure}})
+  <div *ngIf="user === powerleech.userid">
+    <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受</button>
+    <button nz-button nzType="danger" (click)="leechpower(this.gameid,powerleech.receiverace,powerleech.location,powerleech.structure,'0')">拒绝</button>
+  </div>
+</div>
 <div *ngIf="gamedetails.gamerecord.length>=9">
 <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
   <input [(ngModel)]="action" type="text" nz-input placeholder="input search text" />
@@ -691,7 +699,7 @@
   <div style="float: left; margin-right: 20px;">
   <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span></div>
   <div class="faction-info">
-    <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,20 VP ,{{r[6]}}/{{r[7]}}/{{r[8]}} PW ,0/0 GTU</span></div>
+    <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,{{r[11]}} VP ,{{r[6]}}/{{r[7]}}/{{r[8]}} PW ,0/0 GTU</span></div>
     <table class="building-table">
       <tr>
         <td>M</td>
