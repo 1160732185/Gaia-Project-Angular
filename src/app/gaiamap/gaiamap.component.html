@@ -34,7 +34,7 @@
   <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,action)">行动！</button>
 </ng-template>
 </div>
-<canvas id="myCanvas" width="2000" height="840"></canvas>
+<canvas id="myCanvas" width="2000" height="840" (mousedown)="click($event)"></canvas>
 <div>
   <div id = "roundscore0"></div>
 <div class="scoring" id="roundscore1">

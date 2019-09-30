@@ -28,6 +28,9 @@ export class GaiamapComponent implements OnInit {
 /*if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.chooserace(gameid, race).subscribe(); } else {
   console.log(localStorage.getItem('current_user'));*/
   }
+  click(event) {
+    console.log(event.clientX + ' ' + event.clientY);
+  }
   doaction(gameid: string, action: string) {
     // tslint:disable-next-line:max-line-length(验证用户！！！！！！！！！！！！！！！！！！！) max-line-length
    /* if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
@@ -141,6 +144,9 @@ export class GaiamapComponent implements OnInit {
         console.log(document.getElementById('roundscore0'));
         document.getElementById('roundscore' + this.gamedetails.game.round).style.backgroundColor = 'Khaki';
         const c: any = document.getElementById('myCanvas');
+        document.getElementById('myCanvas').addEventListener('click', function(e) {
+return 1;
+        }, false);
         const ctx = c.getContext('2d');
         ctx.clearRect(0, 0, c.width, c.height);
         ctx.scale(0.68, 0.68);
@@ -404,6 +410,31 @@ export class GaiamapComponent implements OnInit {
         ctx.lineTo(x + 5, y - 5);
         ctx.lineTo(x + 5, y - 25);
         ctx.lineTo(x + 10, y - 25);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        if (conf.structurecolor) {
+          ctx.fillStyle = conf.structurecolor;
+          ctx.fill();
+        }
+      }
+      // 画贸易站
+      if (conf.structure === 'tc') {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x , y - 25);
+        ctx.lineTo(x + 20, y + 15);
+        ctx.lineTo(x - 20, y + 15);
+        ctx.lineTo(x - 20, y - 30);
+        ctx.lineTo(x - 10, y - 30);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.lineTo(x , y - 10);
+        ctx.lineTo(x, y - 25);
         ctx.closePath();
         // 路径闭合
         if (strokeStyle) {
