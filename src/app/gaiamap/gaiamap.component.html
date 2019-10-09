@@ -694,7 +694,7 @@
   </tr>
   </tbody>
 </nz-table>
-<div *ngFor="let r of this.gamedetails.resource">
+<div *ngFor="let r of this.gamedetails.resource;index as i">
 <div class="faction-board">
   <div style="float: left; margin-right: 20px;">
   <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span></div>
@@ -710,27 +710,37 @@
         <td>AC2</td>
       </tr>
       <tr>
-        <td>0/8</td>
-        <td>0/4</td>
-        <td>0/3</td>
-        <td>0/1</td>
-        <td>0/1</td>
-        <td>0/1</td>
+        <td>{{gamedetails.buildingcount[i][0]}}/8</td>
+        <td>{{gamedetails.buildingcount[i][1]}}/4</td>
+        <td>{{gamedetails.buildingcount[i][2]}}/3</td>
+        <td>{{gamedetails.buildingcount[i][3]}}/1</td>
+        <td>{{gamedetails.buildingcount[i][4]}}/1</td>
+        <td>{{gamedetails.buildingcount[i][5]}}/1</td>
       </tr>
     </table>
     <table class="income-table">
       <tr>
       <td>收入：</td>
-      <td>0 O</td>
-      <td>0 C</td>
-      <td>0 K</td>
-      <td>0 Q</td>
+      <td>{{gamedetails.income[i][0]}} O</td>
+      <td>{{gamedetails.income[i][1]}} C</td>
+      <td>{{gamedetails.income[i][2]}} K</td>
+      <td>{{gamedetails.income[i][3]}} Q</td>
       <td>0 PW</td>
       <td>0 PWB</td>
       </tr>
     </table>
   </div>
   </div>
+
+  <div style="float: left; margin-right: 20px;">
+    <div *ngFor="let tt of this.gamedetails.playeraction[i]">
+      <div *ngIf="tt[0]=='ltt1'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+    </div>
+  </div>
+
+
 </div>
 </div>
 

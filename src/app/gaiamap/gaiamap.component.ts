@@ -36,7 +36,8 @@ export class GaiamapComponent implements OnInit {
    /* if (localStorage.getItem('current_user') === this.gamedetails.currentuserid) {this.actionservice.doaction(gameid, action).subscribe(); } else {
       console.log(localStorage.getItem('current_user'));
     }*/
-    this.actionservice.doaction(gameid, action).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
+   action = action.replace('+', '%2B');
+   this.actionservice.doaction(gameid, action).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
   }
   leechpower(gameid: string, receiverace: string, location: string, structure: string, accept: string) {
     // tslint:disable-next-line:max-line-length
@@ -144,9 +145,6 @@ export class GaiamapComponent implements OnInit {
         console.log(document.getElementById('roundscore0'));
         document.getElementById('roundscore' + this.gamedetails.game.round).style.backgroundColor = 'Khaki';
         const c: any = document.getElementById('myCanvas');
-        document.getElementById('myCanvas').addEventListener('click', function(e) {
-return 1;
-        }, false);
         const ctx = c.getContext('2d');
         ctx.clearRect(0, 0, c.width, c.height);
         ctx.scale(0.68, 0.68);

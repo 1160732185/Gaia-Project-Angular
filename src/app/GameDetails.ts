@@ -15,4 +15,7 @@ export class GameDetails {
   structure: string[][];
   structurecolor: string[][];
   sciencegrade: string[][][];
+  buildingcount: string[][];
+  income: string[][];
+  playeraction: string[][][];
 }
