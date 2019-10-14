@@ -34,7 +34,10 @@
   <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,action)">行动！</button>
 </ng-template>
 </div>
-<canvas id="myCanvas" width="2000" height="840" (mousedown)="click($event)"></canvas>
+<div style="float:left;text-align: left">
+<canvas id="myCanvas" width="1100" height="840" (mousedown)="click($event)"></canvas>
+</div>
+
 <div>
   <div id = "roundscore0"></div>
 <div class="scoring" id="roundscore1">
@@ -68,6 +71,104 @@
   <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[5]}}</font></div>
 </div>
 </div>
+<div style="float:left;width: 300px;height: 30px"></div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa1}">
+  <div style="text-align:center"><font size="3" color="black">action1</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-3pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">+2pwb</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa2}">
+  <div style="text-align:center"><font size="3" color="black">action2</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-3pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">1TERRA</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa3}">
+  <div style="text-align:center"><font size="3" color="black">action3</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-4pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">2O</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa4}">
+  <div style="text-align:center"><font size="3" color="black">action4</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-4pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">7C</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa5}">
+  <div style="text-align:center"><font size="3" color="black">action5</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-4pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">2K</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa6}">
+  <div style="text-align:center"><font size="3" color="black">action6</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-5pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">2TERRA</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa7}">
+  <div style="text-align:center"><font size="3" color="black">action7</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-7pw</font></div>
+  <div style="text-align:center"><font size="3" color="black">3K</font></div>
+</div>
+<div style="float:left;width: 200px;height: 100px"></div>
+<div class="helptile"  [ngStyle]="{'background':this.gamedetails.game.qa1}">
+  <div style="text-align:center"><font size="3" color="black">action8</font></div>
+  <div style="text-align:center"><font size="3" color="black">-2Q</font></div>
+  <div style="text-align:center"><font size="3" color="black">3+P_TYPE VP</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.qa2}">
+  <div style="text-align:center"><font size="3" color="black">action9</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-3Q</font></div>
+  <div style="text-align:center"><font size="3" color="black">TOWN</font></div>
+</div>
+<div class="helptile" [ngStyle]="{'background':this.gamedetails.game.qa3}">
+  <div style="text-align:center"><font size="3" color="black">action10</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">-4Q</font></div>
+  <div style="text-align:center"><font size="3" color="black">1TT</font></div>
+</div>
+
+<div *ngIf="gamedetails.townremain[0]!='0'" class="helptile" [ngStyle]="{'background':'lime'}">
+  <div style="text-align:center"><font size="3" color="black">Town1({{gamedetails.townremain[0]}})</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+  <div style="text-align:center"><font size="3" color="black">20</font></div>
+</div>
+<div *ngIf="gamedetails.townremain[1]!='0'" class="helptile" [ngStyle]="{'background':'lime'}">
+  <div style="text-align:center"><font size="3" color="black">Town2({{gamedetails.townremain[1]}})</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+  <div style="text-align:center"><font size="3" color="black">6C</font></div>
+</div>
+<div *ngIf="gamedetails.townremain[2]!='0'" class="helptile" [ngStyle]="{'background':'lime'}">
+  <div style="text-align:center"><font size="3" color="black">Town3({{gamedetails.townremain[2]}})</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+  <div style="text-align:center"><font size="3" color="black">1Q</font></div>
+</div>
+<div *ngIf="gamedetails.townremain[3]!='0'" class="helptile" [ngStyle]="{'background':'lime'}">
+  <div style="text-align:center"><font size="3" color="black">Town4({{gamedetails.townremain[3]}})</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">6VP</font></div>
+  <div style="text-align:center"><font size="3" color="black">2K</font></div>
+</div>
+<div *ngIf="gamedetails.townremain[4]!='0'" class="helptile" [ngStyle]="{'background':'lime'}">
+  <div style="text-align:center"><font size="3" color="black">Town5({{gamedetails.townremain[4]}})</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+  <div style="text-align:center"><font size="3" color="black">2PWB</font></div>
+</div>
+<div *ngIf="gamedetails.townremain[5]!='0'" class="helptile" [ngStyle]="{'background':'grey'}">
+  <div style="text-align:center"><font size="3" color="black">Town6({{gamedetails.townremain[5]}})</font></div>
+  <br>
+  <div style="text-align:center"><font size="3" color="black">12VP</font></div>
+</div>
+
 <div style="clear: both">
   <div *ngFor="let helptile of gamedetails.helptile">
   <div *ngIf="helptile[0]"  class="helptile" [ngStyle]="{'background':helptile[3]}" >
@@ -733,9 +834,33 @@
   </div>
 
   <div style="float: left; margin-right: 20px;">
-    <div *ngFor="let tt of this.gamedetails.playeraction[i]">
+    <div style = "float: left" *ngFor="let tt of this.gamedetails.playeraction[i]">
       <div *ngIf="tt[0]=='ltt1'">
         <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt2'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt3'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt4'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt5'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt6'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt7'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt8'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='ltt9'">
+        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
       </div>
     </div>
   </div>

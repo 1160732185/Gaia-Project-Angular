@@ -20,6 +20,8 @@ div.helptile {
   background-color: deepskyblue;
   float: left;
 }
+
+
 .nz-radio-button[disabled] {
   background-color: green ;
 }
@@ -65,3 +67,9 @@ table.building-table tr td {
   padding-right: 1ex;
   padding-left: 1ex;
 }
+canvas.action {
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+

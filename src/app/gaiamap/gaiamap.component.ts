@@ -446,6 +446,24 @@ export class GaiamapComponent implements OnInit {
           ctx.fill();
         }
       }
+      if (conf.structure === 'rl') {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x , y - 10);
+        ctx.arc(x, y - 10, 25, 0, 360);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        if (conf.structurecolor) {
+          ctx.fillStyle = conf.structurecolor;
+          ctx.fill();
+        }
+      }
       ctx.fillStyle = 'lightblue';
       ctx.font = '15px Arial';
       ctx.fillText(conf.coordinate, conf.x - 9, conf.y + 35);

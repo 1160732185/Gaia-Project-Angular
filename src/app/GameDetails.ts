@@ -18,4 +18,5 @@ export class GameDetails {
   buildingcount: string[][];
   income: string[][];
   playeraction: string[][][];
+  townremain: string[];
 }
