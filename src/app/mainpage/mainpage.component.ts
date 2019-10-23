@@ -9,18 +9,23 @@ import {Game} from '../Game';
 })
 export class MainpageComponent implements OnInit {
   isCollapsed = false ;
-  userid: string[];
-  useridd: any[5];
+  userid: string;
+  private myGames: string[];
   constructor(private gameService: GameService) { }
 
     ngOnInit() {
-      const a = 1;
-      this.useridd[1] = 'a';
-      console.log('useridd' + this.useridd);
-      console.log(this.userid );
-      console.log(JSON.parse(localStorage.getItem('current_user')).userid );
-      this.userid = JSON.parse(localStorage.getItem('current_user')).userid;
+      this.userid = localStorage.getItem('current_user');
+      this.showGames(this.userid);
   }
 
+  showGames(player: string) {
+    console.log('show games');
+    this.gameService.showGames(player)
+      .subscribe((data) => {console.log(data); this.myGames = data; });
+  }
 
+  deleteGame(gameid: string) {
+    this.gameService.deleteGame(gameid)
+      .subscribe(() => {this.ngOnInit(); });
+  }
 }

@@ -799,7 +799,7 @@
 <div class="faction-board">
   <div style="float: left; margin-right: 20px;">
   <div [ngStyle]="{'background-color':r[9]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span></div>
-  <div class="faction-info">
+  <div class="faction-info" style="width: 400px">
     <div><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q ,{{r[11]}} VP ,{{r[6]}}/{{r[7]}}/{{r[8]}} PW ,0/0 GTU</span></div>
     <table class="building-table">
       <tr>
@@ -861,6 +861,53 @@
       </div>
       <div *ngIf="tt[0]=='ltt9'">
         <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='1'">
+        <div  class="helptile" [ngStyle]="{'background':tt[1]}">
+          <div style="text-align:center"><font size="3" color="black">Town1</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+          <div style="text-align:center"><font size="3" color="black">20</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='2'">
+        <div  class="helptile" [ngStyle]="{'background':tt[1]}">
+          <div style="text-align:center"><font size="3" color="black">Town2</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+          <div style="text-align:center"><font size="3" color="black">6C</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='3'">
+        <div  class="helptile" [ngStyle]="{'background':tt[1]}">
+          <div style="text-align:center"><font size="3" color="black">Town3</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+          <div style="text-align:center"><font size="3" color="black">1Q</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='4'">
+        <div class="helptile" [ngStyle]="{'background':tt[1]}">
+          <div style="text-align:center"><font size="3" color="black">Town4</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">6VP</font></div>
+          <div style="text-align:center"><font size="3" color="black">2K</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='5'">
+        <div  class="helptile" [ngStyle]="{'background':tt[1]}">
+          <div style="text-align:center"><font size="3" color="black">Town5</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+          <div style="text-align:center"><font size="3" color="black">2PWB</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='6'">
+        <div  class="helptile" [ngStyle]="{'background':tt[1]}">
+          <div style="text-align:center"><font size="3" color="black">Town6</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">12VP</font></div>
+        </div>
       </div>
     </div>
   </div>

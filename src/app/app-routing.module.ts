@@ -10,7 +10,7 @@ import {CreategameComponent} from './creategame/creategame.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/map', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'map', component: GaiamapComponent },
   { path: 'login', component: LoginformComponent },
   { path: 'mainpage', component: MainpageComponent },

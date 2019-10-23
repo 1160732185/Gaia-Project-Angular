@@ -19,4 +19,5 @@ export class GameDetails {
   income: string[][];
   playeraction: string[][][];
   townremain: string[];
+  satellite: string[][][];
 }

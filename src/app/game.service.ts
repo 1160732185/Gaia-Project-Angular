@@ -42,4 +42,8 @@ export class GameService {
       'Access-Control-Allow-Origin': '*'
     });
   }
+  deleteGame(gameid: string) {
+    const url = `${this.createGameUrl}/${gameid}`;
+    return this.http.delete<void>(url);
+  }
 }

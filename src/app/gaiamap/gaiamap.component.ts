@@ -49,6 +49,7 @@ export class GaiamapComponent implements OnInit {
     this.gameService.showGame(gameid)
       .subscribe((data) => {
         this.gamedetails = data;
+        console.log(this.gamedetails);
         this.listOfData = [
           {
             dengji: '等级5',
@@ -152,6 +153,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 52,
             y: 361 + 90 * i,
+            row: 1,
+            column: i,
             structure: this.gamedetails.structure[1][i],
             structurecolor: this.gamedetails.structurecolor[1][i],
             fillStyle: this.gamedetails.mapsituation[1][i],
@@ -162,6 +165,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 130,
             y: 316 + 90 * i,
+            row: 2,
+            column: i,
             structure: this.gamedetails.structure[2][i],
             structurecolor: this.gamedetails.structurecolor[2][i],
             fillStyle: this.gamedetails.mapsituation[2][i],
@@ -172,6 +177,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 208,
             y: 271 + 90 * i,
+            row: 3,
+            column: i,
             structure: this.gamedetails.structure[3][i],
             structurecolor: this.gamedetails.structurecolor[3][i],
             fillStyle: this.gamedetails.mapsituation[3][i],
@@ -182,6 +189,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 286,
             y: 46 + 90 * i,
+            row: 4,
+            column: i,
             structure: this.gamedetails.structure[4][i],
             structurecolor: this.gamedetails.structurecolor[4][i],
             fillStyle: this.gamedetails.mapsituation[4][i],
@@ -192,6 +201,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 364,
             y: 1 + 90 * i,
+            row: 5,
+            column: i,
             structure: this.gamedetails.structure[5][i],
             structurecolor: this.gamedetails.structurecolor[5][i],
             fillStyle:  this.gamedetails.mapsituation[5][i],
@@ -202,6 +213,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 442,
             y: -44 + 90 * i,
+            row: 6,
+            column: i,
             structure: this.gamedetails.structure[6][i],
             structurecolor: this.gamedetails.structurecolor[6][i],
             fillStyle:  this.gamedetails.mapsituation[6][i],
@@ -212,6 +225,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 520,
             y: 1 + 90 * i,
+            row: 7,
+            column: i,
             structure: this.gamedetails.structure[7][i],
             structurecolor: this.gamedetails.structurecolor[7][i],
             fillStyle:  this.gamedetails.mapsituation[7][i],
@@ -222,6 +237,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 598,
             y: 46 + 90 * i,
+            row: 8,
+            column: i,
             structure: this.gamedetails.structure[8][i],
             structurecolor: this.gamedetails.structurecolor[8][i],
             fillStyle: this.gamedetails.mapsituation[8][i],
@@ -232,6 +249,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 676,
             y: 91 + 90 * i,
+            row: 9,
+            column: i,
             structure: this.gamedetails.structure[9][i],
             structurecolor: this.gamedetails.structurecolor[9][i],
             fillStyle:  this.gamedetails.mapsituation[9][i],
@@ -242,6 +261,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 754,
             y: 46 + 90 * i,
+            row: 10,
+            column: i,
             structure: this.gamedetails.structure[10][i],
             structurecolor: this.gamedetails.structurecolor[10][i],
             fillStyle: this.gamedetails.mapsituation[10][i],
@@ -252,6 +273,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 832,
             y: 1 + 90 * i,
+            row: 11,
+            column: i,
             structure: this.gamedetails.structure[11][i],
             structurecolor: this.gamedetails.structurecolor[11][i],
             fillStyle:  this.gamedetails.mapsituation[11][i],
@@ -262,6 +285,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 910,
             y: 46 + 90 * i,
+            row: 12,
+            column: i,
             structure: this.gamedetails.structure[12][i],
             structurecolor: this.gamedetails.structurecolor[12][i],
             fillStyle:  this.gamedetails.mapsituation[12][i],
@@ -272,6 +297,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 988,
             y: 91 + 90 * i,
+            row: 13,
+            column: i,
             structure: this.gamedetails.structure[13][i],
             structurecolor: this.gamedetails.structurecolor[13][i],
             fillStyle:  this.gamedetails.mapsituation[13][i],
@@ -282,6 +309,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1066,
             y: 136 + 90 * i,
+            row: 14,
+            column: i,
             structure: this.gamedetails.structure[14][i],
             structurecolor: this.gamedetails.structurecolor[14][i],
             fillStyle:  this.gamedetails.mapsituation[14][i],
@@ -292,6 +321,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1144,
             y: 91 + 90 * i,
+            row: 15,
+            column: i,
             structure: this.gamedetails.structure[15][i],
             structurecolor: this.gamedetails.structurecolor[15][i],
             fillStyle:  this.gamedetails.mapsituation[15][i],
@@ -302,6 +333,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1222,
             y: 46 + 90 * i,
+            row: 16,
+            column: i,
             structure: this.gamedetails.structure[16][i],
             structurecolor: this.gamedetails.structurecolor[16][i],
             fillStyle: this.gamedetails.mapsituation[16][i],
@@ -312,6 +345,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1300,
             y: 91 + 90 * i,
+            row: 17,
+            column: i,
             structure: this.gamedetails.structure[17][i],
             structurecolor: this.gamedetails.structurecolor[17][i],
             fillStyle: this.gamedetails.mapsituation[17][i],
@@ -322,6 +357,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1378,
             y: 136 + 90 * i,
+            row: 18,
+            column: i,
             structure: this.gamedetails.structure[18][i],
             structurecolor: this.gamedetails.structurecolor[18][i],
             fillStyle: this.gamedetails.mapsituation[18][i],
@@ -332,6 +369,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1456,
             y: 451 + 90 * i,
+            row: 19,
+            column: i,
             structure: this.gamedetails.structure[19][i],
             structurecolor: this.gamedetails.structurecolor[19][i],
             fillStyle: this.gamedetails.mapsituation[19][i],
@@ -342,6 +381,8 @@ export class GaiamapComponent implements OnInit {
           this.drawPolygon(ctx, {
             x: 1534,
             y: 136 + 360 + 90 * i,
+            row: 20,
+            column: i,
             structure: this.gamedetails.structure[20][i],
             structurecolor: this.gamedetails.structurecolor[20][i],
             fillStyle: this.gamedetails.mapsituation[20][i],
@@ -373,6 +414,8 @@ export class GaiamapComponent implements OnInit {
       const width = conf && conf.width || 5;
       const strokeStyle = conf && conf.strokeStyle || 'silver';
       const fillStyle = conf && conf.fillStyle;
+      const row = conf && conf.row || 0;
+      const column = conf && conf.column || 0;
     // 开始路径
       ctx.beginPath();
       const startX = x + r * Math.cos(2 * Math.PI * 0 / 6);
@@ -463,6 +506,199 @@ export class GaiamapComponent implements OnInit {
           ctx.fillStyle = conf.structurecolor;
           ctx.fill();
         }
+      }
+      if (conf.structure === 'sh') {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x - 20 - 2, y - 30);
+        ctx.lineTo(x - 5 - 2, y - 30);
+        ctx.lineTo(x - 5 - 2, y - 22);
+        ctx.lineTo(x + 10 - 2, y - 22);
+        ctx.lineTo(x + 10 - 2, y - 30);
+        ctx.lineTo(x + 25 - 2, y - 30);
+        ctx.lineTo(x + 25 - 2, y - 15);
+        ctx.lineTo(x + 17 - 2, y - 15);
+        ctx.lineTo(x + 17 - 2, y);
+        ctx.lineTo(x + 25 - 2, y);
+        ctx.lineTo(x + 25 - 2, y + 15);
+        ctx.lineTo(x + 10 - 2, y + 15);
+        ctx.lineTo(x + 10 - 2, y + 7);
+        ctx.lineTo(x - 5 - 2, y + 7);
+        ctx.lineTo(x - 5 - 2, y + 15);
+        ctx.lineTo(x - 20 - 2, y + 15);
+        ctx.lineTo(x - 20 - 2, y);
+        ctx.lineTo(x - 12 - 2, y);
+        ctx.lineTo(x - 12 - 2, y - 15);
+        ctx.lineTo(x - 20 - 2, y - 15);
+        ctx.lineTo(x - 20 - 2, y - 30);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        if (conf.structurecolor) {
+          ctx.fillStyle = conf.structurecolor;
+          ctx.fill();
+        }
+      }
+      if (conf.structure === 'ac') {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x , y - 10);
+        ctx.arc(x, y - 10, 25, 0, 360);
+        ctx.moveTo(x - 10 , y + 10);
+        ctx.lineTo(x + 10, y + 10);
+        ctx.lineTo(x + 10, y + 30);
+        ctx.lineTo(x - 10, y + 30);
+        ctx.lineTo(x - 10, y + 10);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        if (conf.structurecolor) {
+          ctx.fillStyle = conf.structurecolor;
+          ctx.fill();
+        }
+      }
+      if (conf.structure === 'gtu') {
+        // 开始路径
+        const ra = 25;
+        ctx.beginPath();
+        const tX = x + ra * Math.cos(2 * Math.PI * 0 / 6);
+        const tY = y + ra * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.moveTo(tX, tY);
+        for ( let i = 1; i <= 6; i++) {
+          const wX = x + ra * Math.cos(2 * Math.PI * i / 6);
+          const wY = y + ra * Math.sin(2 * Math.PI * i / 6);
+          ctx.lineTo(wX, wY);
+        }
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        if (conf.structurecolor) {
+          ctx.fillStyle = conf.structurecolor;
+          ctx.fill();
+        }
+      }
+      if (this.gamedetails.satellite[row][column].length === 1) {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x - 10 , y - 10);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.lineTo(x + 10, y + 10);
+        ctx.lineTo(x - 10, y + 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'black';
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = this.gamedetails.satellite[row][column][0];
+        ctx.fill();
+      }
+      if (this.gamedetails.satellite[row][column].length === 2) {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x - 30 , y - 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.lineTo(x - 10, y + 10);
+        ctx.lineTo(x - 30, y + 10);
+        ctx.lineTo(x - 30, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][0];
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x + 10 , y - 10);
+        ctx.lineTo(x + 30, y - 10);
+        ctx.lineTo(x + 30, y + 10);
+        ctx.lineTo(x + 10, y + 10);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][1];
+        ctx.fill();
+      }
+      if (this.gamedetails.satellite[row][column].length === 3) {
+        // 开始路径
+        ctx.beginPath();
+        ctx.moveTo(x - 30 , y - 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.lineTo(x - 10, y + 10);
+        ctx.lineTo(x - 30, y + 10);
+        ctx.lineTo(x - 30, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][0];
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x + 10 , y - 10);
+        ctx.lineTo(x + 30, y - 10);
+        ctx.lineTo(x + 30, y + 10);
+        ctx.lineTo(x + 10, y + 10);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][1];
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x - 10 , y - 30);
+        ctx.lineTo(x + 10, y - 30);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.lineTo(x - 10, y - 30);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][2];
+        ctx.fill();
+      }
+      if (this.gamedetails.satellite[row][column].length === 4) {
+        ctx.beginPath();
+        ctx.moveTo(x - 30 , y - 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.lineTo(x - 10, y + 10);
+        ctx.lineTo(x - 30, y + 10);
+        ctx.lineTo(x - 30, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][0];
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x + 10 , y - 10);
+        ctx.lineTo(x + 30, y - 10);
+        ctx.lineTo(x + 30, y + 10);
+        ctx.lineTo(x + 10, y + 10);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][1];
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x - 10 , y - 30);
+        ctx.lineTo(x + 10, y - 30);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.lineTo(x - 10, y - 30);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][2];
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x - 10 , y - 10);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.lineTo(x + 10, y + 10);
+        ctx.lineTo(x - 10, y + 10);
+        ctx.lineTo(x - 10, y - 10);
+        ctx.closePath();
+        ctx.fillStyle = this.gamedetails.satellite[row][column][2];
+        ctx.fill();
       }
       ctx.fillStyle = 'lightblue';
       ctx.font = '15px Arial';
