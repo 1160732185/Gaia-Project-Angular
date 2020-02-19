@@ -7,6 +7,7 @@ import {MainpageComponent} from './mainpage/mainpage.component';
 import {TextngzorroComponent} from './textngzorro/textngzorro.component';
 import {RaceinfoComponent} from './raceinfo/raceinfo.component';
 import {CreategameComponent} from './creategame/creategame.component';
+import {FileComponent} from './file/file.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'race', component: RaceinfoComponent },
   { path: 'creategame', component: CreategameComponent },
   { path: 'game/:gameid', component: GaiamapComponent },
+  { path: 'file', component: FileComponent },
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

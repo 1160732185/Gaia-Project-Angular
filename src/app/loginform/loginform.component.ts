@@ -15,6 +15,9 @@ export class LoginformComponent implements OnInit {
   user: User;
 
   ngOnInit() {
+    if (localStorage.getItem('current_user') != null) {
+       this.router.navigate(['/mainpage']);
+    }
   }
 
   showUser() {

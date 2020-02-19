@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {FormControl, FormGroup} from '@angular/forms';
+import {GameService} from '../game.service';
 @Component({
   selector: 'app-raceinfo',
   templateUrl: './raceinfo.component.html',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceinfoComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private gameService: GameService) { }
+  top: string[][];
   ngOnInit() {
-    window.location.href = 'http://totoman.online/Home/About';
+    this.getTop();
   }
-
+  getTop() {
+    console.log('toptop');
+    this.gameService.getTop()
+      .subscribe((data) => {console.log(data); this.top = data; });
+  }
 }

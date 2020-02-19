@@ -20,9 +20,9 @@ export class ActionService {
       {headers: this.header, observe: 'response', params: {gameid, action}});
   }
   // tslint:disable-next-line:max-line-length
-  leechpower(gameid: string, receiverace: string, location: string, structure: string, accept: string): Observable<HttpResponse<MessageBox>> {
+  leechpower(gameid: string, giverace: string, receiverace: string, location: string, structure: string, accept: string): Observable<HttpResponse<MessageBox>> {
     return this.http.post<MessageBox>(this.acceptpowerUrl, null,
-      {headers: this.header, observe: 'response', params: {gameid, receiverace, location, structure, accept}});
+      {headers: this.header, observe: 'response', params: {gameid, giverace, receiverace, location, structure, accept}});
   }
 
 

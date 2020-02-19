@@ -9,6 +9,8 @@ export class GameDetails {
   roundscore: string[];
   helptile: string[][];
   avarace: boolean[];
+  jisheng: boolean[][];
+  townbuilding: boolean[][][];
   tt: string[];
   currentuserid: string;
   resource: string[][];
@@ -17,6 +19,7 @@ export class GameDetails {
   sciencegrade: string[][][];
   buildingcount: string[][];
   income: string[][];
+  vpdetail: string[][];
   playeraction: string[][][];
   townremain: string[];
   satellite: string[][][];

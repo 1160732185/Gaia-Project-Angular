@@ -14,9 +14,11 @@ export class CreategameComponent implements OnInit {
       player2: new FormControl(''),
       player3: new FormControl(''),
       player4: new FormControl('')
-  });
+
+});
   constructor(private gameService: GameService) { }
   createmessage: string;
+  gamemode: string
   ngOnInit() {
   }
 
@@ -24,9 +26,9 @@ export class CreategameComponent implements OnInit {
 
   }
 
-  createGame(gameId: string, player1: string, player2: string, player3: string, player4: string) {
-    console.log('11111');
-    this.gameService.createGame(gameId, player1, player2, player3, player4)
+  createGame(gameId: string, player1: string, player2: string, player3: string, player4: string, gamemode: string) {
+    console.log(gamemode);
+    this.gameService.createGame(gameId, player1, player2, player3, player4, gamemode)
       .subscribe((data) => {console.log(data.body); this.createmessage = data.body.message; });
   }
 }

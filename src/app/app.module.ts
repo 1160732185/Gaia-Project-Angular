@@ -16,6 +16,7 @@ import { LeftControlComponent } from './left-control/left-control.component';
 import { RaceinfoComponent } from './raceinfo/raceinfo.component';
 import { CreategameComponent } from './creategame/creategame.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FileComponent } from './file/file.component';
 registerLocaleData(zh);
 
 
@@ -28,7 +29,8 @@ registerLocaleData(zh);
     TextngzorroComponent,
     LeftControlComponent,
     RaceinfoComponent,
-    CreategameComponent
+    CreategameComponent,
+    FileComponent
   ],
   imports: [
     BrowserModule,

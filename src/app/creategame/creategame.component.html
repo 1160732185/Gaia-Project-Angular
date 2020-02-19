@@ -1,7 +1,12 @@
 <p>creategame works!</p>
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择游戏模式" [(ngModel)]="gamemode">
+  <nz-option nzLabel="原版游戏" nzValue="0.0"></nz-option>
+  <nz-option nzLabel="1.0补丁(高级科技版 ，量子顶，种族平衡)" nzValue="1.0"></nz-option>
+</nz-select>
 <form [formGroup]="gameinfo">
-  <p><font color="#dc143c" size="5">{{createmessage}}</font></p>
-  <nz-form-label>
+  <p><font color="#dc143c" size="5">{{createmessage}}</font>
+    <br>
+    <nz-form-label>
     gameId:
     <input #gameId nz-input type="text" formControlName="gameId">
   </nz-form-label>
@@ -26,5 +31,5 @@
     <input #player4 nz-input type="text" formControlName="player4">
   </nz-form-label>
   <br>
-  <button type="submit" (click)="createGame(gameId.value,player1.value,player2.value,player3.value,player4.value)"> 创建新游戏</button>
+  <button type="submit" (click)="createGame(gameId.value,player1.value,player2.value,player3.value,player4.value,gamemode)"> 创建新游戏</button>
 </form>

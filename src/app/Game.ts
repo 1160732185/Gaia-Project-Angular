@@ -19,4 +19,5 @@ export class Game {
  qa3: string;
  gamerecord: string;
  currentplayer: string;
+ gamemode: string;
 }
