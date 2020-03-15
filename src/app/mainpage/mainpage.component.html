@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let data of basicTable.data">
+  <tr *ngFor="let data of basicTable.data;index as i" [ngStyle]="{'background-color':data.bgcolor}">
     <td><a routerLink="/game/{{data.gameid}}">{{ data.gameid }}</a></td>
     <td>{{ data.race }}</td>
     <td>{{ data.round }}</td>
@@ -22,8 +22,11 @@
     <td>
       操作：
       <nz-divider nzType="vertical"></nz-divider>
+     <div *ngIf="localStorage.getItem('current_user') === 'Panpan'||localStorage.getItem('current_user') === 'admin'||data.authority === 'ok'">
       <a (click)="showGameRecord(data.gameid)"> 更改游戏记录</a>
-      <a (click)="showDeleteConfirm(data.gameid)"> 删除游戏</a>
+      <a (click)="showDeleteConfirm(data.gameid)"> 删除游戏</a></div>
+      <div *ngIf="data.rollback === 'Y'">
+        <a (click)="rollBack(data.gameid)"> 回退上一步操作</a></div>
     </td>
   </tr>
   </tbody>

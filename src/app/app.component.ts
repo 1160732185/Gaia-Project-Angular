@@ -10,12 +10,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  userid = '请先登录';
+  constructor(private gameService: GameService, public router: Router) { }
   isCollapsed = false ;
+  userid = '请先登录';
   myGames: string[];
   title = 'Gaia-Project';
-  constructor(private gameService: GameService, public router: Router) { }
+  width = 0;
   ngOnInit() {
+    this.width = window.innerWidth;
     this.userid = localStorage.getItem('current_user');
     console.log('外层userid' + this.userid);
     this.showGames(this.userid);
@@ -29,5 +31,10 @@ export class AppComponent implements OnInit {
 
   navigate(s: any) {
     this.router.navigate(s);
+  }
+
+  logout() {
+    localStorage.setItem('current_user', null);
+    this.router.navigate(['login']);
   }
 }

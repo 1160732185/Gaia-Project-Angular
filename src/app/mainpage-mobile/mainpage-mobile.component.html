@@ -1,0 +1,9 @@
+<p>mainpage-mobile works!</p>
+
+<div *ngFor="let data of this.myGames;index as i " >
+  <nz-card style="width:500px;height: 120px" [ngStyle]="{'background-color':data.bgcolor}">
+    <p><a routerLink="/game/{{data.gameid}}">{{data.gameid}}</a></p>
+    <p>你的种族：{{data.race}}当前轮:{{ data.round }}当前回合:{{ data.turn }}</p>
+    <p>待行动玩家:{{ data.currentuserid }}当前已等待时间:{{ data.lasttime }}</p>
+  </nz-card>
+</div>

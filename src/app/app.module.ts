@@ -17,6 +17,11 @@ import { RaceinfoComponent } from './raceinfo/raceinfo.component';
 import { CreategameComponent } from './creategame/creategame.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileComponent } from './file/file.component';
+import { MainpageMobileComponent } from './mainpage-mobile/mainpage-mobile.component';
+import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
+import { GaiamapmobileComponent } from './gaiamapmobile/gaiamapmobile.component';
+import { PendinggameComponent } from './pendinggame/pendinggame.component';
+import { LeagueComponent } from './league/league.component';
 registerLocaleData(zh);
 
 
@@ -30,7 +35,11 @@ registerLocaleData(zh);
     LeftControlComponent,
     RaceinfoComponent,
     CreategameComponent,
-    FileComponent
+    FileComponent,
+    MainpageMobileComponent,
+    GaiamapmobileComponent,
+    PendinggameComponent,
+    LeagueComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,8 @@ registerLocaleData(zh);
     HttpClientModule,
     NgZorroAntdModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgZorroAntdMobileModule
   ],
   providers   : [
     { provide: NZ_I18N, useValue: zh_CN }

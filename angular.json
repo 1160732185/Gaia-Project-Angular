@@ -5,7 +5,7 @@
   "projects": {
     "Gaia-Project": {
       "projectType": "application",
-      "schematics":{
+      "schematics": {
         "@schematics/angular:component": {
           "styleext": "css",
           "spec": false
@@ -50,8 +50,9 @@
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
               }
-                ],
+            ],
             "styles": [
+              "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css"
             ],
@@ -113,6 +114,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -144,6 +146,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "Gaia-Project"
 }

@@ -1,58 +1,105 @@
-<div style="zoom: 80%" [ngStyle]="{'background-image': 'url(../../../assets/gaiabackground.jpg)'}" >
-  <p style="color: wheat">gaiamap {{gameid}}works!</p>
+<div style="zoom: 80%" *ngIf="this.windowsize>=1000" [ngStyle]="{'background-image': 'url(../../../assets/gaiabackground.jpg)'}" >
+  <p style="color: wheat;alignment: center"> {{gameid}}&nbsp;&nbsp;&nbsp;{{gamedetails.gamemodename}}&nbsp;&nbsp;管理员：{{gamedetails.game.admin}}</p>
   <p style="color: wheat">{{errormessage}}</p>
-  <h4 style="color: wheat">{{gamedetails.gamestate}}</h4>
-  <div *ngIf="gamedetails.gamerecord.length<9&&this.gamedetails.currentuserid === localStorage.getItem('current_user')">
-    <nz-radio-group>
-      <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类',0)" >人类</label>
-      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人',1)">亚特兰斯星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族',2)">圣禽族</label>
-      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人',3)">蜂人</label>
-      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人',4)">晶矿星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族',5)">炽炎族</label>
-      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族',6)">翼空族</label>
-      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人',7)">格伦星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人',8)">大使星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族',9)">利爪族</label>
-      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人',10)">章鱼人</label>
-      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器',11)">疯狂机器</label>
-      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人',12)">伊塔星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人',13)">超星人</label>
-    </nz-radio-group>
-  </div>
-  <div *ngIf="gamedetails.currentuserid==='游戏结束'">
-    <p style="color: wheat">游戏结束，最终得分：</p>
+  <div *ngIf = "gamedetails.currentuserid==='游戏结束'">
+  <h4 style="color: wheat">游戏结束，最终得分：</h4>
+  <div >
     <p style="color: wheat">{{gamedetails.resource[0][0]}}({{gamedetails.resource[0][1]}})    {{gamedetails.resource[0][11]}}vp</p>
     <p style="color: wheat">{{gamedetails.resource[1][0]}}({{gamedetails.resource[1][1]}})    {{gamedetails.resource[1][11]}}vp</p>
     <p style="color: wheat">{{gamedetails.resource[2][0]}}({{gamedetails.resource[2][1]}})    {{gamedetails.resource[2][11]}}vp</p>
     <p style="color: wheat">{{gamedetails.resource[3][0]}}({{gamedetails.resource[3][1]}})    {{gamedetails.resource[3][11]}}vp</p>
   </div>
+  </div>
+  <div *ngIf = "gamedetails.currentuserid!=='游戏结束'">
+  <h4 style="color: wheat">{{gamedetails.gamestate}}</h4></div>
+  <div  *ngIf="this.bid0 === 't' && gamedetails.currentuserid !=='all'">
+    <div style="color: wheat">{{gamedetails.bid[1]}}出价：{{gamedetails.bid[5]}} 选择顺位：{{gamedetails.bid[9]}}</div>
+    <div style="color: wheat">{{gamedetails.bid[2]}}出价：{{gamedetails.bid[6]}} 选择顺位：{{gamedetails.bid[10]}}</div>
+    <div style="color: wheat">{{gamedetails.bid[3]}}出价：{{gamedetails.bid[7]}} 选择顺位：{{gamedetails.bid[11]}}</div>
+    <div style="color: wheat">{{gamedetails.bid[4]}}出价：{{gamedetails.bid[8]}} 选择顺位：{{gamedetails.bid[12]}}</div>
+  </div>
+  <div *ngIf="this.bid0 === 't' && gamedetails.currentuserid ==='all'">
+    <div style="color: wheat" *ngIf="gamedetails.bid[9]==='0'">{{gamedetails.bid[1]}} 选择顺位：{{gamedetails.bid[9]}}</div>
+  <div style="color: wheat" *ngIf="gamedetails.bid[10]==='0'">{{gamedetails.bid[2]}} 选择顺位：{{gamedetails.bid[10]}}</div>
+  <div style="color: wheat" *ngIf="gamedetails.bid[11]==='0'">{{gamedetails.bid[3]}} 选择顺位：{{gamedetails.bid[11]}}</div>
+  <div style="color: wheat" *ngIf="gamedetails.bid[12]==='0'">{{gamedetails.bid[4]}} 选择顺位：{{gamedetails.bid[12]}}</div>
+    <div style="color: wheat" *ngIf="gamedetails.bid[9]!=='0'" >{{gamedetails.bid[1]}} 选择顺位：{{gamedetails.bid[9]}} 出价：{{gamedetails.bid[5]}}</div>
+    <div style="color: wheat" *ngIf="gamedetails.bid[10]!=='0'" >{{gamedetails.bid[2]}} 选择顺位：{{gamedetails.bid[10]}} 出价：{{gamedetails.bid[6]}}</div>
+    <div style="color: wheat" *ngIf="gamedetails.bid[11]!=='0'" >{{gamedetails.bid[3]}} 选择顺位：{{gamedetails.bid[11]}} 出价：{{gamedetails.bid[7]}}</div>
+    <div style="color: wheat" *ngIf="gamedetails.bid[12]!=='0'" >{{gamedetails.bid[4]}} 选择顺位：{{gamedetails.bid[12]}} 出价：{{gamedetails.bid[8]}}</div>
+</div>
+  <div *ngIf="(this.gamerecordlength<6&&gamedetails.gamestate.charAt(0)!=='轮')||(this.gamerecordlength<9&&(this.gamedetails.currentuserid === localStorage.getItem('current_user')||this.gamedetails.game.gamemode.charAt(2)==='3'))"><!--*ngIf="gamedetails.gamerecord.length<9&&(gamedetails.game.gamemode === '1.1' ||this.gamedetails.currentuserid === localStorage.getItem('current_user'))"-->
+    <nz-radio-group>
+      <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类',0)" >人类</label>
+      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人',1)">亚特兰斯星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[14]" (click)="chooserace(this.gameid,'choose race: 熊猫人',14)">熊猫人</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族',2)">圣禽族</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人',3)">蜂人</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[15]"  (click)="chooserace(this.gameid,'choose race: 混沌法师',15)">混沌法师</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人',4)">晶矿星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族',5)">炽炎族</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[16]"  (click)="chooserace(this.gameid,'choose race: 天龙星人',16)">天龙星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族',6)">翼空族</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人',7)">格伦星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[17]"  (click)="chooserace(this.gameid,'choose race: 蜥族',17)">蜥族</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人',8)">大使星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族',9)">利爪族</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[18]"  (click)="chooserace(this.gameid,'choose race: 猎户星人',18)">猎户星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人',10)">章鱼人</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器',11)">疯狂机器</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[19]"  (click)="chooserace(this.gameid,'choose race: 魔族',19)">魔族</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人',12)">伊塔星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人',13)">超星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[20]"  (click)="chooserace(this.gameid,'choose race: 织女星人',20)">织女星人</label>
+    </nz-radio-group>
+  </div>
   <div style="width: 500px;color: wheat" *ngFor="let powerleech of gamedetails.powerleech">
     {{powerleech.receiverace}}决定是否从{{powerleech.giverace}}吸收{{powerleech.power}}点魔力({{powerleech.location}}升级为{{powerleech.structure}})
-    <!--*ngIf="user === powerleech.userid"-->
-    <div *ngIf="user === powerleech.userid">
-      <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受</button>
-      <button nz-button nzType="danger" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'0')">拒绝</button>
+    <div *ngIf="user === powerleech.userid||gamedetails.game.gamemode.charAt(2) === '3'"><!--*ngIf="user === powerleech.userid||gamedetails.game.gamemode === '1.1'"-->
+      <div *ngIf="powerleech.receiverace === '利爪族'">
+      <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'2')">接受(先蹭魔)</button>
+      <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受(先加豆)</button>
+        <button nz-button nzType="danger" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'0')">拒绝</button>
+      </div>
+      <div *ngIf="powerleech.receiverace !== '利爪族'">
+        <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受</button>
+        <button nz-button nzType="danger" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'0')">拒绝</button>
+      </div>
     </div>
   </div>
-  <div *ngIf="gamedetails.gamerecord.length>=9">
+<!--  <div *ngIf="gamedetails.gamerecord.length>=9"> <div *ngIf="gamedetails.bugs.length>0" style="float: left;">
+    <nz-select  nzShowSearch nzAllowClear nzPlaceHolder="选择执行建造行动" [(ngModel)]="selectedBugAct">
+      <div  *ngFor="let record of gamedetails.bugs">
+        <nz-option nzLabel={{record}} nzValue={{record}}></nz-option>
+      </div>
+    </nz-select>
+  </div>
+    <div *ngIf="gamedetails.fasts.length>0" style="float: left"> <button nz-button nzType="default" nzSize="default" nzSearch (click)="dofastaction()">执行所选建造行动</button></div>
+  </div>-->
+  <div *ngIf="this.gamerecordlength>=9"> <div *ngIf="gamedetails.fasts.length>0" style="float: left;">
+    <nz-select  nzShowSearch nzAllowClear nzPlaceHolder="选择执行快速行动" [(ngModel)]="selectedFsAct">
+      <div  *ngFor="let record of gamedetails.fasts">
+        <nz-option nzLabel={{record}} nzValue={{record}}></nz-option>
+      </div>
+    </nz-select>
+  </div>
+    <div *ngIf="gamedetails.fasts.length>0" style="float: left"> <button nz-button nzType="default" nzSize="default" nzSearch (click)="dofastaction()">执行所选快速行动</button></div>
+  </div>
+   <div *ngIf="this.gamerecordlength>=9||this.gamedetails.currentuserid === 'all'||this.gamedetails.currentuserid === localStorage.getItem('current_user')|| gamedetails.game.gamemode.charAt(2) === '3'">
     <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
       <input [(ngModel)]= this.actionorder id="actioninput" type="text" nz-input placeholder="行动待执行" />
     </nz-input-group>
     <ng-template #suffixButton >
-      <div *ngIf="this.gamedetails.currentuserid === localStorage.getItem('current_user')">
-        <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,this.actionorder)">行动！</button>
+    <div *ngIf="this.gamedetails.currentuserid === 'all' || this.gamedetails.currentuserid === localStorage.getItem('current_user') || gamedetails.game.gamemode.charAt(2) === '3' ||(gamedetails.game.gamemode.charAt(2) === '0' && gamedetails.bid[0] === 't')"><!--*ngIf="this.gamedetails.currentuserid === localStorage.getItem('current_user')||gamedetails.game.gamemode === '1.1' " -->
+        <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,this.actionorder,localStorage.getItem('current_user'))">行动！</button>
       </div>
     </ng-template>
   </div>
-
-
-
-  <div style="float:left;text-align: left">
+  <div id = "dcan" style="float:left;text-align: left">
 <canvas id="myCanvas" width="1200" height="900" (mousedown)="click($event)"></canvas>
 </div>
 
-<div style="width: 400px;height: 900px;float:left;text-align: left">
+<div  style="width: 400px;height: 900px;float:left;text-align: left">
 <div style="width: 400px;height: 200px;float:left;text-align: left">
   <div id = "roundscore0"></div>
 <div class="scoring" id="roundscore1">
@@ -151,7 +198,7 @@
   <div style="text-align:center"><font size="3" color="black">Town1({{gamedetails.townremain[0]}})</font></div>
   <br>
   <div style="text-align:center"><font size="3" color="black">7VP</font></div>
-  <div style="text-align:center"><font size="3" color="black">20</font></div>
+  <div style="text-align:center"><font size="3" color="black">2O</font></div>
 </div>
 <div *ngIf="gamedetails.townremain[1]!='0'" class="helptile" [ngStyle]="{'background':'lime'}" (click)="add(',+town2')">
   <div style="text-align:center"><font size="3" color="black">Town2({{gamedetails.townremain[1]}})</font></div>
@@ -182,16 +229,18 @@
   <br>
   <div style="text-align:center"><font size="3" color="black">12VP</font></div>
 </div>
-  <div  class="helptile" [ngStyle]="{'background':'pink'}" (click)="add(',+townNB')">
+<!--  <div  class="helptile" [ngStyle]="{'background':'pink'}" (click)="add(',+townNB')">
     <div style="text-align:center"><font size="3" color="black">TownNB('女朋友专属')</font></div>
     <div style="text-align:center"><font size="3" color="black">24VP,2O,6C</font></div>
     <div style="text-align:center"><font size="3" color="black">1Q,2PWB,2K</font></div>
-  </div>
+  </div>-->
+  <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
+  <button nz-button nzType="primary" (click)="savelog()" >保存</button>
   </div>
 
 <div style="clear: both">
   <div *ngFor="let helptile of gamedetails.helptile">
-  <div *ngIf="helptile[0]"  class="helptile" [ngStyle]="{'background':helptile[3]}" (click) ="pass(helptile[0])">
+  <div *ngIf="helptile[0]"  class="helptile" [ngStyle]="{'background':helptile[3]}" (click) ="pass(helptile[0],helptile[3])">
     <div style="text-align:center"><font size="3" color="black">{{helptile[0]}}</font></div>
     <br>
     <div style="text-align:center"><font size="3" color="black">{{helptile[1]}}</font></div>
@@ -199,25 +248,24 @@
   </div>
   </div>
 </div>
-
-
-<nz-table #basicTable [nzData]="listOfData" nzSize="small" style="clear: both">
+  <div class="ipone5">
+<nz-table class="sciencetable" #basicTable [nzData]="listOfData" nzSize="small" style="clear: both">
   <thead>
   <tr>
-    <th>等级</th>
-    <th><div style="width: 100px;float: left;color: wheat">地形改造</div><button nz-button nzType="primary" (click)="advance('terra')">升级</button></th>
-    <th><div style="width: 100px;float: left;color: wheat">航行</div><button nz-button nzType="primary" (click)="advance('ship')">升级</button></th>
-    <th><div style="width: 100px;float: left;color: wheat">量子智能</div><button nz-button nzType="primary" (click)="advance('q')">升级</button></th>
-    <th><div style="width: 100px;float: left;color: wheat">盖亚计划</div><button nz-button nzType="primary" (click)="advance('gaia')">升级</button></th>
-    <th><div style="width: 100px;float: left;color: wheat">经济</div><button nz-button nzType="primary" (click)="advance('eco')">升级</button></th>
-    <th><div style="width: 100px;float: left;color: wheat">科学</div><button nz-button nzType="primary" (click)="advance('sci')">升级</button></th>
+    <th class="sci" style="width: 100px">等级</th>
+    <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: wheat">地形改造</div><button nz-button nzType="primary" (click)="advance('terra')">升级</button></th>
+    <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: wheat">航行</div><button nz-button nzType="primary" (click)="advance('ship')">升级</button></th>
+    <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: wheat">量子智能</div><button nz-button nzType="primary" (click)="advance('q')">升级</button></th>
+    <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: wheat">盖亚计划</div><button nz-button nzType="primary" (click)="advance('gaia')">升级</button></th>
+    <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: wheat">经济</div><button nz-button nzType="primary" (click)="advance('eco')">升级</button></th>
+    <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: wheat">研发</div><button nz-button nzType="primary" (click)="advance('sci')">升级</button></th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let data of basicTable.data;index as i">
     <td style="color: wheat" >{{ data.dengji }}</td>
     <td><div style="color: wheat" *ngIf="i!=1&&i!=8&&i!=9">
-      {{ data.terra }}</div>
+     {{ data.terra }}</div>
       <div *ngIf="gamedetails.tt[6]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
         <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
       </div>
@@ -294,8 +342,14 @@
       <div *ngIf="gamedetails.tt[0]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -413,8 +467,14 @@
       <div *ngIf="gamedetails.tt[1]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -533,8 +593,14 @@
       <div *ngIf="gamedetails.tt[2]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -625,8 +691,14 @@
       <div *ngIf="gamedetails.tt[3]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -737,8 +809,14 @@
       <div *ngIf="gamedetails.tt[4]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -845,8 +923,14 @@
       <div *ngIf="gamedetails.tt[5]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -891,12 +975,13 @@
   </tr>
   </tbody>
 </nz-table>
+  </div>
 <div *ngFor="let r of this.gamedetails.resource;index as i">
 <div class="faction-board">
   <div style="float: left; margin-right: 20px;">
-    <div [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
+    <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
   <div class="faction-info" style="width: 600px">
-    <div style="float: left"><span>{{r[2]}} <img class="mb-4" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="mb-4" src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img class="mb-4" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q , {{r[11]}} VP <button nz-button [nzType]="'dashed'" (click)="showModal(i)"><span>分数详情</span></button>,{{r[6]}}/{{r[7]}}/{{r[8]}} PW,{{r[16]}},{{r[14]}}Pg ,{{r[12]}}/{{r[13]}} GTU</span></div>
+    <div style="float: left"><span>{{r[2]}} <img class="res" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="res"  src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img  class="res" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q , {{r[11]}} VP <button nz-button [nzType]="'dashed'" (click)="showModal(i)"><span>分数详情</span></button>,{{r[6]}}/{{r[7]}}/{{r[8]}} PW,{{r[16]}},{{r[14]}}Pg ,{{r[12]}}/{{r[13]}} GTU</span></div>
     <table class="building-table">
       <tr>
         <td>M</td>
@@ -964,40 +1049,49 @@
         <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110" (click)="add('-ltt9 ')">
       </div>
       <div *ngIf="tt[0]=='ltt1minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt1.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt2minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt2.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt3minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt3.png" alt="" width="70" height="55">
       </div>
-      <div *ngIf="tt[0]=='ltt4minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="70" height="55">
+      <div  *ngIf="tt[0]=='ltt4minus'">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt4.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt5minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt5.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt6minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt6.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt7minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt7.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt8minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt8.png" alt="" width="70" height="55">
       </div>
       <div *ngIf="tt[0]=='ltt9minus'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="70" height="55">
+        <img class="mb-4 fg" src="../../../assets/techtiles/ltt9.png" alt="" width="70" height="55">
       </div>
-      <div *ngIf="tt[0]=='att1'" (click)="add('actionatt1 ')">
-        <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+      <div *ngIf="tt[0]=='att1'&&this.gamedetails.game.gamemode.charAt(0)!=='0'" (click)="add('actionatt1 ')">
+        <img class="mb-4 fg" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="tt[0]=='att2'" (click)="add('actionatt2 ')">
+      <div *ngIf="tt[0]=='att1'&&this.gamedetails.game.gamemode.charAt(0)==='0'" (click)="add('actionatt1 ')">
+        <img class="mb-4 fg" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att2'&&this.gamedetails.game.gamemode.charAt(0)!=='0'" (click)="add('actionatt2 ')">
         <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="tt[0]=='att3'" (click)="add('actionatt3 ')">
+      <div *ngIf="tt[0]=='att2'&&this.gamedetails.game.gamemode.charAt(0)==='0'" (click)="add('actionatt2 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att3'&&this.gamedetails.game.gamemode.charAt(0)!=='0'" (click)="add('actionatt3 ')">
         <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att3'&&this.gamedetails.game.gamemode.charAt(0)==='0'" (click)="add('actionatt3 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="tt[0]=='att4'">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -1032,8 +1126,17 @@
       <div *ngIf="tt[0]=='att14'">
         <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="tt[0]=='att15'">
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.charAt(0) === '0'">
+        <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att15'&&  gamedetails.game.gamemode.length === 3&& gamedetails.game.gamemode.charAt(0) !== '0'">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '1'">
+        <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '2'">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="tt[0]=='ltt2used'">
         <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110">
@@ -1068,7 +1171,7 @@
           <div style="text-align:center"><font size="3" color="black">可用</font></div>
         </div>
       </div>
-      <div *ngIf="tt[0]=='actionz'" (click)="add('actionz ')">
+      <div *ngIf="tt[0]=='actionz'" (click)="add('actionz')">
         <div  class="helptile">
           <div style="text-align:center"><font size="3" color="black">actionz</font></div>
           <br>
@@ -1089,7 +1192,7 @@
           <div style="text-align:center"><font size="3" color="black">已使用</font></div>
         </div>
       </div>
-      <div *ngIf="tt[0]=='actionf'" (click)="add('actionf ')">
+      <div *ngIf="tt[0]=='actionf'" (click)="add('actionf')">
         <div  class="helptile">
           <div style="text-align:center"><font size="3" color="black">actionf</font></div>
           <br>
@@ -1099,6 +1202,34 @@
       <div *ngIf="tt[0]=='actionfused'">
         <div  class="helptile" [ngStyle]="{'background':'grey'}">
           <div style="text-align:center"><font size="3" color="black">actionf</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='actiont'" (click)="add('actiont')">
+        <div  class="helptile">
+          <div style="text-align:center"><font size="3" color="black">actiont</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">可用</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='actiontused'">
+        <div  class="helptile" [ngStyle]="{'background':'grey'}">
+          <div style="text-align:center"><font size="3" color="black">actiont</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='actionl'" (click)="add('actionl')">
+        <div  class="helptile">
+          <div style="text-align:center"><font size="3" color="black">actionl</font></div>
+          <br>
+          <div style="text-align:center"><font size="3" color="black">可用</font></div>
+        </div>
+      </div>
+      <div *ngIf="tt[0]=='actionlused'">
+        <div  class="helptile" [ngStyle]="{'background':'grey'}">
+          <div style="text-align:center"><font size="3" color="black">actionl</font></div>
           <br>
           <div style="text-align:center"><font size="3" color="black">已使用</font></div>
         </div>
@@ -1122,7 +1253,7 @@
           <div style="text-align:center"><font size="3" color="black">Town1</font></div>
           <br>
           <div style="text-align:center"><font size="3" color="black">7VP</font></div>
-          <div style="text-align:center"><font size="3" color="black">20</font></div>
+          <div style="text-align:center"><font size="3" color="black">2O</font></div>
         </div>
       </div>
       <div *ngIf="tt[0]=='2'">
@@ -1186,8 +1317,9 @@
 </div>
 </div>
 </div>
+<div *ngIf="this.windowsize>=1000">
 <div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
-  <h4 style="color: black">
+  <h4 style="color: black;">
     {{record}}
   </h4>
 </div>
@@ -1215,7 +1347,9 @@
   <nz-modal [(nzVisible)]="isVisibleBuild" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkBuild()">
   </nz-modal>
   <nz-modal [(nzVisible)]="isVisibleUpgradeTc" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
-  </nz-modal>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeShMad" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeSh()">
+</nz-modal>
   <nz-modal [(nzVisible)]="isVisiblePass" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkPass()">
   </nz-modal>
   <nz-modal [(nzVisible)]="isVisibleAdvance" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkAdvance()">
@@ -1240,4 +1374,1443 @@
       <button nz-button nzType="primary" (click)="handleOkUpgradeSh()">升级为SH</button>
     </ng-template>
   </nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeMAD" [(nzTitle)] = "this.modeltitle" [nzFooter]="modalFooterMAD"
+          (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
+  <ng-template #modalFooterMAD>
+    <span>选择升级建筑: </span>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeRl()">升级为RL</button>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeAC1()">升级为AC1(收入科技)</button>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeAC2()">升级为AC2(获得资源)</button>
+  </ng-template>
+</nz-modal>
+{{this.shoujixinghao}}
+</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="zoom: 80%" *ngIf="this.windowsize<1000" >
+  <p style="color: black;alignment: center"> {{gameid}}&nbsp;&nbsp;&nbsp;{{gamedetails.gamemodename}}&nbsp;&nbsp;管理员：{{gamedetails.game.admin}}</p>
+  <p style="color: black">{{errormessage}}</p>
+  <div *ngIf = "gamedetails.currentuserid==='游戏结束'">
+    <h4 style="color: black">游戏结束，最终得分：</h4>
+    <div >
+      <p style="color: black">{{gamedetails.resource[0][0]}}({{gamedetails.resource[0][1]}})    {{gamedetails.resource[0][11]}}vp</p>
+      <p style="color: black">{{gamedetails.resource[1][0]}}({{gamedetails.resource[1][1]}})    {{gamedetails.resource[1][11]}}vp</p>
+      <p style="color: black">{{gamedetails.resource[2][0]}}({{gamedetails.resource[2][1]}})    {{gamedetails.resource[2][11]}}vp</p>
+      <p style="color: black">{{gamedetails.resource[3][0]}}({{gamedetails.resource[3][1]}})    {{gamedetails.resource[3][11]}}vp</p>
+    </div>
+  </div>
+  <div *ngIf = "gamedetails.currentuserid!=='游戏结束'">
+    <h4 style="color: black">{{gamedetails.gamestate}}</h4></div>
+  <div  *ngIf="this.bid0 === 't' && gamedetails.currentuserid !=='all'">
+    <div style="color: black">{{gamedetails.bid[1]}}出价：{{gamedetails.bid[5]}} 选择顺位：{{gamedetails.bid[9]}}</div>
+    <div style="color: black">{{gamedetails.bid[2]}}出价：{{gamedetails.bid[6]}} 选择顺位：{{gamedetails.bid[10]}}</div>
+    <div style="color: black">{{gamedetails.bid[3]}}出价：{{gamedetails.bid[7]}} 选择顺位：{{gamedetails.bid[11]}}</div>
+    <div style="color: black">{{gamedetails.bid[4]}}出价：{{gamedetails.bid[8]}} 选择顺位：{{gamedetails.bid[12]}}</div>
+  </div>
+  <div *ngIf="this.bid0 === 't' && gamedetails.currentuserid ==='all'">
+    <div style="color: black" *ngIf="gamedetails.bid[9]==='0'">{{gamedetails.bid[1]}} 选择顺位：{{gamedetails.bid[9]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[10]==='0'">{{gamedetails.bid[2]}} 选择顺位：{{gamedetails.bid[10]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[11]==='0'">{{gamedetails.bid[3]}} 选择顺位：{{gamedetails.bid[11]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[12]==='0'">{{gamedetails.bid[4]}} 选择顺位：{{gamedetails.bid[12]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[9]!=='0'" >{{gamedetails.bid[1]}} 选择顺位：{{gamedetails.bid[9]}} 出价：{{gamedetails.bid[5]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[10]!=='0'" >{{gamedetails.bid[2]}} 选择顺位：{{gamedetails.bid[10]}} 出价：{{gamedetails.bid[6]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[11]!=='0'" >{{gamedetails.bid[3]}} 选择顺位：{{gamedetails.bid[11]}} 出价：{{gamedetails.bid[7]}}</div>
+    <div style="color: black" *ngIf="gamedetails.bid[12]!=='0'" >{{gamedetails.bid[4]}} 选择顺位：{{gamedetails.bid[12]}} 出价：{{gamedetails.bid[8]}}</div>
+  </div>
+  <div *ngIf="(this.gamerecordlength<6&&gamedetails.gamestate.charAt(0)!=='轮')||(this.gamerecordlength<9&&(this.gamedetails.currentuserid === localStorage.getItem('current_user')||this.gamedetails.game.gamemode.charAt(2)==='3'))"><!--*ngIf="gamedetails.gamerecord.length<9&&(gamedetails.game.gamemode === '1.1' ||this.gamedetails.currentuserid === localStorage.getItem('current_user'))"-->
+    <nz-radio-group>
+      <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类',0)" >人类</label>
+      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人',1)">亚特兰斯星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[14]" (click)="chooserace(this.gameid,'choose race: 熊猫人',14)">熊猫人</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族',2)">圣禽族</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人',3)">蜂人</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[15]"  (click)="chooserace(this.gameid,'choose race: 混沌法师',15)">混沌法师</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人',4)">晶矿星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族',5)">炽炎族</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[16]"  (click)="chooserace(this.gameid,'choose race: 天龙星人',16)">天龙星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族',6)">翼空族</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人',7)">格伦星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[17]"  (click)="chooserace(this.gameid,'choose race: 蜥族',17)">蜥族</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人',8)">大使星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族',9)">利爪族</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[18]"  (click)="chooserace(this.gameid,'choose race: 猎户星人',18)">猎户星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人',10)">章鱼人</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器',11)">疯狂机器</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[19]"  (click)="chooserace(this.gameid,'choose race: 魔族',19)">魔族</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人',12)">伊塔星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人',13)">超星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[20]"  (click)="chooserace(this.gameid,'choose race: 织女星人',20)">织女星人</label>
+    </nz-radio-group>
+  </div>
+  <div style="width: 500px;color: black" *ngFor="let powerleech of gamedetails.powerleech">
+    {{powerleech.receiverace}}决定是否从{{powerleech.giverace}}吸收{{powerleech.power}}点魔力({{powerleech.location}}升级为{{powerleech.structure}})
+    <div *ngIf="user === powerleech.userid||gamedetails.game.gamemode.charAt(2) === '3'"><!--*ngIf="user === powerleech.userid||gamedetails.game.gamemode === '1.1'"-->
+      <div *ngIf="powerleech.receiverace === '利爪族'">
+        <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'2')">接受(先蹭魔)</button>
+        <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受(先加豆)</button>
+        <button nz-button nzType="danger" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'0')">拒绝</button>
+      </div>
+      <div *ngIf="powerleech.receiverace !== '利爪族'">
+        <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受</button>
+        <button nz-button nzType="danger" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'0')">拒绝</button>
+      </div>
+    </div>
+  </div>
+  <!--  <div *ngIf="gamedetails.gamerecord.length>=9"> <div *ngIf="gamedetails.bugs.length>0" style="float: left;">
+      <nz-select  nzShowSearch nzAllowClear nzPlaceHolder="选择执行建造行动" [(ngModel)]="selectedBugAct">
+        <div  *ngFor="let record of gamedetails.bugs">
+          <nz-option nzLabel={{record}} nzValue={{record}}></nz-option>
+        </div>
+      </nz-select>
+    </div>
+      <div *ngIf="gamedetails.fasts.length>0" style="float: left"> <button nz-button nzType="default" nzSize="default" nzSearch (click)="dofastaction()">执行所选建造行动</button></div>
+    </div>-->
+  <div *ngIf="this.gamerecordlength>=9"> <div *ngIf="gamedetails.fasts.length>0" style="float: left;">
+    <nz-select  nzShowSearch nzAllowClear nzPlaceHolder="选择执行快速行动" [(ngModel)]="selectedFsAct">
+      <div  *ngFor="let record of gamedetails.fasts">
+        <nz-option nzLabel={{record}} nzValue={{record}}></nz-option>
+      </div>
+    </nz-select>
+  </div>
+    <div *ngIf="gamedetails.fasts.length>0" style="float: left"> <button nz-button nzType="default" nzSize="default" nzSearch (click)="dofastaction()">执行所选快速行动</button></div>
+  </div>
+  <div *ngIf="this.gamerecordlength>=9||this.gamedetails.currentuserid === 'all'||this.gamedetails.currentuserid === localStorage.getItem('current_user')|| gamedetails.game.gamemode.charAt(2) === '3'">
+    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+      <input [(ngModel)]= this.actionorder id="actioninput" type="text" nz-input placeholder="行动待执行" />
+    </nz-input-group>
+    <ng-template #suffixButton >
+      <div *ngIf="this.gamedetails.currentuserid === 'all' || this.gamedetails.currentuserid === localStorage.getItem('current_user') || gamedetails.game.gamemode.charAt(2) === '3' ||(gamedetails.game.gamemode.charAt(2) === '0' && gamedetails.bid[0] === 't')"><!--*ngIf="this.gamedetails.currentuserid === localStorage.getItem('current_user')||gamedetails.game.gamemode === '1.1' " -->
+        <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,this.actionorder,localStorage.getItem('current_user'))">行动！</button>
+      </div>
+    </ng-template>
+  </div>
+  <div id = "dcan" style="float:left;text-align: left">
+    <canvas id="myCanvas" width="1200" height="900" (mousedown)="click($event)"></canvas>
+  </div>
+
+
+  <div  style="width: 1200px;height: 400px;float:left;text-align: left">
+    <div style="width: 400px;height: 200px;float:left;text-align: left">
+      <div id = "roundscore0"></div>
+      <div class="scoring" id="roundscore1">
+        <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R1</font></div>
+        <br><br>
+        <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[0]}}</font></div>
+      </div>
+      <div class="scoring" id="roundscore2">
+        <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R2</font></div>
+        <br><br>
+        <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[1]}}</font></div>
+      </div>
+      <div class="scoring" id="roundscore3">
+        <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R3</font></div>
+        <br><br>
+        <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[2]}}</font></div>
+      </div>
+      <div class="scoring" id="roundscore4">
+        <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R4</font></div>
+        <br><br>
+        <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[3]}}</font></div>
+      </div>
+      <div class="scoring" id="roundscore5">
+        <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R5</font></div>
+        <br><br>
+        <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[4]}}</font></div>
+      </div>
+      <div class="scoring" id="roundscore6">
+        <div style="float: right; border-style: solid; border-width: 2px;"><font size="1.5" color="#5f9ea0">R6</font></div>
+        <br><br>
+        <div style="text-align:center"><font size="3" color="black">{{gamedetails.roundscore[5]}}</font></div>
+      </div>
+    </div>
+
+    <div  style="width: 400px;height: 300px;float:left;text-align: left">
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa1}" (click) ="pwqaction('1')">
+        <div style="text-align:center"><font size="3" color="black">action1</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-3pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">+2pwb</font></div>
+      </div>
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa2}" (click) ="pwqaction('2')">
+        <div style="text-align:center"><font size="3" color="black">action2</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-3pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">1TERRA</font></div>
+      </div>
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa3}" (click) ="pwqaction('3')">
+        <div style="text-align:center"><font size="3" color="black">action3</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-4pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">2O</font></div>
+      </div>
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa4}" (click) ="pwqaction('4')">
+        <div style="text-align:center"><font size="3" color="black">action4</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-4pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">7C</font></div>
+      </div>
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa5}" (click) ="pwqaction('5')">
+        <div style="text-align:center"><font size="3" color="black">action5</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-4pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">2K</font></div>
+      </div>
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa6}" (click) ="pwqaction('6')">
+        <div style="text-align:center"><font size="3" color="black">action6</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-5pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">2TERRA</font></div>
+      </div>
+      <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.pwa7}" (click) ="pwqaction('7')">
+        <div style="text-align:center"><font size="3" color="black">action7</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">-7pw</font></div>
+        <div style="text-align:center"><font size="3" color="black">3K</font></div>
+      </div>
+    </div>
+    <div  style="width: 400px;height: 300px;float:right;text-align: left">
+    <div class="helptile"  [ngStyle]="{'background':this.gamedetails.game.qa1}" (click) ="pwqaction('8')">
+      <div style="text-align:center"><font size="3" color="black">action8</font></div>
+      <div style="text-align:center"><font size="3" color="black">-2Q</font></div>
+      <div style="text-align:center"><font size="3" color="black">3+P_TYPE VP</font></div>
+    </div>
+    <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.qa2}" (click) ="pwqaction('9')">
+      <div style="text-align:center"><font size="3" color="black">action9</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">-3Q</font></div>
+      <div style="text-align:center"><font size="3" color="black">TOWN</font></div>
+    </div>
+    <div class="helptile" [ngStyle]="{'background':this.gamedetails.game.qa3}" (click) ="pwqaction('10')">
+      <div style="text-align:center"><font size="3" color="black">action10</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">-4Q</font></div>
+      <div style="text-align:center"><font size="3" color="black">1TT</font></div>
+    </div>
+
+    <div *ngIf="gamedetails.townremain[0]!='0'" class="helptile" [ngStyle]="{'background':'lime'}" (click)="add(',+town1')">
+      <div style="text-align:center"><font size="3" color="black">Town1({{gamedetails.townremain[0]}})</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+      <div style="text-align:center"><font size="3" color="black">2O</font></div>
+    </div>
+    <div *ngIf="gamedetails.townremain[1]!='0'" class="helptile" [ngStyle]="{'background':'lime'}" (click)="add(',+town2')">
+      <div style="text-align:center"><font size="3" color="black">Town2({{gamedetails.townremain[1]}})</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+      <div style="text-align:center"><font size="3" color="black">6C</font></div>
+    </div>
+    <div *ngIf="gamedetails.townremain[2]!='0'" class="helptile" [ngStyle]="{'background':'lime'}" (click)="add(',+town3')">
+      <div style="text-align:center"><font size="3" color="black">Town3({{gamedetails.townremain[2]}})</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+      <div style="text-align:center"><font size="3" color="black">1Q</font></div>
+    </div>
+    <div *ngIf="gamedetails.townremain[3]!='0'" class="helptile" [ngStyle]="{'background':'lime'}" (click)="add(',+town4')">
+      <div style="text-align:center"><font size="3" color="black">Town4({{gamedetails.townremain[3]}})</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">6VP</font></div>
+      <div style="text-align:center"><font size="3" color="black">2K</font></div>
+    </div>
+    <div *ngIf="gamedetails.townremain[4]!='0'" class="helptile" [ngStyle]="{'background':'lime'}" (click)="add(',+town5')">
+      <div style="text-align:center"><font size="3" color="black">Town5({{gamedetails.townremain[4]}})</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+      <div style="text-align:center"><font size="3" color="black">2PWB</font></div>
+    </div>
+    <div *ngIf="gamedetails.townremain[5]!='0'" class="helptile" [ngStyle]="{'background':'grey'}" (click)="add(',+town6')">
+      <div style="text-align:center"><font size="3" color="black">Town6({{gamedetails.townremain[5]}})</font></div>
+      <br>
+      <div style="text-align:center"><font size="3" color="black">12VP</font></div>
+    </div>
+    </div>
+    <!--  <div  class="helptile" [ngStyle]="{'background':'pink'}" (click)="add(',+townNB')">
+        <div style="text-align:center"><font size="3" color="black">TownNB('女朋友专属')</font></div>
+        <div style="text-align:center"><font size="3" color="black">24VP,2O,6C</font></div>
+        <div style="text-align:center"><font size="3" color="black">1Q,2PWB,2K</font></div>
+      </div>-->
+    <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
+    <button nz-button nzType="primary" (click)="savelog()" >保存</button>
+  </div>
+
+  <div style="clear: both">
+    <div *ngFor="let helptile of gamedetails.helptile">
+      <div *ngIf="helptile[0]"  class="helptile" [ngStyle]="{'background':helptile[3]}" (click) ="pass(helptile[0],helptile[3])">
+        <div style="text-align:center"><font size="3" color="black">{{helptile[0]}}</font></div>
+        <br>
+        <div style="text-align:center"><font size="3" color="black">{{helptile[1]}}</font></div>
+        <div style="text-align:center"><font size="3" color="black">{{helptile[2]}}</font></div>
+      </div>
+    </div>
+  </div>
+  <div class="ipone5">
+    <nz-table class="sciencetable" #basicTable [nzData]="listOfData" nzSize="small" style="clear: both">
+      <thead>
+      <tr>
+        <th class="sci" style="width: 100px">等级</th>
+        <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: black">地形改造</div><button nz-button nzType="primary" (click)="advance('terra')">升级</button></th>
+        <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: black">航行</div><button nz-button nzType="primary" (click)="advance('ship')">升级</button></th>
+        <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: black">量子智能</div><button nz-button nzType="primary" (click)="advance('q')">升级</button></th>
+        <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: black">盖亚计划</div><button nz-button nzType="primary" (click)="advance('gaia')">升级</button></th>
+        <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: black">经济</div><button nz-button nzType="primary" (click)="advance('eco')">升级</button></th>
+        <th class="sci" style="width: 100px"><div style="width: 100px;float: left;color: black">研发</div><button nz-button nzType="primary" (click)="advance('sci')">升级</button></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data;index as i">
+        <td style="color: black" >{{ data.dengji }}</td>
+        <td><div style="color: black" *ngIf="i!=1&&i!=8&&i!=9">
+          {{ data.terra }}</div>
+          <div *ngIf="gamedetails.tt[6]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt2: +4PW'&&i==8" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt3: +1K,+1C'&&i==8" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt4: +1O,+1PW'&&i==8" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt5: MG->3VP'&&i==8" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt6: 1TYPE1K'&&i==8" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt7: 7VP'&&i==8" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt8: SHAC4'&&i==8" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[6]=='ltt9: 1O,1Q'&&i==8" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+          <div *ngIf="gamedetails.tt[12]=='ltt1: +4C'&&i==9" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt2: +4PW'&&i==9" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt3: +1K,+1C'&&i==9" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt4: +1O,+1PW'&&i==9" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt5: MG->3VP'&&i==9" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt6: 1TYPE1K'&&i==9" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt7: 7VP'&&i==9" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt8: SHAC4'&&i==9" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[12]=='ltt9: 1O,1Q'&&i==9" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+
+
+          <div *ngIf="gamedetails.tt[0]=='att1: +3O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att1: +5O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att2: +1Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att2: +2Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att3: +3K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att5: PASSAL3VP'&&i==1"  (click)="add('+att5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att6: PASSTYPE1VP'&&i==1"  (click)="add('+att6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att7: M->3VP'&&i==1"  (click)="add('+att7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att8: TC->3VP'&&i==1"  (click)="add('+att8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att9: AT->2VP'&&i==1"  (click)="add('+att9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att10: 1PLA2VP'&&i==1"  (click)="add('+att10 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att11: 1M2VP'&&i==1"  (click)="add('+att11 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att12: 1TC4VP'&&i==1"  (click)="add('+att12 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att13: 1AL5VP'&&i==1"  (click)="add('+att13 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att14: 1G2VP'&&i==1"  (click)="add('+att14 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att15: 1PLA1O'&&i==1"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+            <div *ngIf="s[0][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+          </div>
+        </td>
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+          {{ data.navi }}</div>
+          <div *ngIf="gamedetails.tt[7]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt2: +4PW'&&i==8" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt3: +1K,+1C'&&i==8" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt4: +1O,+1PW'&&i==8" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt5: MG->3VP'&&i==8" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt6: 1TYPE1K'&&i==8" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt7: 7VP'&&i==8" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt8: SHAC4'&&i==8" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[7]=='ltt9: 1O,1Q'&&i==8" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+          <div *ngIf="gamedetails.tt[13]=='ltt1: +4C'&&i==9" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt2: +4PW'&&i==9" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt3: +1K,+1C'&&i==9" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt4: +1O,+1PW'&&i==9" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt5: MG->3VP'&&i==9" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt6: 1TYPE1K'&&i==9" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt7: 7VP'&&i==9" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt8: SHAC4'&&i==9" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[13]=='ltt9: 1O,1Q'&&i==9" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+          <div *ngIf="gamedetails.tt[1]=='att1: +3O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att1: +5O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att2: +1Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att2: +2Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att3: +3K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att5: PASSAL3VP'&&i==1"  (click)="add('+att5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att6: PASSTYPE1VP'&&i==1"  (click)="add('+att6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att7: M->3VP'&&i==1"  (click)="add('+att7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att8: TC->3VP'&&i==1"  (click)="add('+att8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att9: AT->2VP'&&i==1"  (click)="add('+att9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att10: 1PLA2VP'&&i==1"  (click)="add('+att10 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att11: 1M2VP'&&i==1"  (click)="add('+att11 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att12: 1TC4VP'&&i==1"  (click)="add('+att12 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att13: 1AL5VP'&&i==1"  (click)="add('+att13 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att14: 1G2VP'&&i==1"  (click)="add('+att14 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att15: 1PLA1O'&&i==1"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+            <div *ngIf="s[1][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+          </div>
+        </td>
+        <td><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+          {{ data.quan }}</div>
+          <div *ngIf="gamedetails.tt[8]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt2: +4PW'&&i==8" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt3: +1K,+1C'&&i==8" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt4: +1O,+1PW'&&i==8" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt5: MG->3VP'&&i==8" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt6: 1TYPE1K'&&i==8" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt7: 7VP'&&i==8" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt8: SHAC4'&&i==8" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[8]=='ltt9: 1O,1Q'&&i==8" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+
+          <div *ngIf="gamedetails.tt[14]=='ltt1: +4C'&&i==9" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt2: +4PW'&&i==9" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt3: +1K,+1C'&&i==9" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt4: +1O,+1PW'&&i==9" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt5: MG->3VP'&&i==9" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt6: 1TYPE1K'&&i==9" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt7: 7VP'&&i==9" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt8: SHAC4'&&i==9" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[14]=='ltt9: 1O,1Q'&&i==9" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+          <div *ngIf="gamedetails.tt[2]=='att1: +3O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att1: +5O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att2: +1Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att2: +2Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att3: +3K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att5: PASSAL3VP'&&i==1"  (click)="add('+att5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att6: PASSTYPE1VP'&&i==1"  (click)="add('+att6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att7: M->3VP'&&i==1"  (click)="add('+att7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att8: TC->3VP'&&i==1"  (click)="add('+att8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att9: AT->2VP'&&i==1"  (click)="add('+att9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att10: 1PLA2VP'&&i==1"  (click)="add('+att10 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att11: 1M2VP'&&i==1"  (click)="add('+att11 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att12: 1TC4VP'&&i==1"  (click)="add('+att12 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att13: 1AL5VP'&&i==1"  (click)="add('+att13 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att14: 1G2VP'&&i==1"  (click)="add('+att14 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att15: 1PLA1O'&&i==1"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+            <div *ngIf="s[2][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+          </div>
+        </td>
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+          {{ data.gaia }}</div>
+          <div *ngIf="gamedetails.tt[9]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt2: +4PW'&&i==8" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt3: +1K,+1C'&&i==8" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt4: +1O,+1PW'&&i==8" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt5: MG->3VP'&&i==8" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt6: 1TYPE1K'&&i==8" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt7: 7VP'&&i==8" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt8: SHAC4'&&i==8" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[9]=='ltt9: 1O,1Q'&&i==8" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+
+          <div *ngIf="gamedetails.tt[3]=='att1: +3O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att1: +5O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att2: +1Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att2: +2Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att3: +3K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att5: PASSAL3VP'&&i==1"  (click)="add('+att5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att6: PASSTYPE1VP'&&i==1"  (click)="add('+att6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att7: M->3VP'&&i==1"  (click)="add('+att7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att8: TC->3VP'&&i==1"  (click)="add('+att8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att9: AT->2VP'&&i==1"  (click)="add('+att9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att10: 1PLA2VP'&&i==1"  (click)="add('+att10 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att11: 1M2VP'&&i==1"  (click)="add('+att11 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att12: 1TC4VP'&&i==1"  (click)="add('+att12 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att13: 1AL5VP'&&i==1"  (click)="add('+att13 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att14: 1G2VP'&&i==1"  (click)="add('+att14 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att15: 1PLA1O'&&i==1"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+            <div *ngIf="s[3][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+            {{ data.eco }}</div>
+          <div *ngIf="gamedetails.tt[10]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt2: +4PW'&&i==8" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt3: +1K,+1C'&&i==8" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt4: +1O,+1PW'&&i==8" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt5: MG->3VP'&&i==8" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt6: 1TYPE1K'&&i==8" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt7: 7VP'&&i==8" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt8: SHAC4'&&i==8" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[10]=='ltt9: 1O,1Q'&&i==8" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+
+
+          <div *ngIf="gamedetails.tt[15]=='终局计分1:总建筑数量最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[15]=='终局计分2:城市内总建筑最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[15]=='终局计分3:建筑地形最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[15]=='终局计分4:盖亚星球最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[15]=='终局计分5:所处星域最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[15]=='终局计分6:连接卫星最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf6.png" alt="" width="140" height="110">
+          </div>
+
+          <div *ngIf="gamedetails.tt[4]=='att1: +3O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att1: +5O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att2: +1Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att2: +2Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att3: +3K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att5: PASSAL3VP'&&i==1"  (click)="add('+att5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att6: PASSTYPE1VP'&&i==1"  (click)="add('+att6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att7: M->3VP'&&i==1"  (click)="add('+att7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att8: TC->3VP'&&i==1"  (click)="add('+att8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att9: AT->2VP'&&i==1"  (click)="add('+att9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att10: 1PLA2VP'&&i==1"  (click)="add('+att10 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att11: 1M2VP'&&i==1"  (click)="add('+att11 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att12: 1TC4VP'&&i==1"  (click)="add('+att12 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att13: 1AL5VP'&&i==1"  (click)="add('+att13 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att14: 1G2VP'&&i==1"  (click)="add('+att14 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att15: 1PLA1O'&&i==1"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+            <div *ngIf="s[4][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+          </div>
+        </td>
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+          {{ data.sci }}</div>
+          <div *ngIf="gamedetails.tt[11]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt2: +4PW'&&i==8" (click)="add('+ltt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt3: +1K,+1C'&&i==8" (click)="add('+ltt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt4: +1O,+1PW'&&i==8" (click)="add('+ltt4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt5: MG->3VP'&&i==8" (click)="add('+ltt5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt6: 1TYPE1K'&&i==8" (click)="add('+ltt6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt7: 7VP'&&i==8" (click)="add('+ltt7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt8: SHAC4'&&i==8" (click)="add('+ltt8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[11]=='ltt9: 1O,1Q'&&i==8" (click)="add('+ltt9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[16]=='终局计分1:总建筑数量最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[16]=='终局计分2:城市内总建筑最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[16]=='终局计分3:建筑地形最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[16]=='终局计分4:盖亚星球最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[16]=='终局计分5:所处星域最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[16]=='终局计分6:连接卫星最多'&&i==9">
+            <img class="mb-4" src="../../../assets/techtiles/zjjf6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att1: +3O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att1: +5O'&&i==1"  (click)="add('+att1 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att2: +1Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att2: +2Q,+5C'&&i==1"  (click)="add('+att2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att3: +3K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att3: +5K'&&i==1"  (click)="add('+att3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att5: PASSAL3VP'&&i==1"  (click)="add('+att5 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att6: PASSTYPE1VP'&&i==1"  (click)="add('+att6 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att7: M->3VP'&&i==1"  (click)="add('+att7 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att8: TC->3VP'&&i==1"  (click)="add('+att8 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att9: AT->2VP'&&i==1"  (click)="add('+att9 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att10: 1PLA2VP'&&i==1"  (click)="add('+att10 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att11: 1M2VP'&&i==1"  (click)="add('+att11 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att12: 1TC4VP'&&i==1"  (click)="add('+att12 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att13: 1AL5VP'&&i==1"  (click)="add('+att13 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att14: 1G2VP'&&i==1"  (click)="add('+att14 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att15: 1PLA1O'&&i==1"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div style="float: right" *ngFor="let s of this.gamedetails.sciencegrade;index as j">
+            <div *ngIf="s[5][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div *ngFor="let r of this.gamedetails.resource;index as i">
+    <div class="faction-board">
+      <div style="float: left; margin-right: 20px;">
+        <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
+        <div class="faction-info" style="width: 600px">
+          <div style="float: left"><span>{{r[2]}} <img class="res" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="res"  src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img  class="res" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q , {{r[11]}} VP <button nz-button [nzType]="'dashed'" (click)="showModal(i)"><span>分数详情</span></button>,{{r[6]}}/{{r[7]}}/{{r[8]}} PW,{{r[16]}},{{r[14]}}Pg ,{{r[12]}}/{{r[13]}} GTU</span></div>
+          <table class="building-table">
+            <tr>
+              <td>M</td>
+              <td>TC</td>
+              <td>RL</td>
+              <td>SH</td>
+              <td>AC1</td>
+              <td>AC2</td>
+            </tr>
+            <tr>
+              <td>{{gamedetails.buildingcount[i][0]}}/8</td>
+              <td>{{gamedetails.buildingcount[i][1]}}/4</td>
+              <td>{{gamedetails.buildingcount[i][2]}}/3</td>
+              <td>{{gamedetails.buildingcount[i][3]}}/1</td>
+              <td>{{gamedetails.buildingcount[i][4]}}/1</td>
+              <td>{{gamedetails.buildingcount[i][5]}}/1</td>
+            </tr>
+          </table>
+          <div *ngIf="this.gamedetails.game.round!='6'">
+            <table class="income-table">
+              <tr>
+                <td>收入：</td>
+                <td>{{gamedetails.income[i][0]}} O</td>
+                <td>{{gamedetails.income[i][1]}} C</td>
+                <td>{{gamedetails.income[i][2]}} K</td>
+                <td>{{gamedetails.income[i][3]}} Q</td>
+                <td>{{gamedetails.income[i][4]}} PW</td>
+                <td>{{gamedetails.income[i][5]}} PWB</td>
+              </tr>
+            </table>
+          </div>
+          <div *ngIf="this.gamedetails.game.round=='6'&&gamedetails.currentuserid!=='游戏结束'" >
+            预计最终得分: {{r[15]}}
+          </div>
+        </div>
+      </div>
+
+      <div style="float: left; margin-right: 20px;">
+        <div style = "float: left" *ngFor="let tt of this.gamedetails.playeraction[i]">
+          <div *ngIf="tt[0]=='ltt1'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110" (click)="add('-ltt1 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt2'" style="position: relative;" >
+            <img class="mb-4" src="../../../assets/techtiles/ltt2.png" alt="" width="140" height="110" (click)="add('actionltt2 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt3'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt3.png" alt="" width="140" height="110" (click)="add('-ltt3 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt4'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt4.png" alt="" width="140" height="110" (click)="add('-ltt4 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt5'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt5.png" alt="" width="140" height="110" (click)="add('-ltt5 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt6'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt6.png" alt="" width="140" height="110" (click)="add('-ltt6 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt7'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt7.png" alt="" width="140" height="110" (click)="add('-ltt7 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt8'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt8.png" alt="" width="140" height="110" (click)="add('-ltt8 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt9'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt9.png" alt="" width="140" height="110" (click)="add('-ltt9 ')">
+          </div>
+          <div *ngIf="tt[0]=='ltt1minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt1.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt2minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt2.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt3minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt3.png" alt="" width="70" height="55">
+          </div>
+          <div  *ngIf="tt[0]=='ltt4minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt4.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt5minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt5.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt6minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt6.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt7minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt7.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt8minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt8.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='ltt9minus'">
+            <img class="mb-4 fg" src="../../../assets/techtiles/ltt9.png" alt="" width="70" height="55">
+          </div>
+          <div *ngIf="tt[0]=='att1'&&this.gamedetails.game.gamemode.charAt(0)!=='0'" (click)="add('actionatt1 ')">
+            <img class="mb-4 fg" src="../../../assets/techtiles/att1.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att1'&&this.gamedetails.game.gamemode.charAt(0)==='0'" (click)="add('actionatt1 ')">
+            <img class="mb-4 fg" src="../../../assets/techtiles/att1(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att2'&&this.gamedetails.game.gamemode.charAt(0)!=='0'" (click)="add('actionatt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att2'&&this.gamedetails.game.gamemode.charAt(0)==='0'" (click)="add('actionatt2 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att2(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att3'&&this.gamedetails.game.gamemode.charAt(0)!=='0'" (click)="add('actionatt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att3'&&this.gamedetails.game.gamemode.charAt(0)==='0'" (click)="add('actionatt3 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att3(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att4'">
+            <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att5'">
+            <img class="mb-4" src="../../../assets/techtiles/att5.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att6'">
+            <img class="mb-4" src="../../../assets/techtiles/att6.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att7'">
+            <img class="mb-4" src="../../../assets/techtiles/att7.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att8'">
+            <img class="mb-4" src="../../../assets/techtiles/att8.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att9'">
+            <img class="mb-4" src="../../../assets/techtiles/att9.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att10'">
+            <img class="mb-4" src="../../../assets/techtiles/att10.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att11'">
+            <img class="mb-4" src="../../../assets/techtiles/att11.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att12'">
+            <img class="mb-4" src="../../../assets/techtiles/att12.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att13'">
+            <img class="mb-4" src="../../../assets/techtiles/att13.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att14'">
+            <img class="mb-4" src="../../../assets/techtiles/att14.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.charAt(0) === '0'">
+            <img class="mb-4" src="../../../assets/techtiles/att15(yuan).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att15'&&  gamedetails.game.gamemode.length === 3&& gamedetails.game.gamemode.charAt(0) !== '0'">
+            <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '1'">
+            <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '2'">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='ltt2used'">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att1used'">
+            <img class="mb-4" src="../../../assets/techtiles/att1(used).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att2used'">
+            <img class="mb-4" src="../../../assets/techtiles/att2(used).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att3used'">
+            <img class="mb-4" src="../../../assets/techtiles/att3(used).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='ac2'">
+            <div  class="helptile" (click)="add('actionac2 ')">
+              <div style="text-align:center"><font size="3" color="black">ac2</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">{{tt[1]}}</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='ac2used'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">ac2</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actiond'" (click)="add('actiond ')">
+            <div  class="helptile">
+              <div style="text-align:center"><font size="3" color="black">actiond</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">可用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionz'" (click)="add('actionz')">
+            <div  class="helptile">
+              <div style="text-align:center"><font size="3" color="black">actionz</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">可用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionm'" (click)="add('actionm ')">
+            <div  class="helptile">
+              <div style="text-align:center"><font size="3" color="black">actionm</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">可用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionmused'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">actionm</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionf'" (click)="add('actionf')">
+            <div  class="helptile">
+              <div style="text-align:center"><font size="3" color="black">actionf</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">可用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionfused'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">actionf</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actiont'" (click)="add('actiont')">
+            <div  class="helptile">
+              <div style="text-align:center"><font size="3" color="black">actiont</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">可用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actiontused'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">actiont</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionl'" (click)="add('actionl')">
+            <div  class="helptile">
+              <div style="text-align:center"><font size="3" color="black">actionl</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">可用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionlused'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">actionl</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actiondused'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">actiond</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='actionzused'">
+            <div  class="helptile" [ngStyle]="{'background':'grey'}">
+              <div style="text-align:center"><font size="3" color="black">actionz</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">已使用</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='1'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town1 ')">
+              <div style="text-align:center"><font size="3" color="black">Town1</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+              <div style="text-align:center"><font size="3" color="black">2O</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='2'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town2 ')">
+              <div style="text-align:center"><font size="3" color="black">Town2</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">7VP</font></div>
+              <div style="text-align:center"><font size="3" color="black">6C</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='3'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town3 ')">
+              <div style="text-align:center"><font size="3" color="black">Town3</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+              <div style="text-align:center"><font size="3" color="black">1Q</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='4'">
+            <div class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town4 ')">
+              <div style="text-align:center"><font size="3" color="black">Town4</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">6VP</font></div>
+              <div style="text-align:center"><font size="3" color="black">2K</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='5'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town5 ')">
+              <div style="text-align:center"><font size="3" color="black">Town5</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">8VP</font></div>
+              <div style="text-align:center"><font size="3" color="black">2PWB</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='6'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town6 ')">
+              <div style="text-align:center"><font size="3" color="black">Town6</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">12VP</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='7'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town7 ')">
+              <div style="text-align:center"><font size="3" color="black">Town7</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">1O,1K,2C</font></div>
+            </div>
+          </div>
+          <div *ngIf="tt[0]=='71'">
+            <div  class="helptile" [ngStyle]="{'background':tt[1]}" (click)="add('town7 ')">
+              <div style="text-align:center"><font size="3" color="black">Town7</font></div>
+              <br>
+              <div style="text-align:center"><font size="3" color="black">4VP</font></div>
+              <div style="text-align:center"><font size="3" color="black">1O,1K,2C</font></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div *ngIf="windowsize<1000">
+<div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
+  <h4 style="color: black;">
+    {{record}}
+  </h4>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible0" (nzOnCancel)="handleCancel0()" (nzOnOk)="handleOk0()">
+  <div *ngFor="let str of gamedetails.vpdetail[0]">
+    <p>{{str}}</p>
+  </div>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisible1" nzTitle="The first Modal" (nzOnCancel)="handleCancel1()" (nzOnOk)="handleOk1()">
+  <div *ngFor="let str of gamedetails.vpdetail[1]">
+    <p>{{str}}</p>
+  </div>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisible2" nzTitle="The first Modal" (nzOnCancel)="handleCancel2()" (nzOnOk)="handleOk2()">
+  <div *ngFor="let str of gamedetails.vpdetail[2]">
+    <p>{{str}}</p>
+  </div>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisible3" nzTitle="The first Modal" (nzOnCancel)="handleCancel3()" (nzOnOk)="handleOk3()">
+  <div *ngFor="let str of gamedetails.vpdetail[3]">
+    <p>{{str}}</p>
+  </div>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleBuild" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkBuild()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeTc" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeShMad" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeSh()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisiblePass" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkPass()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleAdvance" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkAdvance()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleGaia" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkGaia()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisiblePWQ" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkPWQ()">
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeAC" [(nzTitle)] = "this.modeltitle" [nzFooter]="modalFooterAC"
+          (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
+  <ng-template #modalFooterAC>
+    <span>选择升级建筑: </span>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeAC1()">升级为AC1(收入科技)</button>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeAC2()">升级为AC2(获得资源)</button>
+  </ng-template>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeRLSH" [(nzTitle)] = "this.modeltitle" [nzFooter]="modalFooter"
+          (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
+  <ng-template #modalFooter>
+    <span>选择升级建筑: </span>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeRl()">升级为RL</button>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeSh()">升级为SH</button>
+  </ng-template>
+</nz-modal>
+<nz-modal [(nzVisible)]="isVisibleUpgradeMAD" [(nzTitle)] = "this.modeltitle" [nzFooter]="modalFooterMAD"
+          (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
+  <ng-template #modalFooterMAD>
+    <span>选择升级建筑: </span>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeRl()">升级为RL</button>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeAC1()">升级为AC1(收入科技)</button>
+    <button nz-button nzType="primary" (click)="handleOkUpgradeAC2()">升级为AC2(获得资源)</button>
+  </ng-template>
+</nz-modal>
+{{this.shoujixinghao}}
+</div>

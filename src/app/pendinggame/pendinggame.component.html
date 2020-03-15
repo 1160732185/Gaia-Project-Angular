@@ -1,0 +1,74 @@
+<p>pendinggame works!</p>
+<p style="color: red">{{errormessage}}</p>
+<nz-table #basicTable [nzData]="Pgames" [nzPageSize]="50">
+  <thead>
+  <tr>
+    <th>对局名</th>
+    <th>游戏模式</th>
+    <th>玩家一(Admin)</th>
+    <th>玩家二</th>
+    <th>玩家三</th>
+    <th>玩家四</th>
+    <th>游戏描述</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data;index as i" >
+    <td>{{ data.gameid }}</td>
+    <td>{{ data.gamemode }}</td>
+    <td>{{ data.player1 }}</td>
+    <td>{{ data.player2 }}</td>
+    <td>{{ data.player3 }}</td>
+    <td>{{ data.player4 }}</td>
+    <td>{{ data.des}}</td>
+    <td>
+      操作：
+      <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="enterPGame(data.gameid)">加入！</a>
+      <div style="float: right" *ngIf="data.player1 === localStorage.getItem('current_user')">
+        <a (click)="deletePGame(data.gameid)">删除</a></div>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+<nz-table #basicTable2 [nzData]="League" [nzPageSize]="50">
+  <thead>
+  <tr>
+    <th>联赛名</th>
+    <th>游戏模式</th>
+    <th>玩家一</th>
+    <th>玩家二</th>
+    <th>玩家三</th>
+    <th>玩家四</th>
+    <th>玩家五</th>
+    <th>玩家六</th>
+    <th>玩家七</th>
+    <th>管理员</th>
+    <th>游戏描述</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable2.data;index as i" >
+    <td><a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a></td>
+    <td>{{ data.gamemode }}</td>
+    <td>{{ data.player1 }}</td>
+    <td>{{ data.player2 }}</td>
+    <td>{{ data.player3 }}</td>
+    <td>{{ data.player4 }}</td>
+    <td>{{ data.player5 }}</td>
+    <td>{{ data.player6 }}</td>
+    <td>{{ data.player7 }}</td>
+    <td>{{ data.admin }}</td>
+    <td>{{ data.des}}</td>
+    <td>
+      操作：
+      <nz-divider nzType="vertical"></nz-divider>
+      <a (click)="enterPLeague(data.leagueid)">加入！</a>
+<!--      <div style="float: right" *ngIf="data.player1 === localStorage.getItem('current_user')">
+        <a (click)="deletePGame(data.gameid)">删除</a></div>-->
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

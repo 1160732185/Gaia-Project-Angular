@@ -1,0 +1,27 @@
+<p>league works!</p>
+<nz-table #basicTable [nzData]="leaguedetail" [nzPageSize]="50">
+  <thead>
+  <tr>
+    <th>对局名</th>
+    <th><a routerLink="/game/{{this.leagueid}}_G1">{{this.leagueid}}_G1</a></th>
+    <th><a routerLink="/game/{{this.leagueid}}_G2">{{this.leagueid}}_G2</a></th>
+    <th><a routerLink="/game/{{this.leagueid}}_G3">{{this.leagueid}}_G3</a></th>
+    <th><a routerLink="/game/{{this.leagueid}}_G4">{{this.leagueid}}_G4</a></th>
+    <th><a routerLink="/game/{{this.leagueid}}_G5">{{this.leagueid}}_G5</a></th>
+    <th><a routerLink="/game/{{this.leagueid}}_G6">{{this.leagueid}}_G6</a></th>
+    <th><a routerLink="/game/{{this.leagueid}}_G7">{{this.leagueid}}_G7</a></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data;index as i;" >
+    <td>{{ data[0] }}</td>
+    <td><div [ngStyle]="{'background-color':data[3]}">{{ data[2] }}</div></td>
+    <td><div [ngStyle]="{'background-color':data[5]}">{{ data[4] }}</div></td>
+    <td><div [ngStyle]="{'background-color':data[7]}">{{ data[6] }}</div></td>
+    <td><div [ngStyle]="{'background-color':data[9]}">{{ data[8] }}</div></td>
+    <td><div [ngStyle]="{'background-color':data[11]}">{{ data[10] }}</div></td>
+    <td><div [ngStyle]="{'background-color':data[13]}">{{ data[12] }}</div></td>
+    <td><div [ngStyle]="{'background-color':data[15]}">{{ data[14] }}</div></td>
+  </tr>
+  </tbody>
+</nz-table>

@@ -3,6 +3,7 @@
   <img class="mb-4" src="" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal" >登录盖亚计划</h1>
   <p style="color:rebeccapurple"></p>
+  <p><font color="#dc143c" size="5">{{showmessage}}</font>
   <label class="sr-only" >Username</label>
   <label>
     <input #userid type="text" name="id" class="form-control" placeholder="Username"
@@ -13,13 +14,13 @@
     <input #userpassword type="password" name="password"  class="form-control" placeholder="Password"
             required="">
   </label>
-  <button nz-button class="btn btn-lg btn-primary btn-block" (click)="userLogin(userid.value,userpassword.value)" >Sign in</button>
+  <button nz-button class="btn btn-lg btn-primary btn-block" (click)="userLogin(userid.value,userpassword.value)" >登录</button>
   <br>
   <br>
   <br>
   <br>
 <!--  <h3>{{user.userid}}</h3>
   <h3>{{user.userpassword}}</h3>-->
-  <button class="btn btn-lg btn-primary btn-block" (click)="showUser()" >Show User</button>
-  <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+  <button class="btn btn-lg btn-primary btn-block" (click)="signin(userid.value,userpassword.value)" >注册(用户名与密码填好后点击)</button>
+  <p class="mt-5 mb-3 text-muted">© 2019-2020</p>
 </form>

@@ -1,7 +1,14 @@
 <p>creategame works!</p>
-<nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择游戏模式" [(ngModel)]="gamemode">
-  <nz-option nzLabel="原版游戏" nzValue="0.0"></nz-option>
-  <nz-option nzLabel="1.0补丁(高级科技版 ，量子顶，种族平衡)" nzValue="1.0"></nz-option>
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择游戏版本" [(ngModel)]="gamemode">
+  <nz-option nzLabel="原版游戏" nzValue="0"></nz-option>
+  <nz-option nzLabel="1.0(游戏,种族平衡)" nzValue="2.2"></nz-option>
+  <nz-option nzLabel="1.0+额外7个新种族（暂不推荐使用）" nzValue="3.2"></nz-option>
+</nz-select>
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择平衡方式"  [(ngModel)]="gamebalance">
+  <nz-option nzLabel="第二价格竞拍" nzValue="0"></nz-option>
+  <nz-option nzLabel="末位旋转地图" nzValue="2"></nz-option>
+  <nz-option nzLabel="随机顺位" nzValue="1"></nz-option>
+  <nz-option nzLabel="单人练习" nzValue="3"></nz-option>
 </nz-select>
 <form [formGroup]="gameinfo">
   <p><font color="#dc143c" size="5">{{createmessage}}</font>
@@ -12,7 +19,7 @@
   </nz-form-label>
 <br>
   <nz-form-label>
-    player1 Name:
+    player1 (Admin) Name:
     <input #player1 nz-input type="text" formControlName="player1">
   </nz-form-label>
   <br>
@@ -30,6 +37,11 @@
     player4 Name:
     <input #player4 nz-input type="text" formControlName="player4">
   </nz-form-label>
+    <br>
+    <nz-form-label>
+      游戏描述（以让其他玩家加入）：
+      <input #describe nz-input type="text" formControlName="describe">
+    </nz-form-label>
   <br>
-  <button type="submit" (click)="createGame(gameId.value,player1.value,player2.value,player3.value,player4.value,gamemode)"> 创建新游戏</button>
+  <button type="submit" (click)="createGame(gameId.value,player1.value,player2.value,player3.value,player4.value,gamemode,gamebalance,describe.value)"> 创建新游戏</button>
 </form>

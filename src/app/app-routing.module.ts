@@ -8,6 +8,9 @@ import {TextngzorroComponent} from './textngzorro/textngzorro.component';
 import {RaceinfoComponent} from './raceinfo/raceinfo.component';
 import {CreategameComponent} from './creategame/creategame.component';
 import {FileComponent} from './file/file.component';
+import {MainpageMobileComponent} from './mainpage-mobile/mainpage-mobile.component';
+import {PendinggameComponent} from './pendinggame/pendinggame.component';
+import {LeagueComponent} from './league/league.component';
 
 
 const routes: Routes = [
@@ -18,8 +21,11 @@ const routes: Routes = [
   { path: 'ngz', component: TextngzorroComponent },
   { path: 'race', component: RaceinfoComponent },
   { path: 'creategame', component: CreategameComponent },
+  { path: 'pendinggame', component: PendinggameComponent },
   { path: 'game/:gameid', component: GaiamapComponent },
+  { path: 'league/:leagueid', component: LeagueComponent },
   { path: 'file', component: FileComponent },
+  { path: 'mainpagemobile', component: MainpageMobileComponent},
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

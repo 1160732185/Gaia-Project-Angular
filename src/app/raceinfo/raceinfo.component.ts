@@ -8,7 +8,8 @@ import {GameService} from '../game.service';
 })
 export class RaceinfoComponent implements OnInit {
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService) {
+  }
   top: string[][];
   ngOnInit() {
     this.getTop();

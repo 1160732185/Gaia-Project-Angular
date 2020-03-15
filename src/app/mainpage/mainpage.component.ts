@@ -18,42 +18,25 @@ export class MainpageComponent implements OnInit {
   game: Game;
   gr: string;
   gameid: string;
+  localStorage: object;
   private myGames: Lobby[];
-  listOfData = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+
 
   constructor(private gameService: GameService, private modalService: NzModalService) {
+    this.userid = localStorage.getItem('current_user');
+    this.showGames(this.userid);
+    clearInterval(IntervalMessage.intervalMsg);
+    IntervalMessage.intervalMsg = setInterval(() => {
+      this.showGames(this.userid);
+    }, 20000);
   }
 
   ngOnInit() {
-    this.abc = ['1111', '2222', '33333'];
-    this.userid = localStorage.getItem('current_user');
-    this.showGames(this.userid);
-    IntervalMessage.intervalMsg = setInterval(() => {
-      console.log('ssss');
-      this.showGames(this.userid);
-    }, 5000);
+
   }
 
   showGames(player: string) {
+    this.localStorage = localStorage;
     console.log('show games');
     this.gameService.showLobby(player)
       .subscribe((data) => {
@@ -98,5 +81,12 @@ export class MainpageComponent implements OnInit {
   }
   handleCancel() {
     this.isVisible = false;
+  }
+
+  rollBack(gameid: any) {
+    this.gameService.rollBack(gameid)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
   }
 }

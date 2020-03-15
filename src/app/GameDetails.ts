@@ -23,4 +23,8 @@ export class GameDetails {
   playeraction: string[][][];
   townremain: string[];
   satellite: string[][][];
+  fasts: string[];
+  bid: string[];
+  bugs: string[][];
+  gamemodename: string;
 }

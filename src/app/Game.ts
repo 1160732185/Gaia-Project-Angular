@@ -20,4 +20,5 @@ export class Game {
  gamerecord: string;
  currentplayer: string;
  gamemode: string;
+ admin: string;
 }

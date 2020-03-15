@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GameService} from '../game.service';
 import {ActivatedRoute} from '@angular/router';
 import {GameDetails} from '../GameDetails';
 import {ActionService} from '../action.service';
 import {IntervalMessage} from '../IntervalMessage';
+import {AppComponent} from '../app.component';
+import {HttpResponse} from '@angular/common/http';
+import {Game} from '../Game';
 
 @Component({
   selector: 'app-gaiamap',
@@ -11,105 +14,173 @@ import {IntervalMessage} from '../IntervalMessage';
   styleUrls: ['./gaiamap.component.css']
 })
 export class GaiamapComponent implements OnInit {
-  constructor(private actionservice: ActionService, private gameService: GameService, private route: ActivatedRoute) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private actionservice: ActionService, private gameService: GameService, private route: ActivatedRoute, private appComponent: AppComponent) {
+    this.gamedetails = new GameDetails();
+    this.gamedetails.game = new Game();
+    this.gamedetails.game.gamemode = '';
+    this.gamedetails.townremain = ['0', '0', '0', '0', '0', '0'];
+    this.gamedetails.vpdetail = [[], [], [], []];
+    this.gamedetails.roundscore = [];
+    this.windowsize = window.innerWidth;
+    this.route.paramMap.subscribe(params => {
+      console.log('clearrrrrr');
+      clearInterval(IntervalMessage.intervalMsg);
+      this.gameid = params.get('gameid');
+      this.showGame(this.gameid);
+      console.log('iv' + this.inputValue);
+      this.actionservice.showlog(this.gameid, this.user)
+        .subscribe((data) => {console.log('ivvv' + this.inputValue); this.inputValue = data.body.message; });
+    });
+    const th: any = this;
+    if (this.windowsize < 1000) {
+      IntervalMessage.intervalMsg = setInterval(() => {
+        th.route.paramMap.subscribe(params => {
+          th.gameid = params.get('gameid');
+          th.showGame(th.gameid);
+        });
+      }, 60000);
+    } else {
+      IntervalMessage.intervalMsg = setInterval(() => {
+        th.route.paramMap.subscribe(params => {
+          th.gameid = params.get('gameid');
+          th.showGame(th.gameid);
+        });
+      }, 10000);
+    }
+  }
+  windowsize: number;
+  loginrace: string;
   gameid: string;
   science: string;
   action: string;
   errormessage: string;
+  o = 'O';
   actionorder = '';
   isVisible0 = false;
   isVisible1 = false;
   isVisible2 = false;
   isVisible3 = false;
   isVisibleBuild = false;
+  shoujixinghao = '';
   isVisibleAdvance = false;
   isVisibleUpgradeTc = false;
   isVisibleUpgradeRLSH = false;
+  isVisibleUpgradeShMad = false;
   isVisibleUpgradeAC = false;
   isVisiblePass = false;
   isVisibleGaia = false;
   isVisiblePWQ = false;
+  isVisibleUpgradeMAD = false;
   gamedetails: GameDetails;
   user: string;
   localStorage: object;
-  issss: any;
+  canvass: any;
+  inputValue = 'abc';
   listOfData;
+  dddiv: any;
   modeltitle: string;
   location = '';
+  gamerecordlength: number;
   qtop = '4Q';
+  selectedFsAct: any;
+  selectedBugAct: any;
+  bid0: any;
   chooserace(gameid: string, race: string, avarace: number) {
     // tslint:disable-next-line:max-line-length
     if (this.gamedetails.avarace[avarace] === false) {// 如果种族还没被选择&& this.gamedetails.currentuserid === localStorage.getItem('current_user')
-      this.actionservice.chooserace(gameid, race).subscribe((data) => {
+      this.actionservice.chooserace(gameid, race, localStorage.getItem('current_user')).subscribe((data) => {
         this.showGame(this.gameid);
       });
     }
   }
   click(event) {
+    let adjustmobile = 0;
+    if (this.windowsize < 1000) {
+      adjustmobile = 10;
+    }
     let x = 0;
     let y = 0;
     const element = document.getElementById('myCanvas');
     const scroll = document.documentElement.scrollTop - document.getElementById('myCanvas').offsetTop * 0.8 + 82.4;
     console.log('ost' + document.getElementById('myCanvas').offsetTop);
-    const eventleft = 100;
+    let eventleft = 100;
+    if (!this.appComponent.isCollapsed) { eventleft += 120; }
+    if (this.windowsize < 1000) {eventleft = 0; }
     // tslint:disable-next-line:max-line-length
     const row: string[][] = [[''], ['A', '310' , '360' , '410'], ['B' , '285' , '335' , '385' , '435'], ['C' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610'], ['D' , '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'],
       // tslint:disable-next-line:max-line-length
       ['E' , '110' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['F', '85' , '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'], ['G' , '110' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610'], ['H' , '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'], ['I' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['J', '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635' , '685'], ['K', '110' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['L', '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'], ['M', '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['N', '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635' , '685'], ['O', '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660' , '710'], ['P', '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635' , '685'], ['Q', '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['R', '185' , '235', '285' , '335' , '385' , '435' , '485' , '535'], ['S', '360' , '410' , '460' , '510'], ['T' , '385' , '435' , '485']];
-    const p1 = 135 - scroll;
-    const p2 = 185 - scroll;
-    console.log(event.clientY);
-    console.log('p1' + p1 + ' - ' + p2);
+    console.log('x' + event.clientX + 'y' + event.clientY);
     for (let i = 1; i <= 20; i++) {
-      if (event.clientX > eventleft + (i - 1) * 45 && event.clientX <= eventleft + i * 45) {
+      if ((event.clientX - eventleft) > (i - 1) * 45 && (event.clientX - eventleft) <= i * 45) {
         x = i;
         this.location = row[i][0];
         for (let j = 1; j <= row[i].length; j++) {
-          if (event.clientY > Number(row[i][j]) - scroll && event.clientY <= (Number(row[i][j]) + 50 - scroll)) {
+          // tslint:disable-next-line:max-line-length
+          if ((event.clientY + scroll) + adjustmobile > Number(row[i][j])  && (event.clientY + scroll) + adjustmobile <= (Number(row[i][j]) + 50)) {
             this.location += j;
             y = j;
           }
         }
       }
     }
-    console.log(this.location);
+    console.log('结果是' + this.location);
     if (y === 0) { return; }
     // tslint:disable-next-line:max-line-length
-    if (this.actionorder.substring(0, 4) === 'form' || this.actionorder.substring(0, 7) === 'actiond' || this.actionorder.substring(0, 7) === 'actionz' || this.actionorder.substring(0, 7) === 'actionf') {this.add(' ' + this.location); } else {
+    if (this.actionorder.substring(0, 4) === 'form' || this.actionorder.substring(0, 7) === 'actiond' || this.actionorder.substring(0, 7) === 'actiont' || this.actionorder.substring(0, 7) === 'actionf') {this.add(' ' + this.location); } else if (this.actionorder.substring(0, 7) === 'actionz') {
+      this.add(' ' + this.location + ' ');
+    } else {
       // tslint:disable-next-line:max-line-length
       if ((this.gamedetails.structure[x][y] === null || this.gamedetails.structure[x][y] === 'gtu') && this.gamedetails.mapsituation[x][y] !== '#000000' && this.gamedetails.mapsituation[x][y] !== '#9400d3') {
         this.modeltitle = '在' + this.location + '建造矿场基地？';
         this.isVisibleBuild = true;
-      }
-      if (this.gamedetails.structure[x][y] === null && this.gamedetails.mapsituation[x][y] === '#9400d3') {
+      } else if (this.loginrace === '亚特兰斯星人' && this.gamedetails.structurecolor[x][y] !== '#4275e5' && this.gamedetails.mapsituation[x][y] !== '#000000' && this.gamedetails.mapsituation[x][y] !== '#9400d3') {
+          this.modeltitle = '寄生' + this.location + '？';
+          this.isVisibleBuild = true;
+        } else if (this.gamedetails.structure[x][y] === null && this.gamedetails.mapsituation[x][y] === '#9400d3') {
         this.modeltitle = '盖亚' + this.location + '？';
         this.isVisibleGaia = true;
-      }
+      } else
       if (this.gamedetails.structure[x][y] === 'm') {
         this.modeltitle = '将' + this.location + '升级为贸易站？';
         this.isVisibleUpgradeTc = true;
-      }
-      if (this.gamedetails.structure[x][y] === 'tc') {
+      } else
+      if (this.gamedetails.structure[x][y] === 'tc' && this.loginrace === '疯狂机器') {
+        console.log(this.loginrace);
+        this.modeltitle = '将' + this.location + '升级为实验室/大学院？';
+        this.isVisibleUpgradeMAD = true;
+      } else if (this.gamedetails.structure[x][y] === 'tc') {
+        console.log(this.loginrace);
         this.modeltitle = '将' + this.location + '升级为实验室/要塞？';
         this.isVisibleUpgradeRLSH = true;
-      }
-      if (this.gamedetails.structure[x][y] === 'rl') {
+      } else
+      if (this.gamedetails.structure[x][y] === 'rl' && this.loginrace === '疯狂机器') {
+        this.modeltitle = '将' + this.location + '升级为要塞？';
+        this.isVisibleUpgradeShMad = true;
+      } else if (this.gamedetails.structure[x][y] === 'rl') {
         this.modeltitle = '将' + this.location + '升级为大学院1/2？';
         this.isVisibleUpgradeAC = true;
       }
     }
-    console.log(location);
   }
-  doaction(gameid: string, action: string) {
+  doaction(gameid: string, action: string, userid: string) {
     action = action.replace('+', '%2B');
     // tslint:disable-next-line:max-line-length  if中添加localStorage.getItem('current_user') === this.gamedetails.currentuserid
-    if (true) {this.actionservice.doaction(gameid, action).subscribe((data) => {if (data.body.message !== '成功') {this.errormessage = data.body.message; } else {this.actionorder = ''; this.errormessage = null; }this.showGame(this.gameid); }); } else {
-      console.log(localStorage.getItem('current_user'));
+    if (true) {this.actionservice.doaction(gameid, action, userid).subscribe((data) => {if (data.body.message !== '成功') {this.errormessage = data.body.message; } else {this.actionorder = ''; this.errormessage = null; }this.showGame(this.gameid); }); } else {
+      // console.log(localStorage.getItem('current_user'));
     }
   }
   leechpower(gameid: string, giverace: string, receiverace: string, location: string, structure: string, accept: string) {
     // tslint:disable-next-line:max-line-length
     this.actionservice.leechpower(gameid, giverace, receiverace, location, structure, accept).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
+  }
+  savelog() {
+    console.log('iv' + this.inputValue);
+    this.actionservice.savelog(this.gamedetails.game.gameId, this.user, this.inputValue).subscribe((data) => {console.log(data); });
+  }
+  dofastaction() {
+    this.actionorder += this.selectedFsAct + '.';
   }
   add(order: string): void {
     this.actionorder += order;
@@ -154,29 +225,36 @@ export class GaiamapComponent implements OnInit {
   }
   handleOkUpgradeRl(): void {
     this.actionorder =  'upgrade ' + this.location + ' to rl ';
-    this.isVisibleUpgradeRLSH = false;
+    this.isVisibleUpgradeRLSH = false; this.isVisibleUpgradeMAD = false;
   }
   handleOkUpgradeSh(): void {
     this.actionorder =  'upgrade ' + this.location + ' to sh ';
     this.isVisibleUpgradeRLSH = false;
+    this.isVisibleUpgradeShMad = false;
   }
   handleOkUpgradeAC1(): void {
     this.actionorder =  'upgrade ' + this.location + ' to ac1 ';
-    this.isVisibleUpgradeAC = false;
+    this.isVisibleUpgradeAC = false; this.isVisibleUpgradeMAD = false;
   }
   handleOkUpgradeAC2(): void {
     this.actionorder =  'upgrade ' + this.location + ' to ac2 ';
-    this.isVisibleUpgradeAC = false;
+    this.isVisibleUpgradeAC = false; this.isVisibleUpgradeMAD = false;
   }
   handleOkPass(): void {
     this.actionorder =  'pass ' + this.location;
     this.isVisiblePass = false;
   }
 
-  pass(bon: string): void {
-    this.modeltitle =  'pass ' + bon + '?';
-    this.location = bon;
-    this.isVisiblePass = true;
+  pass(bon: string, color: string): void {
+    if (bon === 'BON1' && color !== '#FFFFFF') {
+    this.actionorder += 'actionbon1 ';
+    } else if (bon === 'BON2' && color !== '#FFFFFF') {
+      this.actionorder += 'actionbon2 ';
+    } else {
+      this.modeltitle =  'pass ' + bon + '?';
+      this.location = bon;
+      this.isVisiblePass = true;
+    }
   }
 
   pwqaction(no: string): void {
@@ -203,6 +281,8 @@ export class GaiamapComponent implements OnInit {
     this.isVisibleGaia = false;
     this.isVisiblePWQ = false;
     this.isVisibleUpgradeRLSH = false;
+    this.isVisibleUpgradeMAD = false;
+    this.isVisibleUpgradeShMad = false;
     this.isVisibleUpgradeAC = false;
   }
 
@@ -233,18 +313,24 @@ export class GaiamapComponent implements OnInit {
   }
 
   showGame(gameid: string) {
+    this.canvass = document.getElementById('myCanvas');
+/*    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { this.canvass.height = 500; }*/
     this.localStorage = localStorage;
     this.user = localStorage.getItem('current_user');
-    console.log('show special game');
-    this.gameService.showGame(gameid)
+    this.gameService.showGame(gameid, this.user)
       .subscribe((data) => {
+        this.gamerecordlength = data.gamerecord.length;
         this.gamedetails = data;
-        if (this.gamedetails.game.gamemode === '1.0') { this.qtop = '4Q,1Q1VP'; }
-        console.log(this.gamedetails.townbuilding);
+        this.bid0 = data.bid[0];
+        console.log(data);
+        for (let i = 0 ; i <= 3 ; i++) {
+          if (this.user === this.gamedetails.resource[i][0]) { this.loginrace = this.gamedetails.resource[i][1]; }
+            }
+        if (this.gamedetails.game.gamemode.charAt(0) !== '0') { this.qtop = '4Q,1Q1VP'; }
         this.listOfData = [
           {
             dengji: '等级5',
-            terra: 'TerraTown:' + this.gamedetails.tt[17],
+            terra: 'Town:' + this.gamedetails.tt[17],
             navi: 'BlackStar,4Ship',
             quan: this.qtop,
             gaia: '4VP,1G1VP',
@@ -333,13 +419,20 @@ export class GaiamapComponent implements OnInit {
             sci:  this.gamedetails.tt[16],
           },
         ];
-        console.log(this.gamedetails);
-        console.log(document.getElementById('roundscore0'));
+     /*   console.log(document.getElementById('roundscore0'));*/
+        document.getElementById('roundscore1') .style.backgroundColor = 'white';
+        document.getElementById('roundscore2') .style.backgroundColor = 'white';
+        document.getElementById('roundscore3') .style.backgroundColor = 'white';
+        document.getElementById('roundscore4') .style.backgroundColor = 'white';
+        document.getElementById('roundscore5') .style.backgroundColor = 'white';
+        document.getElementById('roundscore6') .style.backgroundColor = 'white';
         document.getElementById('roundscore' + this.gamedetails.game.round).style.backgroundColor = 'Khaki';
         const c: any = document.getElementById('myCanvas');
         const ctx = c.getContext('2d');
         ctx.clearRect(0, 0, c.width, c.height);
+        // ctx.scale(0.72, 0.72);
         ctx.scale(0.72, 0.72);
+        this.shoujixinghao = navigator.userAgent;
         for (let i = 1 ; i < 4 ; i++) {
           this.drawPolygon(ctx, {
             x: 52,
@@ -600,6 +693,7 @@ export class GaiamapComponent implements OnInit {
             coordinate: 'T' + i
           });
         }
+/*        ctx.scale(1 / 0.72, 1 / 0.72);*/
         ctx.scale(1 / 0.72, 1 / 0.72);
 /*        const cc: any = document.getElementById('mCanvas');
         const cctx = cc.getContext('2d');
@@ -608,21 +702,8 @@ export class GaiamapComponent implements OnInit {
         cctx.drawImage(img, 0, 0);*/
       });
   }
+
   ngOnInit() {
-    clearInterval(IntervalMessage.intervalMsg);
-    this.route.paramMap.subscribe(params => {
-      this.gameid = params.get('gameid');
-      this.showGame(this.gameid); });
-    const th: any = this;
-    IntervalMessage.intervalMsg = setInterval(() => {
-      th.route.paramMap.subscribe(params => {
-        th.gameid = params.get('gameid');
-        th.showGame(th.gameid);
-      });
-    }, 5000);
-      // this.route.paramMap.subscribe(params => {
-      // this.gameid = params.get('gameid');
-      // this.showGame(this.gameid); });
   }
 
     drawPolygon(ctx, conf): void {
@@ -633,10 +714,90 @@ export class GaiamapComponent implements OnInit {
       const r = conf && conf.r || 50;   // 图形的半径
       const width = conf && conf.width || 5;
       const strokeStyle = conf && conf.strokeStyle || 'silver';
-      const fillStyle = conf && conf.fillStyle;
+      const fillStyle = conf && conf.fillStyle || 'black';
       const row = conf && conf.row || 0;
       const column = conf && conf.column || 0;
-    // 开始路径
+      const color =  conf && conf.color || 0;
+
+      ctx.beginPath();
+      ctx.arc(100, 75, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+      ctx.fillStyle = '#4275e5';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(150, 102, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = width;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      ctx.fillStyle = 'red';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(50, 102, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = width;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#E0FFFF';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(30, 152, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = width;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      ctx.fillStyle = 'grey';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(170, 152, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = width;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#FF8C00';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(70, 200, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = width;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#8b4c39';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(130, 200, 20, 0, 2 * Math.PI);
+      ctx.closePath();
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = width;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#ffd700';
+      ctx.fill();
+
+      // 开始路径
       ctx.beginPath();
       const startX = x + r * Math.cos(2 * Math.PI * 0 / 6);
       const startY = y + r * Math.sin(2 * Math.PI * 0 / 6);
@@ -1056,5 +1217,4 @@ export class GaiamapComponent implements OnInit {
       ctx.font = '15px Arial';
       ctx.fillText(conf.coordinate, conf.x - 9, conf.y + 35);
   }
-
 }

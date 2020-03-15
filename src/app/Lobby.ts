@@ -5,4 +5,7 @@ export class Lobby {
   currentuserid: string;
   race: string;
   lasttime: string;
+  authority: string;
+  bgcolor: string;
+  rollback: string;
 }

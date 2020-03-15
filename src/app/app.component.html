@@ -1,3 +1,4 @@
+<div *ngIf="width>=1000">
 <nz-layout>
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" nzWidth="200px">
     <div class="logo"></div>
@@ -7,13 +8,14 @@
         <ul>
           <li nz-menu-item><a routerLink="/login">登录</a></li>
           <li nz-menu-item><a routerLink="/race">种族信息</a></li>
-          <li nz-menu-item>暂未使用</li>
+          <li nz-menu-item><a (click)="logout()" >注销</a></li>
         </ul>
       </li>
       <li nz-submenu nzTitle="对局" nzIcon="slack">
         <ul>
           <li nz-menu-item><a routerLink="/creategame">创建新游戏</a></li>
-          <li nz-menu-item><a routerLink="/mainpage">查看我的所有游戏信息</a>></li>
+          <li nz-menu-item><a routerLink="/pendinggame">寻找新游戏</a></li>
+          <li nz-menu-item><a routerLink="/mainpage">我的所有游戏</a>></li>
           <div *ngFor="let game of myGames">
             <li nz-menu-item ><a routerLink="/game/{{game}}"> 对局：{{game}}</a></li>
           </div>
@@ -29,7 +31,35 @@
     <nz-content>
       <router-outlet></router-outlet>
     </nz-content>
-   <nz-footer>Gaia Project Web ©2019 Implement By Ganzx
-     <a href="http://www.beian.miit.gov.cn/">沪ICP备19037016号</a></nz-footer>
+    <nz-footer>Gaia Project Web ©2019 Implement By Ganzx
+      <a href="http://www.beian.miit.gov.cn/">沪ICP备19037016号</a></nz-footer>
   </nz-layout>
 </nz-layout>
+</div>
+<div *ngIf="width<1000">
+  <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <li nz-submenu nzTitle="功能" nzIcon="home">
+      <ul>
+        <li nz-menu-item><a routerLink="/login">登录</a></li>
+        <li nz-menu-item><a routerLink="/race">种族信息</a></li>
+        <li nz-menu-item><a (click)="logout()" >注销</a></li>
+      </ul>
+    </li>
+    {{userid}}，欢迎进入盖亚计划的世界！
+    <li nz-submenu nzTitle="对局" nzIcon="slack">
+      <ul>
+        <li nz-menu-item><a routerLink="/creategame">创建新游戏</a></li>
+        <li nz-menu-item><a routerLink="/pendinggame">寻找新游戏</a></li>
+        <li nz-menu-item><a routerLink="/mainpage">我的所有游戏</a>></li>
+        <div *ngFor="let game of myGames">
+          <li nz-menu-item ><a routerLink="/game/{{game}}"> 对局：{{game}}</a></li>
+        </div>
+      </ul>
+    </li>
+    <li nz-menu-item>
+      <i nz-icon nzType="file"></i>
+      <span><a routerLink="/file">File</a></span>
+    </li>
+  </ul>
+<router-outlet></router-outlet>
+</div>

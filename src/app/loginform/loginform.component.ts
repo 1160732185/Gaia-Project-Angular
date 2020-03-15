@@ -3,6 +3,8 @@ import {AuthService} from '../auth.service';
 import { User} from '../User';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {MessageBox} from '../MessageBox';
+import {HttpResponse} from '@angular/common/http';
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
@@ -11,12 +13,20 @@ import {Router} from '@angular/router';
 export class LoginformComponent implements OnInit {
 
   constructor(private authService: AuthService, public router: Router) { }
-
+  public static message: string;
+  showmessage: string;
   user: User;
-
   ngOnInit() {
-    if (localStorage.getItem('current_user') != null) {
-       this.router.navigate(['/mainpage']);
+    // tslint:disable-next-line:max-line-length
+ /*   if (localStorage.getItem('current_user') != null && localStorage.getItem('current_user') !== 'null' && /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+       this.router.navigate(['/mainpagemobile']);
+    }*/
+    // tslint:disable-next-line:max-line-length
+ /*   if (localStorage.getItem('current_user') != null && localStorage.getItem('current_user') !== 'null' && !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      this.router.navigate(['/mainpage']);
+    }*/
+    if (localStorage.getItem('current_user') != null && localStorage.getItem('current_user') !== 'null') {
+    this.router.navigate(['/mainpage']);
     }
   }
 
@@ -27,12 +37,20 @@ export class LoginformComponent implements OnInit {
   userLogin(userid: string, userpassword: string): void {
     this.authService.userLogin(userid, userpassword).subscribe(
  (data) => {
-   console.log(localStorage.getItem('current_user'));
+   console.log(data);
    if (localStorage.getItem('current_user') != null && localStorage.getItem('current_user').length !== 4) {
-     console.log(localStorage.getItem('current_user').length);
      window.location.reload();
    }
+   this.showmessage =  LoginformComponent.message;
  }
+    );
+  }
+
+  signin(userid: string, userpassword: string) {
+    this.authService.signin(userid, userpassword).subscribe(
+      (data) => {
+        this.showmessage = data.body.message;
+      }
     );
   }
 }

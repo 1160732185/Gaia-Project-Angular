@@ -1,75 +1,189 @@
-div.scoring {
-  border-style: solid;
-  border-width: 2px;
-  font: 11px Verdana;
-  margin: 2px;
-  padding: 3px;
-  width: 110px;
-  height: 90px;
-  background-color: #fff;
-  float: left;
+
+@media all and (min-width: 150px){
+  div.scoring {
+    border-style: solid;
+    border-width: 2px;
+    font: 11px Verdana;
+    margin: 2px;
+    padding: 3px;
+    width: 110px;
+    height: 90px;
+    background-color: #fff;
+    float: left;
+  }
+  div.helptile {
+    border-style: solid;
+    border-width: 2px;
+    font: 11px Verdana;
+    margin: 2px;
+    padding: 3px;
+    width: 110px;
+    height: 90px;
+    background-color: deepskyblue;
+    float: left;
+  }
+  nz-select {
+    width: 200px;
+  }
+
+  .nz-radio-button[disabled] {
+    background-color: green ;
+  }
+  div.sciencebox{
+    width:10px;
+    height:20px;
+    float: right;
+  }
+  div.faction-board {
+    font: 14px Verdana;
+    background-color: #eee;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #444;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 1545px;
+    float: left;
+  }
+
+  div.faction-info {
+    float: left;
+    width: 350px;
+    white-space: nowrap;
+  }
+  table.income-table {
+    border-spacing: 0px;
+    margin-top: 10px;
+    font: 14px Verdana;
+  }
+
+  table.income-table tr td {
+    padding-right: 2ex;
+  }
+
+  table.building-table {
+    border-spacing: 0px;
+    margin-top: 10px;
+    font: 14px Verdana;
+  }
+
+  table.building-table tr td {
+    padding-right: 1ex;
+    padding-left: 1ex;
+  }
+  canvas.action {
+    float: left;
+    height: 100px;
+    width: 100px;
+  }
 }
-div.helptile {
-  border-style: solid;
-  border-width: 2px;
-  font: 11px Verdana;
-  margin: 2px;
-  padding: 3px;
-  width: 110px;
-  height: 90px;
-  background-color: deepskyblue;
-  float: left;
+/*
+
+@media all and  (max-width: 850px){
+!*  #dcan{
+    height: 100px;
+    width: 100px;
+  }*!
+  img{
+    width: 110px;
+    height: 90px;
+  }
+  img.fg{
+    width: 77px;
+    height: 68px;
+  }
+  img.res{
+    width: 14px;
+    height: 14px;
+  }
+  div.scoring {
+    border-style: solid;
+    border-width: 2px;
+    font: 1px Verdana;
+    margin: 2px;
+    padding: 3px;
+    width: 110px;
+    height: 60px;
+    background-color: #fff;
+    float: left;
+  }
+  div.helptile {
+    border-style: solid;
+    border-width: 2px;
+    font: 1px Verdana;
+    margin: 0px;
+    padding: 0px;
+    width: 110px;
+    height: 80px;
+    background-color: deepskyblue;
+    float: left;
+  }
+  nz-select {
+    width: 200px;
+  }
+  div.factioncolor{
+    width: 700px;
+  }
+div.ipone5{
+  zoom: 70%;
+}
+  .nz-radio-button[disabled] {
+    background-color: green ;
+  }
+  div.sciencebox{
+    width:10px;
+    height:20px;
+    float: right;
+  }
+  div.factioncolor{
+    width: 500px;
+  }
+  div.faction-board {
+    font: 14px Verdana;
+    background-color: #eee;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #444;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 600px;
+    float: left;
+  }
+
+  div.faction-info {
+    float: left;
+    width: 350px;
+    white-space: nowrap;
+  }
+  table.income-table {
+    border-spacing: 0px;
+    margin-top: 10px;
+    font: 14px Verdana;
+  }
+
+  table.income-table tr td {
+    padding-right: 2ex;
+  }
+
+  table.building-table {
+    border-spacing: 0px;
+    margin-top: 10px;
+    font: 14px Verdana;
+  }
+
+  table.building-table tr td {
+    padding-right: 1ex;
+    padding-left: 1ex;
+  }
+  canvas.action {
+    float: left;
+    height: 100px;
+    width: 100px;
+  }
+!*  canvas{
+    width:  700px;
+    height: 500px;
+  }*!
 }
 
-
-.nz-radio-button[disabled] {
-  background-color: green ;
-}
-div.sciencebox{
-  width:10px;
-  height:20px;
-  float: right;
-}
-div.faction-board {
-  font: 14px Verdana;
-  background-color: #eee;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #444;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 1545px;
-  float: left;
-}
-
-div.faction-info {
-  float: left;
-  width: 350px;
-  white-space: nowrap;
-}
-table.income-table {
-  border-spacing: 0px;
-  margin-top: 10px;
-  font: 14px Verdana;
-}
-
-table.income-table tr td {
-  padding-right: 2ex;
-}
-
-table.building-table {
-  border-spacing: 0px;
-  margin-top: 10px;
-  font: 14px Verdana;
-}
-
-table.building-table tr td {
-  padding-right: 1ex;
-  padding-left: 1ex;
-}
-canvas.action {
-  float: left;
-  height: 100px;
-  width: 100px;
-}
-
+*/
