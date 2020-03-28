@@ -22,6 +22,7 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import { GaiamapmobileComponent } from './gaiamapmobile/gaiamapmobile.component';
 import { PendinggameComponent } from './pendinggame/pendinggame.component';
 import { LeagueComponent } from './league/league.component';
+import { PlayerComponent } from './player/player.component';
 registerLocaleData(zh);
 
 
@@ -39,7 +40,8 @@ registerLocaleData(zh);
     MainpageMobileComponent,
     GaiamapmobileComponent,
     PendinggameComponent,
-    LeagueComponent
+    LeagueComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

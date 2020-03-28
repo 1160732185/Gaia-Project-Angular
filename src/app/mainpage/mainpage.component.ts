@@ -11,7 +11,7 @@ import {IntervalMessage} from '../IntervalMessage';
   styleUrls: ['./mainpage.component.css']
 })
 export class MainpageComponent implements OnInit {
-  isCollapsed = false;
+  activegame: boolean;
   userid: string;
   isVisible = false;
   abc: string[];
@@ -23,11 +23,14 @@ export class MainpageComponent implements OnInit {
 
 
   constructor(private gameService: GameService, private modalService: NzModalService) {
+    this.activegame = true;
     this.userid = localStorage.getItem('current_user');
     this.showGames(this.userid);
     clearInterval(IntervalMessage.intervalMsg);
     IntervalMessage.intervalMsg = setInterval(() => {
-      this.showGames(this.userid);
+      if (this.activegame) {
+        this.showGames(this.userid);
+      } else {this.showEndGames(this.userid); }
     }, 20000);
   }
 
@@ -84,9 +87,30 @@ export class MainpageComponent implements OnInit {
   }
 
   rollBack(gameid: any) {
+    document.getElementById(gameid).style.display = 'none';
     this.gameService.rollBack(gameid)
       .subscribe(() => {
         this.ngOnInit();
+      });
+  }
+
+  showActive() {
+this.activegame = true;
+this.showGames(localStorage.getItem('current_user'));
+  }
+
+  showEnd() {
+    this.activegame = false;
+    this.showEndGames(localStorage.getItem('current_user'));
+  }
+
+  private showEndGames(userid: string) {
+    this.localStorage = localStorage;
+    console.log('show games');
+    this.gameService.showEndLobby(userid)
+      .subscribe((data) => {
+        console.log(data);
+        this.myGames = data;
       });
   }
 }

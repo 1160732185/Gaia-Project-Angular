@@ -95,8 +95,208 @@
       </div>
     </ng-template>
   </div>
-  <div id = "dcan" style="float:left;text-align: left">
-<canvas id="myCanvas" width="1200" height="900" (mousedown)="click($event)"></canvas>
+  <div id = "dcan" style="float:left;text-align: left;position: relative">
+    <div id = "pl1" style="float:left;text-align: left;position: absolute">
+    <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(1,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(1,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(1,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(2,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(2,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(2,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(2,4)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(3,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(3,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(3,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(3,4)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(3,5)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(4,4)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(4,5)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(4,6)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(4,7)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(5,5)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(5,6)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(5,7)"></div></div>
+    <div id = "pl2" style="float:left;text-align: left;position: absolute;left: 168px;top: -227px">
+    <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(4,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(4,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(4,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(5,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(5,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(5,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(5,4)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(6,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(6,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(6,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(6,4)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(6,5)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(7,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(7,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(7,3)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(7,4)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(8,1)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(8,2)"></div>
+    <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(8,3)"></div></div>
+    <div id = "pl3" style="float:left;text-align: left;position: absolute;left: 448px;top: -195px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(9,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(9,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(9,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(10,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(10,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(10,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(10,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(11,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(11,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(11,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(11,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(11,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(12,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(12,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(12,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(12,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(13,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(13,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(13,3)"></div></div>
+    <div id = "pl4" style="float:left;text-align: left;position: absolute;left: 728px;top: -162px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(14,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(14,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(14,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(15,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(15,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(15,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(15,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(16,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(16,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(16,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(16,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(16,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(17,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(17,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(17,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(17,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(18,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(18,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(18,3)"></div></div>
+    <div id = "pl5" style="float:left;text-align: left;position: absolute;left: 280px;top: 33px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(6,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(6,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(6,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(7,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(7,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(7,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(7,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(8,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(8,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(8,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(8,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(8,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(9,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(9,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(9,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(9,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(10,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(10,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(10,7)"></div></div>
+    <div id = "pl6" style="float:left;text-align: left;position: absolute;left: 560px;top: 65px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(11,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(11,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(11,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(12,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(12,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(12,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(12,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(13,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(13,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(13,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(13,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(13,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(14,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(14,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(14,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(14,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(15,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(15,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(15,7)"></div></div>
+    <div id = "pl7" style="float:left;text-align: left;position: absolute;left: 840px;top: 98px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(16,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(16,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(16,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(17,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(17,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(17,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(17,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(18,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(18,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(18,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(18,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(18,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(19,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(19,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(19,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(19,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(20,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(20,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(20,3)"></div></div>
+    <div id = "pl8" style="float:left;text-align: left;position: absolute;left: 112px;top: 260px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(3,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(3,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(3,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(4,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(4,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(4,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(4,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(5,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(5,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(5,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(5,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(5,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(6,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(6,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(6,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(6,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(7,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(7,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(7,11)"></div></div>
+    <div id = "pl9" style="float:left;text-align: left;position: absolute;left: 392px;top: 293px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(8,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(8,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(8,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(9,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(9,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(9,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(9,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(10,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(10,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(10,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(10,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(10,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(11,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(11,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(11,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(11,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(12,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(12,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(12,11)"></div></div>
+    <div id = "pl0" style="float:left;text-align: left;position: absolute;left: 672px;top: 325px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(13,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(13,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(13,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(14,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(14,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(14,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(14,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(15,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(15,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(15,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(15,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(15,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(16,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(16,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(16,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(16,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(17,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(17,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(17,11)"></div></div>
+<canvas id="myCanvas" width="1200" height="900" ></canvas>
 </div>
 
 <div  style="width: 400px;height: 900px;float:left;text-align: left">
@@ -236,6 +436,7 @@
   </div>-->
   <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
   <button nz-button nzType="primary" (click)="savelog()" >保存</button>
+  <button nz-button nzType="primary" (click)="togglecolorblind()" >切换色盲模式</button>
   </div>
 
 <div style="clear: both">
@@ -345,11 +546,14 @@
       <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -470,11 +674,14 @@
       <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -596,11 +803,14 @@
       <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -694,11 +904,14 @@
       <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -812,11 +1025,14 @@
       <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -926,11 +1142,14 @@
       <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -979,7 +1198,7 @@
 <div *ngFor="let r of this.gamedetails.resource;index as i">
 <div class="faction-board">
   <div style="float: left; margin-right: 20px;">
-    <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
+    <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}<a style="color: black" routerLink="/player/{{r[0]}}">({{r[0]}})</a>{{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
   <div class="faction-info" style="width: 600px">
     <div style="float: left"><span>{{r[2]}} <img class="res" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="res"  src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img  class="res" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q , {{r[11]}} VP <button nz-button [nzType]="'dashed'" (click)="showModal(i)"><span>分数详情</span></button>,{{r[6]}}/{{r[7]}}/{{r[8]}} PW,{{r[16]}},{{r[14]}}Pg ,{{r[12]}}/{{r[13]}} GTU</span></div>
     <table class="building-table">
@@ -1132,11 +1351,14 @@
       <div *ngIf="tt[0]=='att15'&&  gamedetails.game.gamemode.length === 3&& gamedetails.game.gamemode.charAt(0) !== '0'">
         <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '1'">
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '1'">
         <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
       </div>
-      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '2'">
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '2'">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '3'">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="tt[0]=='ltt2used'">
         <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110">
@@ -1519,8 +1741,208 @@
       </div>
     </ng-template>
   </div>
-  <div id = "dcan" style="float:left;text-align: left">
-    <canvas id="myCanvas" width="1200" height="900" (mousedown)="click($event)"></canvas>
+  <div id = "dcan" style="float:left;text-align: left;position: relative">
+    <div id = "pl1" style="float:left;text-align: left;position: absolute">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(1,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(1,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(1,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(2,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(2,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(2,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(2,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(3,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(3,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(3,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(3,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(3,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(4,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(4,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(4,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(4,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(5,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(5,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(5,7)"></div></div>
+    <div id = "pl2" style="float:left;text-align: left;position: absolute;left: 168px;top: -227px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(4,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(4,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(4,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(5,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(5,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(5,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(5,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(6,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(6,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(6,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(6,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(6,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(7,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(7,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(7,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(7,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(8,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(8,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(8,3)"></div></div>
+    <div id = "pl3" style="float:left;text-align: left;position: absolute;left: 448px;top: -195px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(9,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(9,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(9,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(10,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(10,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(10,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(10,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(11,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(11,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(11,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(11,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(11,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(12,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(12,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(12,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(12,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(13,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(13,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(13,3)"></div></div>
+    <div id = "pl4" style="float:left;text-align: left;position: absolute;left: 728px;top: -162px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(14,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(14,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(14,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(15,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(15,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(15,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(15,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(16,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(16,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(16,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(16,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(16,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(17,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(17,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(17,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(17,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(18,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(18,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(18,3)"></div></div>
+    <div id = "pl5" style="float:left;text-align: left;position: absolute;left: 280px;top: 33px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(6,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(6,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(6,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(7,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(7,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(7,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(7,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(8,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(8,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(8,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(8,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(8,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(9,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(9,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(9,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(9,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(10,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(10,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(10,7)"></div></div>
+    <div id = "pl6" style="float:left;text-align: left;position: absolute;left: 560px;top: 65px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(11,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(11,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(11,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(12,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(12,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(12,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(12,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(13,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(13,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(13,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(13,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(13,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(14,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(14,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(14,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(14,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(15,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(15,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(15,7)"></div></div>
+    <div id = "pl7" style="float:left;text-align: left;position: absolute;left: 840px;top: 98px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(16,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(16,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(16,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(17,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(17,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(17,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(17,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(18,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(18,5)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(18,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(18,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(18,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(19,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(19,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(19,3)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(19,4)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(20,1)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(20,2)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(20,3)"></div></div>
+    <div id = "pl8" style="float:left;text-align: left;position: absolute;left: 112px;top: 260px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(3,6)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(3,7)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(3,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(4,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(4,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(4,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(4,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(5,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(5,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(5,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(5,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(5,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(6,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(6,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(6,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(6,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(7,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(7,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(7,11)"></div></div>
+    <div id = "pl9" style="float:left;text-align: left;position: absolute;left: 392px;top: 293px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(8,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(8,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(8,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(9,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(9,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(9,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(9,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(10,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(10,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(10,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(10,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(10,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(11,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(11,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(11,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(11,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(12,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(12,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(12,11)"></div></div>
+    <div id = "pl0" style="float:left;text-align: left;position: absolute;left: 672px;top: 325px">
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 10px" (click)="this.click(13,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 10px" (click)="this.click(13,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 10px" (click)="this.click(13,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 66px" (click)="this.click(14,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 66px" (click)="this.click(14,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 66px" (click)="this.click(14,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 66px" (click)="this.click(14,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 228px;left: 122px" (click)="this.click(15,8)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 122px" (click)="this.click(15,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 122px" (click)="this.click(15,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 122px" (click)="this.click(15,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 488px;left: 122px" (click)="this.click(15,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 260px;left: 178px" (click)="this.click(16,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 325px;left: 178px" (click)="this.click(16,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 390px;left: 178px" (click)="this.click(16,11)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 455px;left: 178px" (click)="this.click(16,12)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 293px;left: 234px" (click)="this.click(17,9)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 358px;left: 234px" (click)="this.click(17,10)"></div>
+      <div style="position: absolute;width: 56px;height: 65px;top: 423px;left: 234px" (click)="this.click(17,11)"></div></div>
+    <canvas id="myCanvas" width="1200" height="900"></canvas>
   </div>
 
 
@@ -1692,8 +2114,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let data of basicTable.data;index as i">
-        <td style="color: black" >{{ data.dengji }}</td>
-        <td><div style="color: black" *ngIf="i!=1&&i!=8&&i!=9">
+        <td style="color: wheat" >{{ data.dengji }}</td>
+        <td><div style="color: wheat" *ngIf="i!=1&&i!=8&&i!=9">
           {{ data.terra }}</div>
           <div *ngIf="gamedetails.tt[6]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -1774,11 +2196,14 @@
           <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -1820,7 +2245,7 @@
             <div *ngIf="s[0][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
           {{ data.navi }}</div>
           <div *ngIf="gamedetails.tt[7]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -1899,11 +2324,14 @@
           <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -1945,7 +2373,7 @@
             <div *ngIf="s[1][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+        <td><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
           {{ data.quan }}</div>
           <div *ngIf="gamedetails.tt[8]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2025,11 +2453,14 @@
           <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -2071,7 +2502,7 @@
             <div *ngIf="s[2][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
           {{ data.gaia }}</div>
           <div *ngIf="gamedetails.tt[9]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2123,11 +2554,14 @@
           <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -2170,7 +2604,7 @@
           </div>
         </td>
         <td>
-          <div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+          <div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
             {{ data.eco }}</div>
           <div *ngIf="gamedetails.tt[10]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2241,11 +2675,14 @@
           <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -2287,7 +2724,7 @@
             <div *ngIf="s[4][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
           {{ data.sci }}</div>
           <div *ngIf="gamedetails.tt[11]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2355,11 +2792,14 @@
           <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 3"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='1'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length == 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='2'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -2408,7 +2848,7 @@
   <div *ngFor="let r of this.gamedetails.resource;index as i">
     <div class="faction-board">
       <div style="float: left; margin-right: 20px;">
-        <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}({{r[0]}}){{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
+        <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}<a style="color: black" routerLink="/player/{{r[0]}}">({{r[0]}})</a>{{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
         <div class="faction-info" style="width: 600px">
           <div style="float: left"><span>{{r[2]}} <img class="res" src="../../../assets/ore.png" alt="" width="14" height="14"> ,{{r[3]}}  <img class="res"  src="../../../assets/coin.png" alt="" width="14" height="14"> ,{{r[4]}} <img  class="res" src="../../../assets/knowledge.png" alt="" width="14" height="14"> ,{{r[5]}} Q , {{r[11]}} VP <button nz-button [nzType]="'dashed'" (click)="showModal(i)"><span>分数详情</span></button>,{{r[6]}}/{{r[7]}}/{{r[8]}} PW,{{r[16]}},{{r[14]}}Pg ,{{r[12]}}/{{r[13]}} GTU</span></div>
           <table class="building-table">
@@ -2561,11 +3001,14 @@
           <div *ngIf="tt[0]=='att15'&&  gamedetails.game.gamemode.length === 3&& gamedetails.game.gamemode.charAt(0) !== '0'">
             <img class="mb-4" src="../../../assets/techtiles/att15.png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '1'">
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '1'">
             <img class="mb-4" src="../../../assets/techtiles/att15(New).png" alt="" width="140" height="110">
           </div>
-          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length === 5 && gamedetails.game.gamemode.charAt(4) === '2'">
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '2'">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.2).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '3'">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="tt[0]=='ltt2used'">
             <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110">

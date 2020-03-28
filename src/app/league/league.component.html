@@ -1,5 +1,63 @@
-<p>league works!</p>
-<nz-table #basicTable [nzData]="leaguedetail" [nzPageSize]="50">
+
+<table class="table table-bordered table-striped"><tbody><tr><th>Player</th><th>1st</th><th>2nd</th><th>3rd</th><th>4th</th><th>Avg % of win score</th><th>Points</th></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[1][0]}}" ng-bind="player.username" class="ng-binding">{{this.leaguedetail[1][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[1][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[1][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[1][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[1][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[1][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[1][21]}}</strong></td></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[2][0]}}"  ng-bind="player.username" class="ng-binding" href="#/players/jimboydy">{{this.leaguedetail[2][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[2][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[2][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[2][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[2][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[2][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[2][21]}}</strong></td></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[3][0]}}"  ng-bind="player.username" class="ng-binding" href="#/players/jimboydy">{{this.leaguedetail[3][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[3][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[3][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[3][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[3][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[3][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[3][21]}}</strong></td></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[4][0]}}"  ng-bind="player.username" class="ng-binding" href="#/players/jimboydy">{{this.leaguedetail[4][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[4][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[4][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[4][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[4][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[4][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[4][21]}}</strong></td></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[5][0]}}"  ng-bind="player.username" class="ng-binding" href="#/players/jimboydy">{{this.leaguedetail[5][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[5][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[5][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[5][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[5][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[5][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[5][21]}}</strong></td></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[6][0]}}"  ng-bind="player.username" class="ng-binding" href="#/players/jimboydy">{{this.leaguedetail[6][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[6][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[6][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[6][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[6][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[6][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[6][21]}}</strong></td></tr>
+<tr ng-repeat="player in league.players" ng-class="'standings' + $index" class="ng-scope standings0">
+  <td><a routerLink="/player/{{this.leaguedetail[7][0]}}"  ng-bind="player.username" class="ng-binding" href="#/players/jimboydy">{{this.leaguedetail[7][0]}}</a></td>
+  <td ng-bind="player.ranks[1]" class="ng-binding">{{this.leaguedetail[7][16]}}</td>
+  <td ng-bind="player.ranks[2]" class="ng-binding">{{this.leaguedetail[7][17]}}</td>
+  <td ng-bind="player.ranks[3]" class="ng-binding">{{this.leaguedetail[7][18]}}</td>
+  <td ng-bind="player.ranks[4]" class="ng-binding">{{this.leaguedetail[7][19]}}</td>
+  <td ng-bind="player.avgPercentageOfWinningScore.toFixed(2)" class="ng-binding">{{this.leaguedetail[7][20]}}</td>
+  <td><strong ng-bind="player.points" class="ng-binding">{{this.leaguedetail[7][21]}}</strong></td></tr>
+</tbody></table>
+<nz-table #basicTable [nzData]="leaguedetail" nzSize="small"  [nzPageSize]="50">
   <thead>
   <tr>
     <th>对局名</th>
@@ -13,7 +71,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let data of basicTable.data;index as i;" >
+  <tr *ngFor="let data of basicTable.data;index as i">
     <td>{{ data[0] }}</td>
     <td><div [ngStyle]="{'background-color':data[3]}">{{ data[2] }}</div></td>
     <td><div [ngStyle]="{'background-color':data[5]}">{{ data[4] }}</div></td>

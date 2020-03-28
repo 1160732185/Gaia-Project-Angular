@@ -24,6 +24,7 @@ export class AuthService {
           if (resp.body.userid !== '用户名或密码错误!') {
             localStorage.setItem('access_token', resp.headers.get('access-token'));
             localStorage.setItem('current_user', resp.body.userid);
+            localStorage.setItem('colorblind', 'f');
           } else {
             LoginformComponent.message = '用户名或密码错误!';
           }

@@ -1,14 +1,18 @@
 欢迎来到游戏大厅，{{this.userid}}
-<nz-table #basicTable [nzData]="myGames" [nzPageSize]="50">
+<div class="table-operations">
+  <button nz-button (click)="showActive()">进行中</button>
+  <button nz-button (click)="showEnd()">已结束</button>
+</div>
+<nz-table #basicTable [nzData]="myGames" [nzPageSize]="50" [nzScroll]="{ y: '600px' }">
   <thead>
   <tr>
-    <th>对局名</th>
-    <th>你的种族</th>
-    <th>当前轮</th>
-    <th>当前回合</th>
-    <th>待行动玩家</th>
-    <th>当前已等待时间</th>
-    <th>管理操作</th>
+    <th nzWidth="200px">对局名</th>
+    <th nzWidth="200px"> 你的种族</th>
+    <th nzWidth="200px">当前轮</th>
+    <th nzWidth="200px">当前回合</th>
+    <th nzWidth="200px">待行动玩家</th>
+    <th nzWidth="200px">当前已等待时间</th>
+    <th nzWidth="200px">管理操作</th>
   </tr>
   </thead>
   <tbody>
@@ -26,7 +30,7 @@
       <a (click)="showGameRecord(data.gameid)"> 更改游戏记录</a>
       <a (click)="showDeleteConfirm(data.gameid)"> 删除游戏</a></div>
       <div *ngIf="data.rollback === 'Y'">
-        <a (click)="rollBack(data.gameid)"> 回退上一步操作</a></div>
+        <a [id]="data.gameid" (click)="rollBack(data.gameid)"> 回退上一步操作</a></div>
     </td>
   </tr>
   </tbody>

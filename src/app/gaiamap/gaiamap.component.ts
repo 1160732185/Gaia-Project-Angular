@@ -86,6 +86,10 @@ export class GaiamapComponent implements OnInit {
   selectedFsAct: any;
   selectedBugAct: any;
   bid0: any;
+  togglecolorblind() {
+     if (localStorage.getItem('colorblind') === 'f') { localStorage.setItem('colorblind', 't'); } else if (localStorage.getItem('colorblind') === 't') { localStorage.setItem('colorblind', 'f'); }
+     console.log(localStorage.getItem('colorblind'));
+  }
   chooserace(gameid: string, race: string, avarace: number) {
     // tslint:disable-next-line:max-line-length
     if (this.gamedetails.avarace[avarace] === false) {// 如果种族还没被选择&& this.gamedetails.currentuserid === localStorage.getItem('current_user')
@@ -94,40 +98,12 @@ export class GaiamapComponent implements OnInit {
       });
     }
   }
-  click(event) {
-    let adjustmobile = 0;
-    if (this.windowsize < 1000) {
-      adjustmobile = 10;
-    }
-    let x = 0;
-    let y = 0;
-    const element = document.getElementById('myCanvas');
-    const scroll = document.documentElement.scrollTop - document.getElementById('myCanvas').offsetTop * 0.8 + 82.4;
-    console.log('ost' + document.getElementById('myCanvas').offsetTop);
-    let eventleft = 100;
-    if (!this.appComponent.isCollapsed) { eventleft += 120; }
-    if (this.windowsize < 1000) {eventleft = 0; }
-    // tslint:disable-next-line:max-line-length
-    const row: string[][] = [[''], ['A', '310' , '360' , '410'], ['B' , '285' , '335' , '385' , '435'], ['C' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610'], ['D' , '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'],
-      // tslint:disable-next-line:max-line-length
-      ['E' , '110' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['F', '85' , '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'], ['G' , '110' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610'], ['H' , '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'], ['I' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['J', '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635' , '685'], ['K', '110' , '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['L', '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635'], ['M', '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['N', '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635' , '685'], ['O', '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660' , '710'], ['P', '135' , '185' , '235', '285' , '335' , '385' , '435' , '485' , '535' , '585' , '635' , '685'], ['Q', '160' , '210' , '260' , '310' , '360' , '410' , '460' , '510' , '560' , '610' , '660'], ['R', '185' , '235', '285' , '335' , '385' , '435' , '485' , '535'], ['S', '360' , '410' , '460' , '510'], ['T' , '385' , '435' , '485']];
-    console.log('x' + event.clientX + 'y' + event.clientY);
-    for (let i = 1; i <= 20; i++) {
-      if ((event.clientX - eventleft) > (i - 1) * 45 && (event.clientX - eventleft) <= i * 45) {
-        x = i;
-        this.location = row[i][0];
-        for (let j = 1; j <= row[i].length; j++) {
-          // tslint:disable-next-line:max-line-length
-          if ((event.clientY + scroll) + adjustmobile > Number(row[i][j])  && (event.clientY + scroll) + adjustmobile <= (Number(row[i][j]) + 50)) {
-            this.location += j;
-            y = j;
-          }
-        }
-      }
-    }
-    console.log('结果是' + this.location);
-    if (y === 0) { return; }
-    // tslint:disable-next-line:max-line-length
+  click(row: number, column: number) {
+    const alpha: string[] = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'];
+    const x = row;
+    const y = column;
+    this.location = alpha[x] + y;
+    console.log(this.location);
     if (this.actionorder.substring(0, 4) === 'form' || this.actionorder.substring(0, 7) === 'actiond' || this.actionorder.substring(0, 7) === 'actiont' || this.actionorder.substring(0, 7) === 'actionf') {this.add(' ' + this.location); } else if (this.actionorder.substring(0, 7) === 'actionz') {
       this.add(' ' + this.location + ' ');
     } else {
@@ -136,9 +112,9 @@ export class GaiamapComponent implements OnInit {
         this.modeltitle = '在' + this.location + '建造矿场基地？';
         this.isVisibleBuild = true;
       } else if (this.loginrace === '亚特兰斯星人' && this.gamedetails.structurecolor[x][y] !== '#4275e5' && this.gamedetails.mapsituation[x][y] !== '#000000' && this.gamedetails.mapsituation[x][y] !== '#9400d3') {
-          this.modeltitle = '寄生' + this.location + '？';
-          this.isVisibleBuild = true;
-        } else if (this.gamedetails.structure[x][y] === null && this.gamedetails.mapsituation[x][y] === '#9400d3') {
+        this.modeltitle = '寄生' + this.location + '？';
+        this.isVisibleBuild = true;
+      } else if (this.gamedetails.structure[x][y] === null && this.gamedetails.mapsituation[x][y] === '#9400d3') {
         this.modeltitle = '盖亚' + this.location + '？';
         this.isVisibleGaia = true;
       } else
@@ -433,6 +409,10 @@ export class GaiamapComponent implements OnInit {
         // ctx.scale(0.72, 0.72);
         ctx.scale(0.72, 0.72);
         this.shoujixinghao = navigator.userAgent;
+        this.drawPolygon(ctx, {
+          row: 0,
+          x: -100
+        });
         for (let i = 1 ; i < 4 ; i++) {
           this.drawPolygon(ctx, {
             x: 52,
@@ -719,84 +699,85 @@ export class GaiamapComponent implements OnInit {
       const column = conf && conf.column || 0;
       const color =  conf && conf.color || 0;
 
-      ctx.beginPath();
-      ctx.arc(100, 75, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
+      if (row === 0) {
+        ctx.beginPath();
+        ctx.arc(100, 75, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
           ctx.strokeStyle = strokeStyle;
           ctx.lineWidth = width;
           ctx.lineJoin = 'round';
           ctx.stroke();
         }
-      ctx.fillStyle = '#4275e5';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(150, 102, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
-        ctx.strokeStyle = strokeStyle;
-        ctx.lineWidth = width;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
+        ctx.fillStyle = '#4275e5';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(150, 102, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(50, 102, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#E0FFFF';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(30, 152, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = 'grey';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(170, 152, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#FF8C00';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(70, 200, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#8b4c39';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(130, 200, 20, 0, 2 * Math.PI);
+        ctx.closePath();
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = width;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#ffd700';
+        ctx.fill();
       }
-      ctx.fillStyle = 'red';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(50, 102, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
-        ctx.strokeStyle = strokeStyle;
-        ctx.lineWidth = width;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-      ctx.fillStyle = '#E0FFFF';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(30, 152, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
-        ctx.strokeStyle = strokeStyle;
-        ctx.lineWidth = width;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-      ctx.fillStyle = 'grey';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(170, 152, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
-        ctx.strokeStyle = strokeStyle;
-        ctx.lineWidth = width;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-      ctx.fillStyle = '#FF8C00';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(70, 200, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
-        ctx.strokeStyle = strokeStyle;
-        ctx.lineWidth = width;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-      ctx.fillStyle = '#8b4c39';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(130, 200, 20, 0, 2 * Math.PI);
-      ctx.closePath();
-      if (strokeStyle) {
-        ctx.strokeStyle = strokeStyle;
-        ctx.lineWidth = width;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-      ctx.fillStyle = '#ffd700';
-      ctx.fill();
-
       // 开始路径
       ctx.beginPath();
       const startX = x + r * Math.cos(2 * Math.PI * 0 / 6);
@@ -819,6 +800,112 @@ export class GaiamapComponent implements OnInit {
       ctx.fillStyle = fillStyle;
       ctx.fill();
     }
+      if (localStorage.getItem('colorblind') === 't') {
+if (ctx.fillStyle === '#4275e5') {
+  ctx.beginPath();
+  ctx.moveTo(x - 40 , y);
+  ctx.lineTo(x - 35, y - 5);
+  ctx.lineTo(x - 30, y);
+  ctx.lineTo(x - 25, y - 5);
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#ff0000') {
+  ctx.beginPath();
+  ctx.arc(x - 35, y, 5, 0, 2 * Math.PI);
+  ctx.closePath();
+  if (strokeStyle) {
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+          }
+  ctx.fillStyle = 'black';
+  ctx.fill();
+        } else if (ctx.fillStyle === '#ff8c00') {
+  ctx.beginPath();
+  ctx.moveTo(x - 40 , y - 5);
+  ctx.lineTo(x - 30, y + 5);
+  ctx.moveTo(x - 30 , y - 5);
+  ctx.lineTo(x - 40, y + 5);
+  ctx.closePath();
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#ffd700') {
+  ctx.beginPath();
+  ctx.moveTo(x - 40 , y);
+  ctx.lineTo(x - 30, y);
+  ctx.closePath();
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#8b4c39') {
+  ctx.beginPath();
+  ctx.arc(x - 35, y, 7, Math.PI, 2 * Math.PI);
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#828282') {
+  ctx.beginPath();
+  ctx.moveTo(x - 40 , y + 5);
+  ctx.lineTo(x - 35, y - 5);
+  ctx.lineTo(x - 30, y + 5);
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#e0ffff') {
+  ctx.beginPath();
+  ctx.moveTo(x - 40 , y + 5);
+  ctx.lineTo(x - 30, y + 5);
+  ctx.lineTo(x - 30, y - 5);
+  ctx.lineTo(x - 40, y - 5);
+  ctx.closePath();
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#7cfc00') {
+  ctx.beginPath();
+  ctx.moveTo(x - 40 , y - 5);
+  ctx.lineTo(x - 30, y - 5);
+  ctx.moveTo(x - 35, y - 5);
+  ctx.lineTo(x - 35, y + 5);
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+} else if (ctx.fillStyle === '#9400d3') {
+  ctx.beginPath();
+  ctx.arc(x - 35, y, 5, 0, 2 * Math.PI);
+  ctx.closePath();
+  if (strokeStyle) {
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  }
+}
+      }
       if (conf.x === 442 && conf.y === 226) {
         ctx.fillStyle = 'wheat';
         ctx.font = '30px Arial';
@@ -1217,4 +1304,5 @@ export class GaiamapComponent implements OnInit {
       ctx.font = '15px Arial';
       ctx.fillText(conf.coordinate, conf.x - 9, conf.y + 35);
   }
+
 }

@@ -11,6 +11,7 @@ import {FileComponent} from './file/file.component';
 import {MainpageMobileComponent} from './mainpage-mobile/mainpage-mobile.component';
 import {PendinggameComponent} from './pendinggame/pendinggame.component';
 import {LeagueComponent} from './league/league.component';
+import {PlayerComponent} from './player/player.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'creategame', component: CreategameComponent },
   { path: 'pendinggame', component: PendinggameComponent },
   { path: 'game/:gameid', component: GaiamapComponent },
+  { path: 'player/:userid', component: PlayerComponent },
   { path: 'league/:leagueid', component: LeagueComponent },
   { path: 'file', component: FileComponent },
   { path: 'mainpagemobile', component: MainpageMobileComponent},

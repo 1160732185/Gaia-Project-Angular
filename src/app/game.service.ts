@@ -10,6 +10,7 @@ import {environment} from '../environments/environment';
 import {Lobby} from './Lobby';
 import {PendingGame} from './PendingGame';
 import {League} from './League';
+import {PlayerDetails} from './PlayerDetails';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,7 @@ export class GameService {
   private createGameUrl = `${environment.apiURL}/api/v1/game`;
   private showGamesUrl = `${environment.apiURL}/api/v1/game/userid`;
   private showLobbysUrl = `${environment.apiURL}/api/v1/lobby/userid`;
+  private showEndLobbysUrl = `${environment.apiURL}/api/v1/endlobby/userid`;
   private changeRecordUrl = `${environment.apiURL}/api/v1/lobby/cc`;
   private getRecordUrl = `${environment.apiURL}/api/v1/record`;
 
@@ -49,6 +51,11 @@ export class GameService {
 
   showLobby(player: string): Observable<Lobby[]> {
     const url = `${this.showLobbysUrl}/${player}`;
+    return this.http.get<Lobby[]>(url);
+  }
+
+  showEndLobby(player: string): Observable<Lobby[]> {
+    const url = `${this.showEndLobbysUrl}/${player}`;
     return this.http.get<Lobby[]>(url);
   }
 
@@ -117,5 +124,10 @@ export class GameService {
   showLeague(leagueid: string): Observable<string[][]> {
     const url = `${environment.apiURL}/api/v1/league/${leagueid}`;
     return this.http.get<string[][]>(url);
+  }
+
+  getPlayerDetail(userid: string) {
+    const url = `${environment.apiURL}/api/v1/player/${userid}`;
+    return this.http.get<PlayerDetails>(url);
   }
 }
