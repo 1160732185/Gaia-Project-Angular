@@ -23,6 +23,7 @@ export class MainpageComponent implements OnInit {
 
 
   constructor(private gameService: GameService, private modalService: NzModalService) {
+    this.myGames = [new Lobby()];
     this.activegame = true;
     this.userid = localStorage.getItem('current_user');
     this.showGames(this.userid);
@@ -46,6 +47,11 @@ export class MainpageComponent implements OnInit {
         console.log(data);
         this.myGames = data;
       });
+    if (this.myGames.length === 0 || this.myGames.length > 0 && this.myGames[0].bgcolor === '') {
+      document.getElementById('icon').setAttribute('href', 'assets/panda.ico');
+    } else {
+      document.getElementById('icon').setAttribute('href', 'assets/redpanda.ico');
+    }
   }
 
   deleteGame(gameid: string) {

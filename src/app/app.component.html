@@ -7,6 +7,7 @@
       <li nz-submenu nzTitle="功能" nzIcon="home">
         <ul>
           <li nz-menu-item><a routerLink="/login">登录</a></li>
+          <li nz-menu-item><a routerLink="/player/{{this.userid}}">我的个人信息</a></li>
           <li nz-menu-item><a routerLink="/race">种族信息</a></li>
           <li nz-menu-item><a (click)="logout()" >注销</a></li>
         </ul>

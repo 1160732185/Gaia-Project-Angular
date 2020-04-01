@@ -1,9 +1,10 @@
 import {Game} from './Game';
+import {Power} from './Power';
 
 export class GameDetails {
   mapsituation: string;
   game: Game;
-  powerleech: string[][];
+  powerleech: Power[];
   gamestate: string;
   gamerecord: string[];
   roundscore: string[];

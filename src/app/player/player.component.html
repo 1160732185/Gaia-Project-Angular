@@ -1,0 +1,99 @@
+<div style="zoom: 80%">
+<h3>你好，我是{{this.userid}},个人主页正在制作中</h3>
+<nz-tabset>
+  <nz-tab nzTitle="总数据">
+    <p>进行中的游戏：{{this.playerdetail.rungamenum}}</p>
+    <p>已经完成游戏：{{this.playerdetail.finishgamenum}}</p>
+  </nz-tab>
+  <nz-tab nzTitle="进行中的游戏">
+    <nz-table #basicTable [nzData]="this.playerdetail.rungamedetail" [nzPageSize]="50" [nzScroll]="{ y: '700px' }">
+      <thead>
+      <tr>
+        <th nzWidth="200px">对局名</th>
+        <th nzWidth="200px">你的种族</th>
+        <th nzWidth="200px">当前轮</th>
+        <th nzWidth="200px">当前回合</th>
+        <th nzWidth="200px">待行动玩家</th>
+        <th>当前已等待时间</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data;index as i" [ngStyle]="{'background-color':data.bgcolor}" >
+        <td><a routerLink="/game/{{data.gameid}}">{{ data.gameid }}</a></td>
+        <td>{{ data.race }}</td>
+        <td>{{ data.round }}</td>
+        <td>{{ data.turn }}</td>
+        <td>{{ data.currentuserid }}</td>
+        <td>{{ data.lasttime }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-tab>
+  <nz-tab nzTitle="已完成游戏">
+    <nz-table #basicTable2 [nzData]="this.playerdetail.finishgamedetail" [nzPageSize]="50" [nzScroll]="{ y: '700px' }">
+      <thead>
+      <tr>
+        <th nzWidth="200px">对局名</th>
+        <th nzWidth="200px">你的种族</th>
+        <th nzWidth="200px">当前轮</th>
+        <th nzWidth="200px">当前回合</th>
+        <th nzWidth="200px">待行动玩家</th>
+        <th nzWidth="200px">当前已等待时间</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable2.data;index as i" [ngStyle]="{'background-color':data.bgcolor}">
+        <td><a routerLink="/game/{{data.gameid}}">{{ data.gameid }}</a></td>
+        <td>{{ data.race }}</td>
+        <td>{{ data.round }}</td>
+        <td>{{ data.turn }}</td>
+        <td>{{ data.currentuserid }}</td>
+        <td>{{ data.lasttime }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-tab>
+  <nz-tab nzTitle="种族使用统计">
+    <nz-table #basicTable3 [nzData]="this.playerdetail.raceinfo" [nzPageSize]="50">
+      <thead>
+      <tr>
+        <th>种族</th>
+        <th>使用次数</th>
+        <th>平均得分(不包括拍卖分)</th>
+        <th>游戏结果</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable3.data;index as i" [ngStyle]="{'background-color':data.bgcolor}">
+        <td><div [ngStyle]="{'background-color':data[1]}">{{ data[0] }}</div></td>
+        <td>{{ data[2] }}</td>
+        <td>{{ data[3] }}</td>
+        <td>{{ data[4] }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-tab>
+  <nz-tab nzTitle="对手胜率统计">
+    <nz-table #basicTable4 [nzData]="this.playerdetail.opponentinfo" [nzPageSize]="50" [nzScroll]="{ y: '700px' }">
+      <thead>
+      <tr>
+        <th nzWidth="200px">对手</th>
+        <th nzWidth="200px">总场数</th>
+        <th nzWidth="200px">获胜</th>
+        <th nzWidth="200px">败北</th>
+        <th nzWidth="200px">平局</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable4.data;index as i" [ngStyle]="{'background-color':data.bgcolor}">
+        <td>{{ data[0] }}</td>
+        <td>{{ data[1] }}</td>
+        <td>{{ data[2] }}</td>
+        <td>{{ data[3] }}</td>
+        <td>{{ data[4] }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-tab>
+</nz-tabset>
+</div>
