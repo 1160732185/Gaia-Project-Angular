@@ -59,11 +59,14 @@ export class GameService {
     return this.http.get<Lobby[]>(url);
   }
 
-  showGame(gameid: string, userid: string): Observable<GameDetails> {
-    const url = `${this.createGameUrl}/${gameid}/${userid}`;
+  showGame(gameid: string, userid: string, history: number): Observable<GameDetails> {
+    const url = `${this.createGameUrl}/${gameid}/${userid}/${history}`;
     return this.http.get<GameDetails>(url);
   }
-
+/*  showhistory(gameid: string, i: number): Observable<GameDetails> {
+    const url = `${this.createGameUrl}/${gameid}/history/${i}`;
+    return this.http.get<GameDetails>(url);
+  }*/
   constructor(private http: HttpClient) {
     this.header = new HttpHeaders({
       'Content-Type': 'application/json;charset=UTF-8',
@@ -108,7 +111,7 @@ export class GameService {
 
   showLeagues() {
     const url = `${environment.apiURL}/api/v1/pendingleague`;
-    return this.http.get<League[]>(url);
+    return this.http.get<League[][]>(url);
   }
 
   enterPLeague(gameid: string, userid: string): Observable<HttpResponse<MessageBox>> {

@@ -1,9 +1,13 @@
 <div style="zoom: 80%">
-<h3>你好，我是{{this.userid}},个人主页正在制作中</h3>
+<h3>你好，我是{{this.userid}}</h3>
 <nz-tabset>
   <nz-tab nzTitle="总数据">
     <p>进行中的游戏：{{this.playerdetail.rungamenum}}</p>
     <p>已经完成游戏：{{this.playerdetail.finishgamenum}}</p>
+   <p>平均顺位（最近50局）：{{this.playerdetail.otherinfo[1]}}</p>
+    <p>平均顺位排名：{{this.playerdetail.otherinfo[3]}}</p>
+    <p>平均分（最近50局）：{{this.playerdetail.otherinfo[0]}}</p>
+    <p>平均分排名：{{this.playerdetail.otherinfo[2]}}</p>
   </nz-tab>
   <nz-tab nzTitle="进行中的游戏">
     <nz-table #basicTable [nzData]="this.playerdetail.rungamedetail" [nzPageSize]="50" [nzScroll]="{ y: '700px' }">

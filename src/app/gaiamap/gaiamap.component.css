@@ -38,14 +38,26 @@
     font: 14px Verdana;
     background-color: #eee;
     border-style: solid;
-    border-width: 1px;
-    border-color: #444;
+/*    border-color: #444;*/
+    border-width: 2px;
     margin-bottom: 10px;
     padding: 5px;
     width: 1545px;
     float: left;
+    position: relative;
   }
-
+  div.faction-board-gold {
+    font: 14px Verdana;
+    background-color: #eee;
+    border-style: solid;
+    border-color: #FF1493	;
+    border-width: 3px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 1545px;
+    float: left;
+    position: relative;
+  }
   div.faction-info {
     float: left;
     width: 350px;

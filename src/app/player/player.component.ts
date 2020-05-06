@@ -13,6 +13,8 @@ export class PlayerComponent implements OnInit {
   playerdetail: PlayerDetails;
   userid: string;
   constructor(private route: ActivatedRoute, private gameService: GameService) {
+    this.playerdetail = new PlayerDetails();
+    this.playerdetail.otherinfo = [ '', '', '', ''];
     this.route.paramMap.subscribe(params => {
    this.userid = params.get('userid');
     });

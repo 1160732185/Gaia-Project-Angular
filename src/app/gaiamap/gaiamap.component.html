@@ -1,6 +1,6 @@
 <div style="zoom: 80%" *ngIf="this.windowsize>=1000" >
   <div [ngStyle]="{'background-image': 'url(../../../assets/gaiabackground.jpg)'}" >
-  <p style="color: wheat;alignment: center"> {{gameid}}&nbsp;&nbsp;&nbsp;{{gamedetails.gamemodename}}&nbsp;&nbsp;管理员：{{gamedetails.game.admin}}</p>
+  <p style="color: wheat;alignment: center"> {{gameid}}&nbsp;&nbsp;&nbsp;{{gamedetails.gamemodename}}&nbsp;&nbsp;管理员：{{gamedetails.game.admin}} 开始日期：{{gamedetails.game.createtime}}</p>
   <p style="color: wheat">{{errormessage}}</p>
   <div *ngIf = "gamedetails.currentuserid==='游戏结束'">
   <h4 style="color: wheat">游戏结束，最终得分：</h4>
@@ -31,26 +31,26 @@
 </div>
   <div *ngIf="(this.gamerecordlength<6&&gamedetails.gamestate.charAt(0)!=='轮')||(this.gamerecordlength<9&&(this.gamedetails.currentuserid === localStorage.getItem('current_user')||this.gamedetails.game.gamemode.charAt(2)==='3'))"><!--*ngIf="gamedetails.gamerecord.length<9&&(gamedetails.game.gamemode === '1.1' ||this.gamedetails.currentuserid === localStorage.getItem('current_user'))"-->
     <nz-radio-group>
-      <label nz-radio-button id="human" [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="chooserace(this.gameid,'choose race: 人类',0)" >人类</label>
-      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="chooserace(this.gameid,'choose race: 亚特兰斯星人',1)">亚特兰斯星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[0]" (click)="clickRace(1)">人类</label>
+      <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[1]" (click)="clickRace(2)">亚特兰斯星人</label>
       <label nz-radio-button [ngStyle]="{'color':'blue'}" [nzDisabled]="gamedetails.avarace[14]" (click)="chooserace(this.gameid,'choose race: 熊猫人',14)">熊猫人</label>
-      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="chooserace(this.gameid,'choose race: 圣禽族',2)">圣禽族</label>
-      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="chooserace(this.gameid,'choose race: 蜂人',3)">蜂人</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[2]"  (click)="clickRace(3)">圣禽族</label>
+      <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[3]"  (click)="clickRace(4)">蜂人</label>
       <label nz-radio-button [ngStyle]="{'color':'red'}" [nzDisabled]="gamedetails.avarace[15]"  (click)="chooserace(this.gameid,'choose race: 混沌法师',15)">混沌法师</label>
-      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="chooserace(this.gameid,'choose race: 晶矿星人',4)">晶矿星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="chooserace(this.gameid,'choose race: 炽炎族',5)">炽炎族</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[4]"  (click)="clickRace(5)">晶矿星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[5]"  (click)="clickRace(6)">炽炎族</label>
       <label nz-radio-button [ngStyle]="{'color':'orange'}" [nzDisabled]="gamedetails.avarace[16]"  (click)="chooserace(this.gameid,'choose race: 天龙星人',16)">天龙星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="chooserace(this.gameid,'choose race: 翼空族',6)">翼空族</label>
-      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="chooserace(this.gameid,'choose race: 格伦星人',7)">格伦星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[6]"  (click)="clickRace(7)">翼空族</label>
+      <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[7]"  (click)="clickRace(8)">格伦星人</label>
       <label nz-radio-button [ngStyle]="{'color':'gold'}" [nzDisabled]="gamedetails.avarace[17]"  (click)="chooserace(this.gameid,'choose race: 蜥族',17)">蜥族</label>
-      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="chooserace(this.gameid,'choose race: 大使星人',8)">大使星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="chooserace(this.gameid,'choose race: 利爪族',9)">利爪族</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[8]"  (click)="clickRace(9)">大使星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[9]"  (click)="clickRace(10)">利爪族</label>
       <label nz-radio-button [ngStyle]="{'color':'brown'}" [nzDisabled]="gamedetails.avarace[18]"  (click)="chooserace(this.gameid,'choose race: 猎户星人',18)">猎户星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="chooserace(this.gameid,'choose race: 章鱼人',10)">章鱼人</label>
-      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="chooserace(this.gameid,'choose race: 疯狂机器',11)">疯狂机器</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[10]"  (click)="clickRace(11)">章鱼人</label>
+      <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[11]"  (click)="clickRace(12)">疯狂机器</label>
       <label nz-radio-button [ngStyle]="{'color':'grey'}" [nzDisabled]="gamedetails.avarace[19]"  (click)="chooserace(this.gameid,'choose race: 魔族',19)">魔族</label>
-      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="chooserace(this.gameid,'choose race: 伊塔星人',12)">伊塔星人</label>
-      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="chooserace(this.gameid,'choose race: 超星人',13)">超星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[12]"  (click)="clickRace(13)">伊塔星人</label>
+      <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[13]"  (click)="clickRace(14)">超星人</label>
       <label nz-radio-button [ngStyle]="{'color':'#CCFFFF'}" [nzDisabled]="gamedetails.avarace[20]"  (click)="chooserace(this.gameid,'choose race: 织女星人',20)">织女星人</label>
     </nz-radio-group>
   </div>
@@ -58,7 +58,7 @@
   {{powerleech.receiverace}}决定是否从{{powerleech.giverace}}吸收{{powerleech.power}}点魔力
     <span *ngIf="powerleech.actually>=0">(实际{{powerleech.actually}}魔力)</span>
   ({{powerleech.location}}升级为{{powerleech.structure}})
-    <div *ngIf="user === powerleech.userid||gamedetails.game.gamemode.charAt(2) === '3'"><!--*ngIf="user === powerleech.userid||gamedetails.game.gamemode === '1.1'"-->
+    <div *ngIf="user === powerleech.userid||user === 'admin'||gamedetails.game.gamemode.charAt(2) === '3'"><!--*ngIf="user === powerleech.userid||gamedetails.game.gamemode === '1.1'"-->
       <div *ngIf="powerleech.actually === -2">
       <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'2')">接受(先蹭魔)</button>
       <button nz-button nzType="primary" (click)="leechpower(this.gameid,powerleech.giverace,powerleech.receiverace,powerleech.location,powerleech.structure,'1')">接受(先加豆)</button>
@@ -93,7 +93,7 @@
       <input [(ngModel)]= this.actionorder id="actioninput" type="text" nz-input placeholder="行动待执行" />
     </nz-input-group>
     <ng-template #suffixButton >
-    <div *ngIf="this.gamedetails.currentuserid === 'all' || this.gamedetails.currentuserid === localStorage.getItem('current_user') || gamedetails.game.gamemode.charAt(2) === '3' ||(gamedetails.game.gamemode.charAt(2) === '0' && gamedetails.bid[0] === 't')"><!--*ngIf="this.gamedetails.currentuserid === localStorage.getItem('current_user')||gamedetails.game.gamemode === '1.1' " -->
+    <div *ngIf=" localStorage.getItem('current_user')=='admin'||this.gamedetails.currentuserid === 'all' || this.gamedetails.currentuserid === localStorage.getItem('current_user') || gamedetails.game.gamemode.charAt(2) === '3' ||(gamedetails.game.gamemode.charAt(2) === '0' && gamedetails.bid[0] === 't')"><!--*ngIf="this.gamedetails.currentuserid === localStorage.getItem('current_user')||gamedetails.game.gamemode === '1.1' " -->
         <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doaction(this.gameid,this.actionorder,localStorage.getItem('current_user'))">行动！</button>
       </div>
     </ng-template>
@@ -440,6 +440,10 @@
   <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
   <button nz-button nzType="primary" (click)="savelog()" >保存</button>
   <button nz-button nzType="primary" (click)="togglecolorblind()" >切换色盲模式</button>
+  <button nz-button nzType="primary" (click)="togglescborder()" >显示星域边界</button>
+  <div *ngIf="localStorage.getItem('current_user') === 'Panpan'||localStorage.getItem('current_user') === 'admin'||localStorage.getItem('current_user') === gamedetails.game.admin">
+    <button nz-button nzType="primary" (click)="showGameRecord(this.gameid)"> 更改游戏记录</button>
+    </div>
   </div>
 
 <div style="clear: both;width: 1000px;height: 100px">
@@ -558,6 +562,9 @@
       </div>
       <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)>='4'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -686,6 +693,9 @@
       </div>
       <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)>='4'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -816,6 +826,9 @@
       <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
+      <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)>='4'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+      </div>
       <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
       </div>
@@ -916,6 +929,9 @@
       </div>
       <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
+      </div>
+      <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)>='4'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
       </div>
       <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -1038,6 +1054,9 @@
       <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
+      <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)>='4'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+      </div>
       <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
       </div>
@@ -1155,6 +1174,9 @@
       <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
+      <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)>='4'"  (click)="add('+att15 ')">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+      </div>
       <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
         <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
       </div>
@@ -1199,8 +1221,10 @@
   </tbody>
 </nz-table>
   </div>
+  <p></p>
 <div *ngFor="let r of this.gamedetails.resource;index as i">
-<div class="faction-board">
+
+<div class="faction-board" [ngStyle]="{'border-color':r[22]}">
   <div style="float: left; margin-right: 20px;">
     <div class="factioncolor" [ngStyle]="{'background-color':r[17]}" style="padding: 1px 1px 1px 5px;color: #000;text-align: left" ><span>{{r[1]}}<a style="color: black" routerLink="/player/{{r[0]}}">({{r[0]}})</a>{{r[10]}}</span><span style="float: right">{{r[20]}}{{r[18]}}{{r[21]}}{{r[19]}}</span></div>
   <div class="faction-info" style="width: 600px">
@@ -1364,8 +1388,11 @@
       <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '3'">
         <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
       </div>
+      <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '4'">
+        <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+      </div>
       <div *ngIf="tt[0]=='ltt2used'">
-        <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110">
+        <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110" (click)="add('-ltt2 ')">
       </div>
       <div *ngIf="tt[0]=='att1used'">
         <img class="mb-4" src="../../../assets/techtiles/att1(used).png" alt="" width="140" height="110">
@@ -1538,16 +1565,15 @@
       </div>
     </div>
   </div>
-
-
 </div>
 </div>
 </div>
 <div *ngIf="this.windowsize>=1000">
-<div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
-  <h4 style="color: black;">
+<div style="clear: both" *ngFor="let record of gamedetails.gamerecord;index as i">
+  <h4 style="color: black;display: inline-block;">
     {{record}}
   </h4>
+  <a style="float: right;" (click)="showhistory(this.gamerecordlength+1-i)">查看历史形势</a>
 </div>
 
 <nz-modal [(nzVisible)]="isVisible0" (nzOnCancel)="handleCancel0()" (nzOnOk)="handleOk0()">
@@ -1592,6 +1618,11 @@
       <button nz-button nzType="primary" (click)="handleOkUpgradeAC2()">升级为AC2(获得资源)</button>
     </ng-template>
   </nz-modal>
+  <nz-modal [(nzVisible)]="isVisibleCR" nzTitle="游戏记录" (nzOnCancel)="handleCancelCR()" (nzOnOk)="handleOkCR(this.gameid)">
+    <div>
+      <textarea rows="50"  nz-input [(ngModel)]="this.gr"></textarea>
+    </div>
+  </nz-modal>
   <nz-modal [(nzVisible)]="isVisibleUpgradeRLSH" [(nzTitle)] = "this.modeltitle" [nzFooter]="modalFooter"
             (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkUpgradeTc()">
     <ng-template #modalFooter>
@@ -1609,6 +1640,9 @@
     <button nz-button nzType="primary" (click)="handleOkUpgradeAC2()">升级为AC2(获得资源)</button>
   </ng-template>
 </nz-modal>
+  <nz-modal [nzWidth]="800" [(nzVisible)]="isVisibleRace" [(nzTitle)] = "this.modeltitle" (nzOnCancel)="handleCancelBuild()" (nzOnOk)="handleOkRace()">
+    <div style="width: 720px;height: 500px;background-size:720px 500px;  " [ngStyle]="{'background-image': this.racepic}" ></div>
+  </nz-modal>
 {{this.shoujixinghao}}
 </div>
 
@@ -2091,6 +2125,8 @@
       </div>-->
     <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea>
     <button nz-button nzType="primary" (click)="savelog()" >保存</button>
+    <button nz-button nzType="primary" (click)="togglecolorblind()" >切换色盲模式</button>
+    <button nz-button nzType="primary" (click)="togglescborder()" >显示星域边界</button>
   </div>
 
   <div style="clear: both">
@@ -2118,8 +2154,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let data of basicTable.data;index as i">
-        <td style="color: wheat" >{{ data.dengji }}</td>
-        <td><div style="color: wheat" *ngIf="i!=1&&i!=8&&i!=9">
+        <td style="color: black" >{{ data.dengji }}</td>
+        <td><div style="color: black" *ngIf="i!=1&&i!=8&&i!=9">
           {{ data.terra }}</div>
           <div *ngIf="gamedetails.tt[6]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2209,6 +2245,9 @@
           <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
+          <div *ngIf="gamedetails.tt[0]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='4'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+          </div>
           <div *ngIf="gamedetails.tt[0]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
           </div>
@@ -2249,7 +2288,7 @@
             <div *ngIf="s[0][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
           {{ data.navi }}</div>
           <div *ngIf="gamedetails.tt[7]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2337,6 +2376,9 @@
           <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
+          <div *ngIf="gamedetails.tt[1]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='4'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+          </div>
           <div *ngIf="gamedetails.tt[1]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
           </div>
@@ -2377,7 +2419,7 @@
             <div *ngIf="s[1][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
+        <td><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
           {{ data.quan }}</div>
           <div *ngIf="gamedetails.tt[8]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2466,6 +2508,9 @@
           <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
+          <div *ngIf="gamedetails.tt[2]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='4'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+          </div>
           <div *ngIf="gamedetails.tt[2]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
           </div>
@@ -2506,7 +2551,7 @@
             <div *ngIf="s[2][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
           {{ data.gaia }}</div>
           <div *ngIf="gamedetails.tt[9]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2567,6 +2612,9 @@
           <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
+          <div *ngIf="gamedetails.tt[3]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='4'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+          </div>
           <div *ngIf="gamedetails.tt[3]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
           </div>
@@ -2608,7 +2656,7 @@
           </div>
         </td>
         <td>
-          <div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
+          <div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
             {{ data.eco }}</div>
           <div *ngIf="gamedetails.tt[10]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2688,6 +2736,9 @@
           <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
+          <div *ngIf="gamedetails.tt[4]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='4'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+          </div>
           <div *ngIf="gamedetails.tt[4]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
           </div>
@@ -2728,7 +2779,7 @@
             <div *ngIf="s[4][i]" class="sciencebox" [ngStyle]="{'background':gamedetails.resource[j][9]}"></div>
           </div>
         </td>
-        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: wheat">
+        <td ><div *ngIf="i!=1&&i!=8&&i!=9" style="color: black">
           {{ data.sci }}</div>
           <div *ngIf="gamedetails.tt[11]=='ltt1: +4C'&&i==8" (click)="add('+ltt1 ')">
             <img class="mb-4" src="../../../assets/techtiles/ltt1.png" alt="" width="140" height="110">
@@ -2804,6 +2855,9 @@
           </div>
           <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='3'"  (click)="add('+att15 ')">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
+          </div>
+          <div *ngIf="gamedetails.tt[5]=='att15: PASSP32VP'&&i==1&&gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4)=='4'"  (click)="add('+att15 ')">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
           </div>
           <div *ngIf="gamedetails.tt[5]=='att4: PASSRL3VP'&&i==1"  (click)="add('+att4 ')">
             <img class="mb-4" src="../../../assets/techtiles/att4.png" alt="" width="140" height="110">
@@ -3014,8 +3068,11 @@
           <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '3'">
             <img class="mb-4" src="../../../assets/techtiles/att15(2.3).png" alt="" width="140" height="110">
           </div>
+          <div *ngIf="tt[0]=='att15'&& gamedetails.game.gamemode.length >= 5 && gamedetails.game.gamemode.charAt(4) === '4'">
+            <img class="mb-4" src="../../../assets/techtiles/att15(2.4).png" alt="" width="140" height="110">
+          </div>
           <div *ngIf="tt[0]=='ltt2used'">
-            <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110">
+            <img class="mb-4" src="../../../assets/techtiles/ltt2(used).png" alt="" width="140" height="110" (click)="add('-ltt2 ')">
           </div>
           <div *ngIf="tt[0]=='att1used'">
             <img class="mb-4" src="../../../assets/techtiles/att1(used).png" alt="" width="140" height="110">
@@ -3194,12 +3251,12 @@
   </div>
 </div>
 <div *ngIf="windowsize<1000">
-<div style="clear: both" *ngFor="let record of gamedetails.gamerecord">
-  <h4 style="color: black;">
-    {{record}}
-  </h4>
-</div>
-
+  <div style="clear: both" *ngFor="let record of gamedetails.gamerecord;index as i">
+    <h5 style="color: black;display: inline-block;">
+      {{record}}
+    </h5>
+    <a style="float: right;" (click)="showhistory(this.gamerecordlength+1-i)">查看历史形势</a>
+  </div>
 <nz-modal [(nzVisible)]="isVisible0" (nzOnCancel)="handleCancel0()" (nzOnOk)="handleOk0()">
   <div *ngFor="let str of gamedetails.vpdetail[0]">
     <p>{{str}}</p>

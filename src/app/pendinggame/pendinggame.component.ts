@@ -14,15 +14,16 @@ export class PendinggameComponent implements OnInit {
   constructor(private gameService: GameService, private modalService: NzModalService) {
     this.localStorage = localStorage;
     this.showPGames();
+    this.showLeagues();
     setInterval(() => {
       this.showPGames();
       this.showLeagues();
-    }, 5000);
+    }, 300000);
   }
   localStorage: object;
   errormessage: string;
   Pgames: PendingGame[];
-  League: League[];
+  League: League[][];
   showPGames() {
     this.gameService.showPGames()
       .subscribe((data) => {

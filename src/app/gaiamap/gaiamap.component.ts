@@ -27,7 +27,7 @@ export class GaiamapComponent implements OnInit {
       console.log('clearrrrrr');
       clearInterval(IntervalMessage.intervalMsg);
       this.gameid = params.get('gameid');
-      this.showGame(this.gameid);
+      this.showGame(this.gameid, 0);
       console.log('iv' + this.inputValue);
       this.actionservice.showlog(this.gameid, this.user)
         .subscribe((data) => {console.log('ivvv' + this.inputValue); this.inputValue = data.body.message; });
@@ -37,14 +37,14 @@ export class GaiamapComponent implements OnInit {
       IntervalMessage.intervalMsg = setInterval(() => {
         th.route.paramMap.subscribe(params => {
           th.gameid = params.get('gameid');
-          th.showGame(th.gameid);
+          th.showGame(th.gameid, 0);
         });
-      }, 60000);
+      }, 20000);
     } else {
       IntervalMessage.intervalMsg = setInterval(() => {
         th.route.paramMap.subscribe(params => {
           th.gameid = params.get('gameid');
-          th.showGame(th.gameid);
+          th.showGame(th.gameid, 0);
         });
       }, 10000);
     }
@@ -57,6 +57,10 @@ export class GaiamapComponent implements OnInit {
   errormessage: string;
   o = 'O';
   actionorder = '';
+  isVisibleCR = false;
+  isVisibleRace = false;
+  racepic: string; // 点击选族种族时的种族图片展示
+  raceno: number;
   isVisible0 = false;
   isVisible1 = false;
   isVisible2 = false;
@@ -72,6 +76,7 @@ export class GaiamapComponent implements OnInit {
   isVisibleGaia = false;
   isVisiblePWQ = false;
   isVisibleUpgradeMAD = false;
+  gr: string;
   gamedetails: GameDetails;
   user: string;
   localStorage: object;
@@ -90,13 +95,35 @@ export class GaiamapComponent implements OnInit {
      if (localStorage.getItem('colorblind') === 'f') { localStorage.setItem('colorblind', 't'); } else if (localStorage.getItem('colorblind') === 't') { localStorage.setItem('colorblind', 'f'); }
      console.log(localStorage.getItem('colorblind'));
   }
+  togglescborder() {
+    if (localStorage.getItem('scborder') === 'f') { localStorage.setItem('scborder', 't'); } else if (localStorage.getItem('scborder') === 't') { localStorage.setItem('scborder', 'f'); }
+    console.log(localStorage.getItem('scborder'));
+  }
   chooserace(gameid: string, race: string, avarace: number) {
     // tslint:disable-next-line:max-line-length
     if (this.gamedetails.avarace[avarace] === false) {// 如果种族还没被选择&& this.gamedetails.currentuserid === localStorage.getItem('current_user')
       this.actionservice.chooserace(gameid, race, localStorage.getItem('current_user')).subscribe((data) => {
-        this.showGame(this.gameid);
+        this.showGame(this.gameid, 0);
       });
     }
+  }
+  handleOkRace() {
+    if (this.raceno === 1) {this.chooserace(this.gameid, 'choose race: 人类', 0); }
+    if (this.raceno === 2) {this.chooserace(this.gameid, 'choose race: 亚特兰斯星人', 1); }
+    if (this.raceno === 3) {this.chooserace(this.gameid, 'choose race: 圣禽族', 2); }
+    if (this.raceno === 4) {this.chooserace(this.gameid, 'choose race: 蜂人', 3); }
+    if (this.raceno === 5) {this.chooserace(this.gameid, 'choose race: 晶矿星人', 4); }
+    if (this.raceno === 6) {this.chooserace(this.gameid, 'choose race: 炽炎族', 5); }
+    if (this.raceno === 7) {this.chooserace(this.gameid, 'choose race: 翼空族', 6); }
+    if (this.raceno === 8) {this.chooserace(this.gameid, 'choose race: 格伦星人', 7); }
+    if (this.raceno === 9) {this.chooserace(this.gameid, 'choose race: 大使星人', 8); }
+    if (this.raceno === 10) {this.chooserace(this.gameid, 'choose race: 利爪族', 9); }
+    if (this.raceno === 11) {this.chooserace(this.gameid, 'choose race: 章鱼人', 10); }
+    if (this.raceno === 12) {this.chooserace(this.gameid, 'choose race: 疯狂机器', 11); }
+    if (this.raceno === 13) {this.chooserace(this.gameid, 'choose race: 伊塔星人', 12); }
+    if (this.raceno === 14) {this.chooserace(this.gameid, 'choose race: 超星人', 13); }
+    this.isVisibleRace = false;
+
   }
   click(row: number, column: number) {
     const alpha: string[] = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'];
@@ -140,26 +167,53 @@ export class GaiamapComponent implements OnInit {
       }
     }
   }
+  clickRace(i: number) {
+    this.isVisibleRace = true;
+    this.raceno = i;
+    this.racepic = 'url(../../../assets/races/R' + i + '.JPG)';
+  }
   doaction(gameid: string, action: string, userid: string) {
     action = action.replace('+', '%2B');
     // tslint:disable-next-line:max-line-length  if中添加localStorage.getItem('current_user') === this.gamedetails.currentuserid
-    if (true) {this.actionservice.doaction(gameid, action, userid).subscribe((data) => {if (data.body.message !== '成功') {this.errormessage = data.body.message; } else {this.actionorder = ''; this.errormessage = null; }this.showGame(this.gameid); }); } else {
+    if (true) {this.actionservice.doaction(gameid, action, userid).subscribe((data) => {if (data.body.message !== '成功') {this.errormessage = data.body.message; } else {this.actionorder = ''; this.errormessage = null; }this.showGame(this.gameid, 0); }); } else {
       // console.log(localStorage.getItem('current_user'));
     }
   }
+  showhistory(i: number) {
+    clearInterval(IntervalMessage.intervalMsg);
+    this.showGame(this.gameid, i);
+}
+  showGameRecord(gameid: any) {
+    this.gameService.getRecord(gameid).subscribe((data) => {
+      this.gr =  data.gamerecord ;
+      this.gameid = gameid;
+    });
+    this.isVisibleCR = true;
+  }
   leechpower(gameid: string, giverace: string, receiverace: string, location: string, structure: string, accept: string) {
     // tslint:disable-next-line:max-line-length
-    this.actionservice.leechpower(gameid, giverace, receiverace, location, structure, accept).subscribe((data) => {console.log(data); this.showGame(this.gameid); });
+    this.actionservice.leechpower(gameid, giverace, receiverace, location, structure, accept).subscribe((data) => {console.log(data); this.showGame(this.gameid, 0); });
   }
   savelog() {
     console.log('iv' + this.inputValue);
     this.actionservice.savelog(this.gamedetails.game.gameId, this.user, this.inputValue).subscribe((data) => {console.log(data); });
   }
   dofastaction() {
+    if (this.actionorder !== '' && this.actionorder.charAt(this.actionorder.length - 1) !== '.') {this.actionorder += '.'; }
     this.actionorder += this.selectedFsAct + '.';
   }
   add(order: string): void {
     this.actionorder += order;
+  }
+  handleOkCR(gameid: string) {
+    this.isVisibleCR = false;
+    console.log(this.gr);
+    this.gr = this.gr.replace(/\+/g, '%2B');
+    this.gameService.changeRecord(gameid, this.gr).subscribe((data) => {
+    });
+  }
+  handleCancelCR() {
+    this.isVisibleCR = false;
   }
   handleOk0(): void {
     this.isVisible0 = false;
@@ -260,6 +314,7 @@ export class GaiamapComponent implements OnInit {
     this.isVisibleUpgradeMAD = false;
     this.isVisibleUpgradeShMad = false;
     this.isVisibleUpgradeAC = false;
+    this.isVisibleRace = false;
   }
 
   showModal(i: number): void {
@@ -288,12 +343,12 @@ export class GaiamapComponent implements OnInit {
     if (science === 'sci') { this.modeltitle = '确认升级科学科技？'; }
   }
 
-  showGame(gameid: string) {
+  showGame(gameid: string, history: number) {
     this.canvass = document.getElementById('myCanvas');
 /*    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { this.canvass.height = 500; }*/
     this.localStorage = localStorage;
     this.user = localStorage.getItem('current_user');
-    this.gameService.showGame(gameid, this.user)
+    this.gameService.showGame(gameid, this.user, history)
       .subscribe((data) => {
         this.gamerecordlength = data.gamerecord.length;
         this.gamedetails = data;
@@ -906,6 +961,110 @@ if (ctx.fillStyle === '#4275e5') {
   }
 }
       }
+      if (localStorage.getItem('scborder') === 't' && (conf.coordinate === 'H3' || conf.coordinate === 'M3' || conf.coordinate === 'R3' || conf.coordinate === 'Q11' || conf.coordinate === 'E7' || conf.coordinate === 'J7' || conf.coordinate === 'O7' || conf.coordinate === 'T3' || conf.coordinate === 'G11' || conf.coordinate === 'L11')) {
+        ctx.beginPath();
+        const sx = x - 156 + r * Math.cos(2 * Math.PI * 0 / 6);
+        const sy = y - 270 + r * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.moveTo(sx, sy);
+        let newX = x - 156 + r * Math.cos(2 * Math.PI * 5 / 6);
+        let newY = y - 270 + r * Math.sin(2 * Math.PI * 5 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 156 + r * Math.cos(2 * Math.PI * 4 / 6);
+        newY = y - 270 + r * Math.sin(2 * Math.PI * 4 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 156 + r * Math.cos(2 * Math.PI * 3 / 6);
+        newY = y - 270 + r * Math.sin(2 * Math.PI * 3 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 234 + r * Math.cos(2 * Math.PI * 4 / 6);
+        newY = y - 225 + r * Math.sin(2 * Math.PI * 4 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 234 + r * Math.cos(2 * Math.PI * 3 / 6);
+        newY = y - 225 + r * Math.sin(2 * Math.PI * 3 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 4 / 6);
+        newY = y - 180 + r * Math.sin(2 * Math.PI * 4 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 3 / 6);
+        newY = y - 180 + r * Math.sin(2 * Math.PI * 3 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 2 / 6);
+        newY = y - 180 + r * Math.sin(2 * Math.PI * 2 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 3 / 6);
+        newY = y - 90 + r * Math.sin(2 * Math.PI * 3 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 2 / 6);
+        newY = y - 90 + r * Math.sin(2 * Math.PI * 2 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 3 / 6);
+        newY = y + r * Math.sin(2 * Math.PI * 3 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 2 / 6);
+        newY = y + r * Math.sin(2 * Math.PI * 2 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 312 + r * Math.cos(2 * Math.PI * 1 / 6);
+        newY = y + r * Math.sin(2 * Math.PI * 1 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 234 + r * Math.cos(2 * Math.PI * 2 / 6);
+        newY = y + 45 + r * Math.sin(2 * Math.PI * 2 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 234 + r * Math.cos(2 * Math.PI * 1 / 6);
+        newY = y + 45 + r * Math.sin(2 * Math.PI * 1 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 156 + r * Math.cos(2 * Math.PI * 2 / 6);
+        newY = y + 90 + r * Math.sin(2 * Math.PI * 2 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 156 + r * Math.cos(2 * Math.PI * 1 / 6);
+        newY = y + 90 + r * Math.sin(2 * Math.PI * 1 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 156 + r * Math.cos(2 * Math.PI * 0 / 6);
+        newY = y + 90 + r * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 78 + r * Math.cos(2 * Math.PI * 1 / 6);
+        newY = y + 45 + r * Math.sin(2 * Math.PI * 1 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 78 + r * Math.cos(2 * Math.PI * 0 / 6);
+        newY = y + 45 + r * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 1 / 6);
+        newY = y + r * Math.sin(2 * Math.PI * 1 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 0 / 6);
+        newY = y + r * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 5 / 6);
+        newY = y + r * Math.sin(2 * Math.PI * 5 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 0 / 6);
+        newY = y - 90 + r * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 5 / 6);
+        newY = y - 90 + r * Math.sin(2 * Math.PI * 5 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 0 / 6);
+        newY = y - 180 + r * Math.sin(2 * Math.PI * 0 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 5 / 6);
+        newY = y - 180 + r * Math.sin(2 * Math.PI * 5 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x + r * Math.cos(2 * Math.PI * 4 / 6);
+        newY = y - 180 + r * Math.sin(2 * Math.PI * 4 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 78 + r * Math.cos(2 * Math.PI * 5 / 6);
+        newY = y - 225 + r * Math.sin(2 * Math.PI * 5 / 6);
+        ctx.lineTo(newX, newY);
+        newX = x - 78 + r * Math.cos(2 * Math.PI * 4 / 6);
+        newY = y - 225 + r * Math.sin(2 * Math.PI * 4 / 6);
+        ctx.lineTo(newX, newY);
+        ctx.closePath();
+        // 路径闭合
+        if (strokeStyle) {
+          ctx.strokeStyle = 'LightCyan';
+          ctx.lineWidth = 4;
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+        }
+      }
       if (conf.x === 442 && conf.y === 226) {
         ctx.fillStyle = 'wheat';
         ctx.font = '30px Arial';
@@ -1297,12 +1456,11 @@ if (ctx.fillStyle === '#4275e5') {
         ctx.lineTo(x - 10, y + 10);
         ctx.lineTo(x - 10, y - 10);
         ctx.closePath();
-        ctx.fillStyle = this.gamedetails.satellite[row][column][2];
+        ctx.fillStyle = this.gamedetails.satellite[row][column][3];
         ctx.fill();
       }
       ctx.fillStyle = 'lightblue';
       ctx.font = '15px Arial';
       ctx.fillText(conf.coordinate, conf.x - 9, conf.y + 35);
   }
-
 }

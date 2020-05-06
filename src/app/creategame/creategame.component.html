@@ -1,15 +1,16 @@
 <p>creategame works!</p>
 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择游戏版本" [(ngModel)]="gamemode">
   <nz-option nzLabel="原版游戏" nzValue="0.0"></nz-option>
-  <nz-option nzLabel="1.0(游戏,种族平衡)" nzValue="2.3"></nz-option>
-  <nz-option nzLabel="1.0+额外7个新种族（暂不推荐使用）" nzValue="3.3"></nz-option>
+  <nz-option nzLabel="1.0(游戏,种族平衡)" nzValue="2.5"></nz-option>
+  <nz-option nzLabel="1.0+额外7个新种族（暂不推荐使用）" nzValue="3.5"></nz-option>
 </nz-select>
 <nz-select nzShowSearch nzAllowClear nzPlaceHolder="选择平衡方式"  [(ngModel)]="gamebalance">
   <nz-option nzLabel="第二价格竞拍" nzValue="0.0"></nz-option>
+  <nz-option nzLabel="随机种族竞拍" nzValue="0.1"></nz-option>
   <nz-option nzLabel="末位旋转地图" nzValue="2.0"></nz-option>
+  <nz-option nzLabel="固定顺位旋转地图" nzValue="2.1"></nz-option>
   <nz-option nzLabel="随机顺位" nzValue="1.0"></nz-option>
   <nz-option nzLabel="单人练习" nzValue="3.0"></nz-option>
-  <nz-option nzLabel="随机种族竞拍" nzValue="0.1"></nz-option>
 </nz-select>
 <form [formGroup]="gameinfo">
   <p><font color="#dc143c" size="5">{{createmessage}}</font>

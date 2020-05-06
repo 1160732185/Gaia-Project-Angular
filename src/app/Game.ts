@@ -21,4 +21,5 @@ export class Game {
  currentplayer: string;
  gamemode: string;
  admin: string;
+ createtime: string;
 }

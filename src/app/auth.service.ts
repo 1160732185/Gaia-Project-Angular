@@ -25,6 +25,7 @@ export class AuthService {
             localStorage.setItem('access_token', resp.headers.get('access-token'));
             localStorage.setItem('current_user', resp.body.userid);
             localStorage.setItem('colorblind', 'f');
+            localStorage.setItem('scborder', 'f');
           } else {
             LoginformComponent.message = '用户名或密码错误!';
           }
