@@ -23,6 +23,7 @@ import { GaiamapmobileComponent } from './gaiamapmobile/gaiamapmobile.component'
 import { PendinggameComponent } from './pendinggame/pendinggame.component';
 import { LeagueComponent } from './league/league.component';
 import { PlayerComponent } from './player/player.component';
+import { StatisticComponent } from './statistic/statistic.component';
 registerLocaleData(zh);
 
 
@@ -41,7 +42,8 @@ registerLocaleData(zh);
     GaiamapmobileComponent,
     PendinggameComponent,
     LeagueComponent,
-    PlayerComponent
+    PlayerComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,

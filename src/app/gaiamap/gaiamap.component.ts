@@ -131,7 +131,7 @@ export class GaiamapComponent implements OnInit {
     const y = column;
     this.location = alpha[x] + y;
     console.log(this.location);
-    if (this.actionorder.substring(0, 4) === 'form' || this.actionorder.substring(0, 7) === 'actiond' || this.actionorder.substring(0, 7) === 'actiont' || this.actionorder.substring(0, 7) === 'actionf') {this.add(' ' + this.location); } else if (this.actionorder.substring(0, 7) === 'actionz') {
+    if (this.actionorder.substring(0, 4) === 'form' || this.actionorder.substring(0, 7) === 'actiond' || this.actionorder.substring(0, 7) === 'actiont' || this.actionorder.substring(0, 7) === 'actionf' || this.actionorder.substring(0, 7) === 'actionr') {this.add(' ' + this.location); } else if (this.actionorder.substring(0, 7) === 'actionz') {
       this.add(' ' + this.location + ' ');
     } else {
       // tslint:disable-next-line:max-line-length
@@ -168,6 +168,7 @@ export class GaiamapComponent implements OnInit {
     }
   }
   clickRace(i: number) {
+    console.log('aaa');
     this.isVisibleRace = true;
     this.raceno = i;
     this.racepic = 'url(../../../assets/races/R' + i + '.JPG)';
@@ -250,28 +251,28 @@ export class GaiamapComponent implements OnInit {
   }
 
   handleOkUpgradeTc(): void {
-    this.actionorder =  'upgrade ' + this.location + ' to tc ';
+    this.actionorder +=  'upgrade ' + this.location + ' to tc ';
     this.isVisibleUpgradeTc = false;
   }
   handleOkUpgradeRl(): void {
-    this.actionorder =  'upgrade ' + this.location + ' to rl ';
+    this.actionorder +=  'upgrade ' + this.location + ' to rl ';
     this.isVisibleUpgradeRLSH = false; this.isVisibleUpgradeMAD = false;
   }
   handleOkUpgradeSh(): void {
-    this.actionorder =  'upgrade ' + this.location + ' to sh ';
+    this.actionorder +=  'upgrade ' + this.location + ' to sh ';
     this.isVisibleUpgradeRLSH = false;
     this.isVisibleUpgradeShMad = false;
   }
   handleOkUpgradeAC1(): void {
-    this.actionorder =  'upgrade ' + this.location + ' to ac1 ';
+    this.actionorder +=  'upgrade ' + this.location + ' to ac1 ';
     this.isVisibleUpgradeAC = false; this.isVisibleUpgradeMAD = false;
   }
   handleOkUpgradeAC2(): void {
-    this.actionorder =  'upgrade ' + this.location + ' to ac2 ';
+    this.actionorder +=  'upgrade ' + this.location + ' to ac2 ';
     this.isVisibleUpgradeAC = false; this.isVisibleUpgradeMAD = false;
   }
   handleOkPass(): void {
-    this.actionorder =  'pass ' + this.location;
+    this.actionorder +=  'pass ' + this.location;
     this.isVisiblePass = false;
   }
 

@@ -11,6 +11,7 @@ import {Lobby} from './Lobby';
 import {PendingGame} from './PendingGame';
 import {League} from './League';
 import {PlayerDetails} from './PlayerDetails';
+import {Info} from './Info';
 @Injectable({
   providedIn: 'root'
 })
@@ -132,5 +133,10 @@ export class GameService {
   getPlayerDetail(userid: string) {
     const url = `${environment.apiURL}/api/v1/player/${userid}`;
     return this.http.get<PlayerDetails>(url);
+  }
+
+  getInfo() {
+    const url = `${environment.apiURL}/api/v1/info`;
+    return this.http.get<Info[]>(url);
   }
 }

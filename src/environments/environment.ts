@@ -4,10 +4,8 @@
 
 export const environment = {
   production: false,
-  /*  apiURL: 'http://192.168.43.194:8080'*/
-  /* apiURL: 'http://172.21.252.124:8080'*/
-/*apiURL: 'http://pandagaia.online:8080'*/
-apiURL: 'http://localhost:8080'
+   // apiURL: 'http://pandagaia.online:8080'
+    apiURL: 'http://localhost:8080'
 };
 
 /*

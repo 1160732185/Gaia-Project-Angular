@@ -13,6 +13,7 @@ export class PendinggameComponent implements OnInit {
 
   constructor(private gameService: GameService, private modalService: NzModalService) {
     this.localStorage = localStorage;
+    this.windowsize = window.innerWidth;
     this.showPGames();
     this.showLeagues();
     setInterval(() => {
@@ -20,10 +21,12 @@ export class PendinggameComponent implements OnInit {
       this.showLeagues();
     }, 300000);
   }
+  windowsize: number;
   localStorage: object;
   errormessage: string;
   Pgames: PendingGame[];
   League: League[][];
+  activeKey = [99];
   showPGames() {
     this.gameService.showPGames()
       .subscribe((data) => {
@@ -39,6 +42,7 @@ export class PendinggameComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   enterPGame(gameid: string) {
@@ -60,4 +64,12 @@ export class PendinggameComponent implements OnInit {
         this.errormessage = data.body.message;
       });
   }
+
+
+
+  onChange(event) {
+    console.log(event);
+  }
+
+
 }

@@ -32,9 +32,10 @@
   </tr>
   </tbody>
 </nz-table>
+<div *ngIf="this.windowsize>=1000">
 <nz-tabset>
-  <nz-tab nzTitle="S1黄金联赛及正在报名的联赛">
-    <nz-table #basicTable2 [nzData]="League[0]" [nzPageSize]="50">
+  <nz-tab nzTitle="S3黄金联赛及正在报名的联赛">
+    <nz-table #basicTable7 [nzData]="League[3]" [nzPageSize]="50">
       <thead>
       <tr>
         <th>联赛名</th>
@@ -52,7 +53,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let data of basicTable2.data;index as i" >
+      <tr *ngFor="let data of basicTable7.data;index as i" >
         <td><a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a></td>
         <td>{{ data.gamemode }}</td>
         <td>{{ data.player1 }}</td>
@@ -95,6 +96,48 @@
       </thead>
       <tbody>
       <tr *ngFor="let data of basicTable3.data;index as i" >
+        <td><a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a></td>
+        <td>{{ data.gamemode }}</td>
+        <td>{{ data.player1 }}</td>
+        <td>{{ data.player2 }}</td>
+        <td>{{ data.player3 }}</td>
+        <td>{{ data.player4 }}</td>
+        <td>{{ data.player5 }}</td>
+        <td>{{ data.player6 }}</td>
+        <td>{{ data.player7 }}</td>
+        <td>{{ data.admin }}</td>
+        <td>{{ data.des}}</td>
+        <td>
+          操作：
+          <nz-divider nzType="vertical"></nz-divider>
+          <a *ngIf="data.player7==''" (click)="enterPLeague(data.leagueid)">加入！</a>
+          <!--      <div style="float: right" *ngIf="data.player1 === localStorage.getItem('current_user')">
+                  <a (click)="deletePGame(data.gameid)">删除</a></div>-->
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </nz-tab>
+  <nz-tab nzTitle="S1、S2黄金联赛">
+    <nz-table #basicTable2 [nzData]="League[0]" [nzPageSize]="50">
+      <thead>
+      <tr>
+        <th>联赛名</th>
+        <th>游戏模式</th>
+        <th>玩家一</th>
+        <th>玩家二</th>
+        <th>玩家三</th>
+        <th>玩家四</th>
+        <th>玩家五</th>
+        <th>玩家六</th>
+        <th>玩家七</th>
+        <th>冠军</th>
+        <th>游戏描述</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable2.data;index as i" >
         <td><a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a></td>
         <td>{{ data.gamemode }}</td>
         <td>{{ data.player1 }}</td>
@@ -160,4 +203,198 @@
     </nz-table>
   </nz-tab>
 </nz-tabset>
-
+</div>
+<div *ngIf="this.windowsize<1000">`
+  <h3>S3黄金联赛及正在报名的联赛</h3>
+  <Accordion [accordion]="true" [defaultActiveKey]="'0'" [activeKey]="activeKey" (onChange)="onChange($event)">
+    <AccordionPanel
+      *ngFor="let data of League[3]; let i = index"
+      [key]="i"
+      [header]="data.leagueid"
+    >
+      <List className="my-list">
+        <ListItem>
+          <a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a>
+        </ListItem>
+        <ListItem>
+          游戏模式： <td>{{ data.gamemode }}</td>
+        </ListItem>
+        <ListItem>
+          描述：  <td>{{ data.des}}</td>
+        </ListItem>
+        <ListItem>
+          玩家一：  <td>{{ data.player1 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家二：  <td>{{ data.player2 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家三：  <td>{{ data.player3 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家四：  <td>{{ data.player4 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家五：  <td>{{ data.player5 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家六：  <td>{{ data.player6 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家七：  <td>{{ data.player7 }}</td>
+        </ListItem>
+        <ListItem>
+          冠军：  <td>{{ data.admin}}</td>
+        </ListItem>
+        <ListItem>
+          操作：
+          <a *ngIf="data.player7==''" (click)="enterPLeague(data.leagueid)">加入！</a>
+        </ListItem>
+      </List>
+    </AccordionPanel>
+  </Accordion>
+  <h3>S1、S2黄金联赛</h3>
+    <Accordion [accordion]="true" [defaultActiveKey]="'0'" [activeKey]="activeKey" (onChange)="onChange($event)">
+      <AccordionPanel
+        *ngFor="let data of League[0]; let i = index"
+        [key]="i"
+        [header]="data.leagueid"
+      >
+        <List className="my-list">
+          <ListItem>
+            <a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a>
+          </ListItem>
+          <ListItem>
+            游戏模式： <td>{{ data.gamemode }}</td>
+          </ListItem>
+          <ListItem>
+            描述：  <td>{{ data.des}}</td>
+          </ListItem>
+          <ListItem>
+            玩家一：  <td>{{ data.player1 }}</td>
+          </ListItem>
+          <ListItem>
+            玩家二：  <td>{{ data.player2 }}</td>
+          </ListItem>
+          <ListItem>
+            玩家三：  <td>{{ data.player3 }}</td>
+          </ListItem>
+          <ListItem>
+            玩家四：  <td>{{ data.player4 }}</td>
+          </ListItem>
+          <ListItem>
+            玩家五：  <td>{{ data.player5 }}</td>
+          </ListItem>
+          <ListItem>
+            玩家六：  <td>{{ data.player6 }}</td>
+          </ListItem>
+          <ListItem>
+            玩家七：  <td>{{ data.player7 }}</td>
+          </ListItem>
+          <ListItem>
+            冠军：  <td>{{ data.admin}}</td>
+          </ListItem>
+          <ListItem>
+            操作：
+            <a *ngIf="data.player7==''" (click)="enterPLeague(data.leagueid)">加入！</a>
+          </ListItem>
+        </List>
+      </AccordionPanel>
+    </Accordion>
+  <h3>进行中的休闲联赛</h3>
+  <Accordion [accordion]="true" [defaultActiveKey]="'0'" [activeKey]="activeKey" (onChange)="onChange($event)">
+    <AccordionPanel
+      *ngFor="let data of League[1]; let i = index"
+      [key]="i"
+      [header]="data.leagueid"
+    >
+      <List className="my-list">
+        <ListItem>
+          <a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a>
+        </ListItem>
+        <ListItem>
+          游戏模式： <td>{{ data.gamemode }}</td>
+        </ListItem>
+        <ListItem>
+          描述：  <td>{{ data.des}}</td>
+        </ListItem>
+        <ListItem>
+          玩家一：  <td>{{ data.player1 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家二：  <td>{{ data.player2 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家三：  <td>{{ data.player3 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家四：  <td>{{ data.player4 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家五：  <td>{{ data.player5 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家六：  <td>{{ data.player6 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家七：  <td>{{ data.player7 }}</td>
+        </ListItem>
+        <ListItem>
+          冠军：  <td>{{ data.admin}}</td>
+        </ListItem>
+        <ListItem>
+          操作：
+          <a *ngIf="data.player7==''" (click)="enterPLeague(data.leagueid)">加入！</a>
+        </ListItem>
+      </List>
+    </AccordionPanel>
+  </Accordion>
+  <h3>已完成的休闲联赛</h3>
+  <Accordion [accordion]="true" [defaultActiveKey]="'0'" [activeKey]="activeKey" (onChange)="onChange($event)">
+    <AccordionPanel
+      *ngFor="let data of League[2]; let i = index"
+      [key]="i"
+      [header]="data.leagueid"
+    >
+      <List className="my-list">
+        <ListItem>
+          <a routerLink="/league/{{data.leagueid}}">{{ data.leagueid }}</a>
+        </ListItem>
+        <ListItem>
+          游戏模式： <td>{{ data.gamemode }}</td>
+        </ListItem>
+        <ListItem>
+          描述：  <td>{{ data.des}}</td>
+        </ListItem>
+        <ListItem>
+          玩家一：  <td>{{ data.player1 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家二：  <td>{{ data.player2 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家三：  <td>{{ data.player3 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家四：  <td>{{ data.player4 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家五：  <td>{{ data.player5 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家六：  <td>{{ data.player6 }}</td>
+        </ListItem>
+        <ListItem>
+          玩家七：  <td>{{ data.player7 }}</td>
+        </ListItem>
+        <ListItem>
+          冠军：  <td>{{ data.admin}}</td>
+        </ListItem>
+        <ListItem>
+          操作：
+          <a *ngIf="data.player7==''" (click)="enterPLeague(data.leagueid)">加入！</a>
+        </ListItem>
+      </List>
+    </AccordionPanel>
+  </Accordion>
+</div>
