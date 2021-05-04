@@ -1,0 +1,38 @@
+<nz-table #filterTable [nzData]="listOfDisplayData" [nzPageSize]="14" nzSize='small'>
+  <thead (nzSortChange)="sort($event)" nzSingleSort>
+  <tr>
+    <th
+      nzShowSort
+      nzSortKey="name"
+      nzShowFilter
+      [nzFilters]="listOfName"
+      (nzFilterChange)="filter($event)"
+    >
+      种族
+    </th>
+    <th nzShowSort nzSortKey="origameno">原版场数</th>
+    <th nzShowSort nzSortKey="oriavgrank">原版平均顺位</th>
+    <th nzShowSort nzSortKey="oriavgscore">原版平均分</th>
+    <th nzShowSort nzSortKey="modgameno">平衡场数</th>
+    <th nzShowSort nzSortKey="modavgrank">平衡平均顺位</th>
+    <th nzShowSort nzSortKey="modavgscore">平衡平均分</th>
+    <th nzShowSort nzSortKey="curgameno">平衡场数(当前版本)</th>
+    <th nzShowSort nzSortKey="curavgrank">平衡平均顺位(当前版本)</th>
+    <th nzShowSort nzSortKey="curavgscore">平衡平均分(当前版本)</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of filterTable.data">
+    <td [ngStyle]="{'background-color':data.color}">{{ data.race }}</td>
+    <td>{{ data.origameno }}</td>
+    <td>{{ data.oriavgrank }}</td>
+    <td>{{ data.oriavgscore }}</td>
+    <td>{{ data.modgameno }}</td>
+    <td>{{ data.modavgrank }}</td>
+    <td>{{ data.modavgscore }}</td>
+    <td>{{ data.curgameno }}</td>
+    <td>{{ data.curavgrank }}</td>
+    <td>{{ data.curavgscore }}</td>
+  </tr>
+  </tbody>
+</nz-table>
